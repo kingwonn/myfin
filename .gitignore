@@ -8,3 +8,7 @@ node_modules/
 
 # data cache (pipelines write here; regenerable)
 data/cache/
+
+# build artifacts (regenerable via site/build.mjs)
+site/dist/
+site/node_modules/
