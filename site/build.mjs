@@ -195,4 +195,11 @@ writeFileSync(join(DIST, 'index.html'), page('言出法随 · myfin 投研总览
 for (const p of mdPages)
   writeFileSync(join(DIST, 'r', `${p.slug}.html`), page(p.title, `<nav class="tabs"><a href="../index.html">← 返回总览</a></nav><article class="mdbody">${marked.parse(p.raw)}</article>`, '../'));
 
-console.log(`built: ${listed.length} listed + ${(privates.companies ?? []).length} private, ${mdPages.length} md pages -> dist/`);
+// ---------- 单文件版（Artifact/离线预览：报告内联为可展开块） ----------
+const inlineReports = mdPages.length
+  ? mdPages.map((p) => `<details style="margin-bottom:8px"><summary style="cursor:pointer;padding:12px 16px;background:var(--surface);border:1px solid var(--border);border-radius:10px">${esc(p.title)} <span class="kind" style="color:var(--muted);font-size:12px">（${p.kind === 'research' ? '深度研究' : p.kind === 'thesis' ? '论点' : '文档'}）</span></summary><article class="mdbody">${marked.parse(p.raw)}</article></details>`).join('')
+  : '<div class="empty">暂无报告</div>';
+const singleBody = indexBody.replace(reportsHtml, inlineReports);
+writeFileSync(join(DIST, 'single.html'), page('言出法随 · myfin 投研总览', singleBody));
+
+console.log(`built: ${listed.length} listed + ${(privates.companies ?? []).length} private, ${mdPages.length} md pages -> dist/ (+single.html)`);
