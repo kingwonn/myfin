@@ -47,10 +47,10 @@ segments:
         market: KR
         role: HBM市占率第一，英伟达主力供应商
         moat: HBM良率与MR-MUF封装工艺领先一代；与NVDA深度绑定
-        risk: 三星HBM4追平后的价格战；HBM供需反转
+        risk: HBM4三家同时过认证(2-1)——竞争转向良率与价格；2027供需反转风险
         tier: 1
-        last_checked: null
-        notes: ""
+        last_checked: 2026-07-07
+        notes: "R5: 前三大厂'绝对定价权'、2027合约价或倍增(TrendForce 3-0)；HBM投片占DRAM 18%→30%(2025→2027)。'海力士62%份额'口径0-3被否，引用注意"
       - name: 美光 Micron
         ticker: "NASDAQ:MU"
         market: US
@@ -117,12 +117,21 @@ segments:
       - name: Coherent
         ticker: "NYSE:COHR"
         market: US
-        role: 光器件/光模块美国供应链核心，兼激光器
-        moat: 垂直整合(磷化铟激光器自产)
-        risk: 运营效率长期弱于中国同行
-        tier: 2
-        last_checked: null
-        notes: ""
+        role: InP激光器(EML)+光模块垂直整合——R4确认的光互连真瓶颈环节
+        moat: 磷化铟激光器自产；NVDA 20亿美元入股+多十亿采购承诺+产能优先权(2026-03 8-K, 3-0)；管理层自认EML曾是行业瓶颈、6吋线爬坡中
+        risk: 6吋产能放量后瓶颈溢价消退；运营效率弱于中国同行
+        tier: 1
+        last_checked: 2026-07-07
+        notes: "R4: 记录级订单(800G+1.6T step-function增长, Q1FY26电话会3-0)。窄门排序#3"
+      - name: Lumentum
+        ticker: "NASDAQ:LITE"
+        market: US
+        role: InP激光器(EML/CW)咽喉，NVDA光子学供应安全的另一半
+        moat: NVDA 20亿美元可转优先股入股($695.31/股)+采购承诺+先进激光器产能优先权；资金投向美国新建晶圆厂(2026-03 8-K, 3-0)
+        risk: 产能扩张兑现节奏；估值已因NVDA入股重估
+        tier: 1
+        last_checked: 2026-07-07
+        notes: "R4新增：与COHR并列'InP激光器窄门'。'40亿锁定EML供应'为二手总结(2-1)"
       - name: Fabrinet
         ticker: "NYSE:FN"
         market: US
@@ -170,10 +179,10 @@ segments:
         market: US
         role: 数据中心配电设备核心供应商
         moat: 电气设备认证与渠道；订单积压深
-        risk: 电力设备供给瓶颈缓解后估值回归
+        risk: 电力设备供给瓶颈缓解后估值回归；800VDC/SST路线中期分流传统配电设备
         tier: 2
-        last_checked: null
-        notes: ""
+        last_checked: 2026-07-07
+        notes: "R3(8-K 3-0): Q1'26电气积压+48%、数据中心订单+240% vs 收入+50%——积压堆积远超交付。NVDA 800VDC生态点名成员"
       - name: 台达电子 Delta Electronics
         ticker: "TWSE:2308"
         market: TW
