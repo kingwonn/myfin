@@ -1,0 +1,136 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex"><title>愿景与策略框架</title><style>
+:root{--surface:#fcfcfb;--plane:#f9f9f7;--ink:#0b0b0b;--ink2:#52514e;--muted:#898781;
+--grid:#e1e0d9;--border:rgba(11,11,11,.10);--s1:#2a78d6;--s2:#1baf7a;--s3:#eda100;
+--good:#0ca30c;--warn:#fab219;--crit:#d03b3b;--chip:#f0efec}
+:root[data-theme=dark],:root.dark{--surface:#1a1a19;--plane:#0d0d0d;--ink:#fff;--ink2:#c3c2b7;
+--grid:#2c2c2a;--border:rgba(255,255,255,.10);--s1:#3987e5;--s2:#199e70;--s3:#c98500;--chip:#383835}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--surface:#1a1a19;--plane:#0d0d0d;
+--ink:#fff;--ink2:#c3c2b7;--grid:#2c2c2a;--border:rgba(255,255,255,.10);--s1:#3987e5;--s2:#199e70;--s3:#c98500;--chip:#383835}}
+*{box-sizing:border-box;margin:0}
+body{background:var(--plane);color:var(--ink);font:15px/1.65 system-ui,-apple-system,"Segoe UI",sans-serif;padding-bottom:64px}
+a{color:var(--s1);text-decoration:none}a:hover{text-decoration:underline}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+header.top{padding:28px 0 10px}
+h1{font-size:22px;letter-spacing:.3px}
+.sub{color:var(--ink2);font-size:13px;margin-top:4px}
+nav.tabs{display:flex;gap:6px;margin:18px 0 14px;flex-wrap:wrap}
+nav.tabs button,nav.tabs a{border:1px solid var(--border);background:var(--surface);color:var(--ink2);
+padding:6px 14px;border-radius:20px;font-size:13px;cursor:pointer}
+nav.tabs .on{color:var(--ink);border-color:var(--ink2);font-weight:600}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:6px 0 20px}
+.tile{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px 16px}
+.tile .v{font-size:26px;font-weight:700}
+.tile .k{font-size:12px;color:var(--ink2);margin-top:2px}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 14px;align-items:center}
+.filters select,.filters input{background:var(--surface);color:var(--ink);border:1px solid var(--border);
+border-radius:8px;padding:6px 10px;font-size:13px}
+.filters input{flex:1;min-width:160px}
+.seg{margin:22px 0 10px;font-size:13px;color:var(--muted);text-transform:none;letter-spacing:.4px;
+border-bottom:1px solid var(--grid);padding-bottom:6px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:10px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px 16px;cursor:pointer}
+.card:hover{border-color:var(--ink2)}
+.card .hd{display:flex;justify-content:space-between;gap:8px;align-items:baseline}
+.card .nm{font-weight:650;font-size:14.5px}
+.card .tk{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+.card .role{color:var(--ink2);font-size:13px;margin-top:6px}
+.badges{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}
+.b{font-size:11px;padding:2px 8px;border-radius:10px;background:var(--chip);color:var(--ink2)}
+.b.t1{color:var(--good);font-weight:700}
+.b.t3{color:var(--muted)}
+.detail{display:none;margin-top:10px;border-top:1px dashed var(--grid);padding-top:10px;font-size:13px}
+.card.open .detail{display:block}
+.detail dt{color:var(--muted);font-size:11px;margin-top:6px}
+.detail dd{margin:1px 0 0}
+.mdbody{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:28px 32px;margin-top:14px;overflow-x:auto}
+.mdbody h1{font-size:20px;margin:0 0 12px}.mdbody h2{font-size:17px;margin:22px 0 8px}
+.mdbody h3{font-size:15px;margin:16px 0 6px}.mdbody p{margin:8px 0}.mdbody li{margin:3px 0 3px 0}
+.mdbody ul,.mdbody ol{padding-left:22px}
+.mdbody table{border-collapse:collapse;font-size:13px;margin:10px 0;min-width:50%}
+.mdbody th,.mdbody td{border:1px solid var(--grid);padding:6px 10px;text-align:left}
+.mdbody code{background:var(--chip);padding:1px 5px;border-radius:4px;font-size:12.5px}
+.mdbody pre{background:var(--chip);padding:12px;border-radius:8px;overflow-x:auto}
+.mdbody pre code{background:none;padding:0}
+.mdbody blockquote{border-left:3px solid var(--grid);padding-left:12px;color:var(--ink2)}
+.list a.row{display:flex;justify-content:space-between;background:var(--surface);border:1px solid var(--border);
+border-radius:10px;padding:12px 16px;margin-bottom:8px;color:var(--ink)}
+.list a.row:hover{border-color:var(--ink2);text-decoration:none}
+.list .kind{color:var(--muted);font-size:12px}
+.foot{margin-top:40px;color:var(--muted);font-size:12px}
+.empty{color:var(--muted);padding:30px 0;text-align:center}
+</style></head><body>
+<div class="wrap"><header class="top"><h1>言出法随 · myfin</h1>
+<div class="sub">AI 算力链 × Physical AI 投研系统 — 个人研究笔记，不构成投资建议</div></header><nav class="tabs"><a href="../index.html">← 返回总览</a></nav><article class="mdbody"><h1>00 · 愿景与策略框架</h1>
+<h2>一、我们在做什么</h2>
+<p>三句话：</p>
+<ol>
+<li><strong>目标</strong>：搭上 AI 算力中心产业链与 Physical AI 产业链的发展轨道，在二级市场获得高倍收益。</li>
+<li><strong>手段</strong>：构建&quot;言出法随&quot;AI-native 投研系统，让研究的深度、频率、纪律性远超个人手工所能达到的水平。</li>
+<li><strong>路径</strong>：找到窄门——不是买人人都在买的东西，而是找到<strong>高确定性 × 高弹性 × 低拥挤度</strong>的交集。</li>
+</ol>
+<h2>二、为什么现在</h2>
+<ul>
+<li>AI 资本开支进入以&quot;电力、封装、光互连、机器人&quot;为瓶颈的深水区，<strong>瓶颈即咽喉，咽喉即定价权</strong>。</li>
+<li>产业链信息高度分散（美股/A股/港股/日韩、上市/未上市、财报/供应链调研/技术路线之争），<strong>个人手工跟踪已经跟不动了</strong>——这正是 AI-native 系统的用武之地。</li>
+<li>Agent 技术（Claude Code 及其生态）已经成熟到可以把&quot;研究流程&quot;本身工程化。</li>
+</ul>
+<h2>三、&quot;窄门&quot;的操作性定义</h2>
+<p>一个标的/环节要进入窄门候选清单，必须同时满足：</p>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>判据</th>
+<th>反例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>高确定性</td>
+<td>处于产业链<strong>绕不开</strong>的位置：技术代差、产能独占、生态锁定、认证壁垒，至少占其一</td>
+<td>纯故事、可被绕开的中间商</td>
+</tr>
+<tr>
+<td>高弹性</td>
+<td>收入/利润对 AI 需求的敏感度高，且市值尚未完全 price in</td>
+<td>已经是十万亿市值、边际弹性衰减的巨头</td>
+</tr>
+<tr>
+<td>低拥挤度</td>
+<td>尚未成为共识核心持仓；或共识存在认知偏差（低估了持续时间/幅度）</td>
+<td>全网都在喊的标的</td>
+</tr>
+</tbody></table>
+<p>三者交集极小——所以叫窄门。宁缺毋滥。</p>
+<h2>四、两条产业链的跟踪框架</h2>
+<h3>4.1 AI 算力中心产业链（Compute Chain）</h3>
+<p>按物理层次分环节，每个环节问三个问题：<strong>谁绕不开？产能弹性多大？替代路线是什么？</strong></p>
+<pre><code>芯片层：GPU / 自研ASIC / HBM / 先进封装(CoWoS等)
+互连层：Scale-up(NVLink等) / Scale-out(IB vs 以太网) / 光模块 / CPO / 硅光
+供电散热层：液冷 / 电源(UPS·HVDC) / 变压器 / 燃气轮机 / 核电SMR
+土地与运营层：数据中心REIT / Neocloud(GPU云) / 电力供应商
+</code></pre>
+<h3>4.2 Physical AI 产业链</h3>
+<pre><code>大脑层：机器人 foundation model / 仿真训练(Isaac·GR00T等) / 芯片(Thor等)
+本体层：人形整机 / 四足 / 工业形态
+关节层：执行器 / 谐波减速器 / 行星滚柱丝杠 / 空心杯电机
+感知层：激光雷达 / 视觉 / 触觉·力控传感器
+</code></pre>
+<h3>4.3 未上市咽喉公司</h3>
+<p>不能直接买 ≠ 不用跟踪。跟踪它们的意义：</p>
+<ol>
+<li>它们的技术路线选择决定上游供应商的命运（间接选股信号）;</li>
+<li>上市前后往往是产业链重估的催化剂;</li>
+<li>存在间接敞口渠道（持股方上市公司、封闭式基金类工具等)。</li>
+</ol>
+<h2>五、纪律</h2>
+<ol>
+<li>论点先行：没有写成文字、通过证伪检查的论点，不产生任何仓位建议。</li>
+<li>触发式行动：每个论点必须定义&quot;加码触发器&quot;和&quot;退出触发器&quot;。</li>
+<li>定期复盘：错误分析写进 journal，错误模式沉淀回系统规则（CLAUDE.md / 技能）。</li>
+<li>系统建设本身也走&quot;窄门&quot;：只建对研究质量有杠杆的功能，不堆砌。</li>
+</ol>
+</article>
+<div class="foot">生成于 2026-07-07 · 数据源:仓库 watchlist/docs/theses · <a href="../index.html">总览</a></div>
+</div></body></html>

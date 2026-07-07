@@ -9,10 +9,11 @@ companies:
   - name: OpenAI
     position: 消费级AI入口(ChatGPT)+最大算力采购方，其capex承诺是整条算力链的需求锚
     ipo_status: 未上市；重组为PBC后IPO通道理论上打开，无明确时间表
-    indirect_exposure: [微软MSFT(持股+分成), 软银9984(大额持股), 甲骨文ORCL/CoreWeave CRWV(算力合同)]
+    indirect_exposure: [微软MSFT(持股+分成), 软银9984(Vision Fund 2追加300亿美元, R1已验证), 甲骨文ORCL/CoreWeave CRWV(算力合同)]
     signal_value: 其数据中心合同(Stargate等)公告=链条需求脉冲；跟踪其供应商名单变化
     tier: 1
-    last_checked: null
+    last_checked: 2026-07-07
+    notes: "R1验证(3-0): 软银2026-02-27签最终协议追加300亿美元，已付两笔各100亿(04-01/07-01)，第三笔10-01。注意'软银是最大间接敞口/13%持股'的比较性说法0-3被否——微软权益构成竞争渠道，只能引用300亿协议本身"
 
   - name: Anthropic
     position: 企业级/编码AI第一品牌(Claude)，agent编码生态事实标准之一

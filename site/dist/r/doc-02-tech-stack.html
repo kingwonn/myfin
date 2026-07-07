@@ -1,0 +1,190 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex"><title>技术栈选型：站在谁的肩膀上</title><style>
+:root{--surface:#fcfcfb;--plane:#f9f9f7;--ink:#0b0b0b;--ink2:#52514e;--muted:#898781;
+--grid:#e1e0d9;--border:rgba(11,11,11,.10);--s1:#2a78d6;--s2:#1baf7a;--s3:#eda100;
+--good:#0ca30c;--warn:#fab219;--crit:#d03b3b;--chip:#f0efec}
+:root[data-theme=dark],:root.dark{--surface:#1a1a19;--plane:#0d0d0d;--ink:#fff;--ink2:#c3c2b7;
+--grid:#2c2c2a;--border:rgba(255,255,255,.10);--s1:#3987e5;--s2:#199e70;--s3:#c98500;--chip:#383835}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--surface:#1a1a19;--plane:#0d0d0d;
+--ink:#fff;--ink2:#c3c2b7;--grid:#2c2c2a;--border:rgba(255,255,255,.10);--s1:#3987e5;--s2:#199e70;--s3:#c98500;--chip:#383835}}
+*{box-sizing:border-box;margin:0}
+body{background:var(--plane);color:var(--ink);font:15px/1.65 system-ui,-apple-system,"Segoe UI",sans-serif;padding-bottom:64px}
+a{color:var(--s1);text-decoration:none}a:hover{text-decoration:underline}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+header.top{padding:28px 0 10px}
+h1{font-size:22px;letter-spacing:.3px}
+.sub{color:var(--ink2);font-size:13px;margin-top:4px}
+nav.tabs{display:flex;gap:6px;margin:18px 0 14px;flex-wrap:wrap}
+nav.tabs button,nav.tabs a{border:1px solid var(--border);background:var(--surface);color:var(--ink2);
+padding:6px 14px;border-radius:20px;font-size:13px;cursor:pointer}
+nav.tabs .on{color:var(--ink);border-color:var(--ink2);font-weight:600}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:6px 0 20px}
+.tile{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px 16px}
+.tile .v{font-size:26px;font-weight:700}
+.tile .k{font-size:12px;color:var(--ink2);margin-top:2px}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 14px;align-items:center}
+.filters select,.filters input{background:var(--surface);color:var(--ink);border:1px solid var(--border);
+border-radius:8px;padding:6px 10px;font-size:13px}
+.filters input{flex:1;min-width:160px}
+.seg{margin:22px 0 10px;font-size:13px;color:var(--muted);text-transform:none;letter-spacing:.4px;
+border-bottom:1px solid var(--grid);padding-bottom:6px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:10px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px 16px;cursor:pointer}
+.card:hover{border-color:var(--ink2)}
+.card .hd{display:flex;justify-content:space-between;gap:8px;align-items:baseline}
+.card .nm{font-weight:650;font-size:14.5px}
+.card .tk{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+.card .role{color:var(--ink2);font-size:13px;margin-top:6px}
+.badges{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}
+.b{font-size:11px;padding:2px 8px;border-radius:10px;background:var(--chip);color:var(--ink2)}
+.b.t1{color:var(--good);font-weight:700}
+.b.t3{color:var(--muted)}
+.detail{display:none;margin-top:10px;border-top:1px dashed var(--grid);padding-top:10px;font-size:13px}
+.card.open .detail{display:block}
+.detail dt{color:var(--muted);font-size:11px;margin-top:6px}
+.detail dd{margin:1px 0 0}
+.mdbody{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:28px 32px;margin-top:14px;overflow-x:auto}
+.mdbody h1{font-size:20px;margin:0 0 12px}.mdbody h2{font-size:17px;margin:22px 0 8px}
+.mdbody h3{font-size:15px;margin:16px 0 6px}.mdbody p{margin:8px 0}.mdbody li{margin:3px 0 3px 0}
+.mdbody ul,.mdbody ol{padding-left:22px}
+.mdbody table{border-collapse:collapse;font-size:13px;margin:10px 0;min-width:50%}
+.mdbody th,.mdbody td{border:1px solid var(--grid);padding:6px 10px;text-align:left}
+.mdbody code{background:var(--chip);padding:1px 5px;border-radius:4px;font-size:12.5px}
+.mdbody pre{background:var(--chip);padding:12px;border-radius:8px;overflow-x:auto}
+.mdbody pre code{background:none;padding:0}
+.mdbody blockquote{border-left:3px solid var(--grid);padding-left:12px;color:var(--ink2)}
+.list a.row{display:flex;justify-content:space-between;background:var(--surface);border:1px solid var(--border);
+border-radius:10px;padding:12px 16px;margin-bottom:8px;color:var(--ink)}
+.list a.row:hover{border-color:var(--ink2);text-decoration:none}
+.list .kind{color:var(--muted);font-size:12px}
+.foot{margin-top:40px;color:var(--muted);font-size:12px}
+.empty{color:var(--muted);padding:30px 0;text-align:center}
+</style></head><body>
+<div class="wrap"><header class="top"><h1>言出法随 · myfin</h1>
+<div class="sub">AI 算力链 × Physical AI 投研系统 — 个人研究笔记，不构成投资建议</div></header><nav class="tabs"><a href="../index.html">← 返回总览</a></nav><article class="mdbody"><h1>02 · 技术栈选型：站在谁的肩膀上</h1>
+<p>原则：<strong>尽量不造轮子</strong>。每个需求先问&quot;GitHub 上最好的现成方案是什么&quot;，只有当现成方案与我们的 AI-native 架构冲突时才自建。</p>
+<p>状态: R1 已部分验证(2026-07-07)。R1 关键确认：</p>
+<ul>
+<li><strong>RD-Agent + Qlib（微软，MIT 许可）是&quot;言出法随&quot;量化侧的官方先例</strong>——LLM 多智能体自动因子/模型研发，与 Qlib 官方打通，论文 NeurIPS 2025 接收（自报 A 股回测 up to 2× ARR、因子 -70%、单次 &lt;$10；README 自带&quot;非投资就绪&quot;免责）。Phase 2 引入回测时优先评估 RD-Agent 的因子挖掘循环。</li>
+<li><strong>框架耦合权衡（3-0 验证）</strong>：LangChain Deep Agents 模型无关（100+ 提供商）；Claude Agent SDK 仅 Claude 系。我们接受 Claude Code 耦合换原生能力；Deep Agents 是未来需要模型可替换性时的迁移路径。</li>
+</ul>
+<h2>选型总表</h2>
+<table>
+<thead>
+<tr>
+<th>需求</th>
+<th>首选</th>
+<th>备选</th>
+<th>自建?</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Agent 运行时/编排</td>
+<td>Claude Code（技能 + Workflow + Routines）</td>
+<td>LangGraph, OpenHands</td>
+<td>否</td>
+<td>我们的编排需求（并行研究、定时扫描）Claude Code 原生覆盖，少一层抽象就少一层维护</td>
+</tr>
+<tr>
+<td>深度研究</td>
+<td>Claude Code deep-research workflow</td>
+<td>GPT-Researcher</td>
+<td>否</td>
+<td>已内置多路搜索+对抗验证</td>
+</tr>
+<tr>
+<td>美股/全球数据</td>
+<td>OpenBB Platform</td>
+<td>yfinance</td>
+<td>否</td>
+<td>OpenBB 聚合多数据源，CLI/Python 双接口，AI 友好</td>
+</tr>
+<tr>
+<td>A股数据</td>
+<td>akshare</td>
+<td>tushare(需积分), baostock</td>
+<td>否</td>
+<td>akshare 免费全面，社区活跃</td>
+</tr>
+<tr>
+<td>港股/日韩数据</td>
+<td>OpenBB + yfinance</td>
+<td>交易所公开数据</td>
+<td>部分</td>
+<td>覆盖度需验证</td>
+</tr>
+<tr>
+<td>公告/新闻流</td>
+<td>WebSearch + RSS</td>
+<td>巨潮资讯爬虫</td>
+<td>后期小轮子</td>
+<td>交易所公告结构化抓取可能需要自建薄层</td>
+</tr>
+<tr>
+<td>回测/量化研究</td>
+<td>vectorbt（R1 修订：从 qlib 改为首选）</td>
+<td>qlib+RD-Agent(仅当走因子路线)</td>
+<td>否</td>
+<td>我们标的池几十个、周/月频决策，需求是&quot;假设验证&quot;不是&quot;因子工厂&quot;；首个脚本须带前视偏差防护（Vibe-Trading 启发）</td>
+</tr>
+<tr>
+<td>公告/财报解析</td>
+<td>edgartools (P0)</td>
+<td>—</td>
+<td>否</td>
+<td>8-K 事件监听 + 10-K 大客户披露→供应链图谱</td>
+</tr>
+<tr>
+<td>拥挤度评分</td>
+<td>自建周频脚本 (P0-P1)</td>
+<td>—</td>
+<td>小轮子</td>
+<td>MSCI 五信号：估值分位+主题内相关性+换手率分位+空头变化+尾随涨幅——三条窄门判据中唯一可全自动化的</td>
+</tr>
+<tr>
+<td>组合跟踪</td>
+<td>自建轻量(YAML+脚本)</td>
+<td>ghostfolio</td>
+<td>小轮子</td>
+<td>我们的&quot;论点驱动组合&quot;模型市面上没有现成对应物——这是值得造的轮子</td>
+</tr>
+<tr>
+<td>知识库/留痕</td>
+<td>git + Markdown/YAML</td>
+<td>Obsidian, Notion</td>
+<td>否</td>
+<td>仓库即系统的根基</td>
+</tr>
+<tr>
+<td>定时调度</td>
+<td>Claude Code Routines / GitHub Actions</td>
+<td>cron + 自托管</td>
+<td>否</td>
+<td>无人值守扫描</td>
+</tr>
+</tbody></table>
+<h2>值得深入评估的项目清单（待研究报告补充验证）</h2>
+<ul>
+<li><strong>OpenBB</strong>（openbb-finance/OpenBB）：开源投研平台，数据聚合层。评估点：中国市场覆盖、API 稳定性。</li>
+<li><strong>qlib</strong>（microsoft/qlib）：AI 量化框架。评估点：与论点驱动流程的嫁接成本。</li>
+<li><strong>akshare</strong>（akfamily/akshare）：A股全品类数据。评估点：接口变动频率（历史上较频繁，需要薄封装隔离）。</li>
+<li><strong>vectorbt</strong>：轻量高速回测，若 qlib 太重则降级到此。</li>
+<li><strong>GPT-Researcher / STORM</strong>：研究 agent 的提示词与流程设计值得借鉴（即使不用其框架）。</li>
+</ul>
+<h2>自建部分（&quot;必须造的轮子&quot;）</h2>
+<ol>
+<li><strong>论点-标的-事件关联层</strong>：thesis 文件、watchlist YAML、事件流之间的引用与一致性检查脚本（很薄，几百行以内）。</li>
+<li><strong>交易所公告监听薄层</strong>：巨潮/HKEX/EDGAR 关键公告的定向抓取与结构化（Phase 1 后期）。</li>
+<li><strong><code>/scan</code> 的行情异动通道</strong>：基于 akshare/OpenBB 的价格/成交量异动检测（Phase 1）。</li>
+</ol>
+<h2>明确不做</h2>
+<ul>
+<li>不自建行情数据库/K线存储（用现成 API，缓存即弃）。</li>
+<li>不做交易执行对接（本系统止步于决策支持）。</li>
+<li>不引入重型工作流引擎（Airflow 之类）——git + Routines 足够。</li>
+</ul>
+</article>
+<div class="foot">生成于 2026-07-07 · 数据源:仓库 watchlist/docs/theses · <a href="../index.html">总览</a></div>
+</div></body></html>

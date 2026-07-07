@@ -1,0 +1,389 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex"><title>言出法随 · myfin 投研总览</title><style>
+:root{--surface:#fcfcfb;--plane:#f9f9f7;--ink:#0b0b0b;--ink2:#52514e;--muted:#898781;
+--grid:#e1e0d9;--border:rgba(11,11,11,.10);--s1:#2a78d6;--s2:#1baf7a;--s3:#eda100;
+--good:#0ca30c;--warn:#fab219;--crit:#d03b3b;--chip:#f0efec}
+:root[data-theme=dark],:root.dark{--surface:#1a1a19;--plane:#0d0d0d;--ink:#fff;--ink2:#c3c2b7;
+--grid:#2c2c2a;--border:rgba(255,255,255,.10);--s1:#3987e5;--s2:#199e70;--s3:#c98500;--chip:#383835}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--surface:#1a1a19;--plane:#0d0d0d;
+--ink:#fff;--ink2:#c3c2b7;--grid:#2c2c2a;--border:rgba(255,255,255,.10);--s1:#3987e5;--s2:#199e70;--s3:#c98500;--chip:#383835}}
+*{box-sizing:border-box;margin:0}
+body{background:var(--plane);color:var(--ink);font:15px/1.65 system-ui,-apple-system,"Segoe UI",sans-serif;padding-bottom:64px}
+a{color:var(--s1);text-decoration:none}a:hover{text-decoration:underline}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+header.top{padding:28px 0 10px}
+h1{font-size:22px;letter-spacing:.3px}
+.sub{color:var(--ink2);font-size:13px;margin-top:4px}
+nav.tabs{display:flex;gap:6px;margin:18px 0 14px;flex-wrap:wrap}
+nav.tabs button,nav.tabs a{border:1px solid var(--border);background:var(--surface);color:var(--ink2);
+padding:6px 14px;border-radius:20px;font-size:13px;cursor:pointer}
+nav.tabs .on{color:var(--ink);border-color:var(--ink2);font-weight:600}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:6px 0 20px}
+.tile{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px 16px}
+.tile .v{font-size:26px;font-weight:700}
+.tile .k{font-size:12px;color:var(--ink2);margin-top:2px}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 14px;align-items:center}
+.filters select,.filters input{background:var(--surface);color:var(--ink);border:1px solid var(--border);
+border-radius:8px;padding:6px 10px;font-size:13px}
+.filters input{flex:1;min-width:160px}
+.seg{margin:22px 0 10px;font-size:13px;color:var(--muted);text-transform:none;letter-spacing:.4px;
+border-bottom:1px solid var(--grid);padding-bottom:6px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:10px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px 16px;cursor:pointer}
+.card:hover{border-color:var(--ink2)}
+.card .hd{display:flex;justify-content:space-between;gap:8px;align-items:baseline}
+.card .nm{font-weight:650;font-size:14.5px}
+.card .tk{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+.card .role{color:var(--ink2);font-size:13px;margin-top:6px}
+.badges{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}
+.b{font-size:11px;padding:2px 8px;border-radius:10px;background:var(--chip);color:var(--ink2)}
+.b.t1{color:var(--good);font-weight:700}
+.b.t3{color:var(--muted)}
+.detail{display:none;margin-top:10px;border-top:1px dashed var(--grid);padding-top:10px;font-size:13px}
+.card.open .detail{display:block}
+.detail dt{color:var(--muted);font-size:11px;margin-top:6px}
+.detail dd{margin:1px 0 0}
+.mdbody{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:28px 32px;margin-top:14px;overflow-x:auto}
+.mdbody h1{font-size:20px;margin:0 0 12px}.mdbody h2{font-size:17px;margin:22px 0 8px}
+.mdbody h3{font-size:15px;margin:16px 0 6px}.mdbody p{margin:8px 0}.mdbody li{margin:3px 0 3px 0}
+.mdbody ul,.mdbody ol{padding-left:22px}
+.mdbody table{border-collapse:collapse;font-size:13px;margin:10px 0;min-width:50%}
+.mdbody th,.mdbody td{border:1px solid var(--grid);padding:6px 10px;text-align:left}
+.mdbody code{background:var(--chip);padding:1px 5px;border-radius:4px;font-size:12.5px}
+.mdbody pre{background:var(--chip);padding:12px;border-radius:8px;overflow-x:auto}
+.mdbody pre code{background:none;padding:0}
+.mdbody blockquote{border-left:3px solid var(--grid);padding-left:12px;color:var(--ink2)}
+.list a.row{display:flex;justify-content:space-between;background:var(--surface);border:1px solid var(--border);
+border-radius:10px;padding:12px 16px;margin-bottom:8px;color:var(--ink)}
+.list a.row:hover{border-color:var(--ink2);text-decoration:none}
+.list .kind{color:var(--muted);font-size:12px}
+.foot{margin-top:40px;color:var(--muted);font-size:12px}
+.empty{color:var(--muted);padding:30px 0;text-align:center}
+</style></head><body>
+<div class="wrap"><header class="top"><h1>言出法随 · myfin</h1>
+<div class="sub">AI 算力链 × Physical AI 投研系统 — 个人研究笔记，不构成投资建议</div></header>
+<div class="tiles">
+<div class="tile"><div class="v">9</div><div class="k">核心跟踪标的 (Tier 1)</div></div>
+<div class="tile"><div class="v">35</div><div class="k">上市公司总数</div></div>
+<div class="tile"><div class="v">10</div><div class="k">未上市咽喉公司</div></div>
+<div class="tile"><div class="v">14</div><div class="k">产业链环节</div></div>
+<div class="tile"><div class="v">1 / 1</div><div class="k">研究报告 / 论点</div></div>
+</div>
+<nav class="tabs">
+<button class="on" data-f="all">全部</button>
+<button data-f="compute">AI 算力链</button>
+<button data-f="physical">Physical AI</button>
+<button data-f="private">未上市咽喉</button>
+<a href="#reports">报告与论点 ↓</a>
+</nav>
+<div class="filters">
+<select id="tier"><option value="">全部层级</option><option value="1">★ 核心</option><option value="2">◐ 观察</option><option value="3">○ 背景</option></select>
+<input id="q" placeholder="搜索名称 / 代码 / 环节…">
+</div>
+<div id="cards"><div class="segblock" data-chain="compute"><div class="seg">AI 算力链 ｜ 芯片-GPU与自研ASIC</div><div class="grid"><div class="card" data-chain="compute" data-tier="2" data-market="US"
+ data-q="英伟达 nvidia nasdaq:nvda 芯片-gpu与自研asic" onclick="this.classList.toggle('open')">
+<div class="hd"><span class="nm">英伟达 NVIDIA</span><span class="tk">NASDAQ:NVDA</span></div>
+<div class="role">AI训练/推理GPU绝对主导，CUDA生态+NVLink互连构成系统级锁定</div>
+<div class="badges"><span class="b t2">◐ 观察</span><span class="b">US</span><span class="b">AI 算力链</span></div>
+<dl class="detail"><dt>护城河</dt><dd>生态锁定(CUDA)+全栈(芯片-互连-软件)+一年一代的节奏碾压</dd><dt>证伪条件 / 风险</dt><dd>超大厂自研ASIC份额实质性侵蚀训练市场；中国市场政策性归零</dd>
+</dl></div><div class="card" data-chain="compute" data-tier="1" data-market="US"
+ data-q="博通 broadcom nasdaq:avgo 芯片-gpu与自研asic" onclick="this.classList.toggle('open')">
+<div class="hd"><span class="nm">博通 Broadcom</span><span class="tk">NASDAQ:AVGO</span></div>
+<div class="role">定制ASIC(XPU)设计咽喉——谷歌TPU/Meta等大客户，兼以太网交换芯片(Tomahawk)霸主</div>
+<div class="badges"><span class="b t1">★ 核心</span><span class="b">US</span><span class="b">AI 算力链</span></div>
+<dl class="detail"><dt>护城河</dt><dd>SerDes与先进封装设计能力稀缺；ASIC客户一旦流片即多年锁定</dd><dt>证伪条件 / 风险</dt><dd>大客户自研设计团队内化；ASIC项目周期性砍单</dd>
+</dl></div><div class="card" data-chain="compute" data-tier="2" data-market="US"
+ data-q="迈威尔 marvell nasdaq:mrvl 芯片-gpu与自研asic" onclick="this.classList.toggle('open')">
+<div class="hd"><span class="nm">迈威尔 Marvell</span><span class="tk">NASDAQ:MRVL</span></div>
+<div class="role">定制ASIC第二供应商 + 光电互连DSP</div>
+<div class="badges"><span class="b t2">◐ 观察</span><span class="b">US</span><span class="b">AI 算力链</span></div>
+<dl class="detail"><dt>护城河</dt><dd>电互连/光DSP技术组合</dd><dt>证伪条件 / 风险</dt><dd>ASIC大单流失（亚马逊Trainium项目份额变化是关键信号）</dd>
+</dl></div></div></div><div class="segblock" data-chain="compute"><div class="seg">AI 算力链 ｜ 芯片-HBM与存储</div><div class="grid"><div class="card" data-chain="compute" data-tier="1" data-market="KR"
+ data-q="sk海力士 sk hynix krx:000660 芯片-hbm与存储" onclick="this.classList.toggle('open')">
+<div class="hd"><span class="nm">SK海力士 SK Hynix</span><span class="tk">KRX:000660</span></div>
+<div class="role">HBM市占率第一，英伟达主力供应商</div>
+<div class="badges"><span class="b t1">★ 核心</span><span class="b">KR</span><span class="b">AI 算力链</span></div>
+<dl class="detail"><dt>护城河</dt><dd>HBM良率与MR-MUF封装工艺领先一代；与NVDA深度绑定</dd><dt>证伪条件 / 风险</dt><dd>三星HBM4追平后的价格战；HBM供需反转</dd>
+</dl></div><div class="card" data-chain="compute" data-tier="2" data-market="US"
+ data-q="美光 micron nasdaq:mu 芯片-hbm与存储" onclick="this.classList.toggle('open')">
+<div class="hd"><span class="nm">美光 Micron</span><span class="tk">NASDAQ:MU</span></div>
+<div class="role">HBM第三极，美国本土供应的地缘溢价</div>
+<div class="badges"><span class="b t2">◐ 观察</span><span class="b">US</span><span class="b">AI 算力链</span></div>
+<dl class="detail"><dt>护城河</dt><dd>HBM3E功耗优势；美国产能的政策价值</dd><dt>证伪条件 / 风险</dt><dd>HBM扩产潮导致2027供过于求</dd>
+</dl></div></div></div><div class="segblock" data-chain="compute"><div class="seg">AI 算力链 ｜ 芯片-制造与先进封装</div><div class="grid"><div class="card" data-chain="compute" data-tier="1" data-market="TW/US"
+ data-q="台积电 tsmc nyse:tsm 芯片-制造与先进封装" onclick="this.classList.toggle('open')">
+<div class="hd"><span class="nm">台积电 TSMC</span><span class="tk">NYSE:TSM</span></div>
+<div class="role">先进制程+CoWoS先进封装双咽喉，所有AI芯片的物理必经之路</div>
+<div class="badges"><span class="b t1">★ 核心</span><span class="b">TW/US</span><span class="b">AI 算力链</span></div>
+<dl class="detail"><dt>护城河</dt><dd>制程代差+封装产能独占；客户无第二选择</dd><dt>证伪条件 / 风险</dt><dd>地缘冲突；CoWoS产能过剩(2027后)</dd>
+</dl></div></div></div><div class="segblock" data-chain="compute"><div class="seg">AI 算力链 ｜ 互连-网络与交换</div><div class="grid"><div class="card" data-chain="compute" data-tier="2" data-market="US"
+ data-q="安费诺 amphenol nyse:aph 互连-网络与交换" onclick="this.classList.toggle('open')">
+<div class="hd"><span class="nm">安费诺 Amphenol</span><span class="tk">NYSE:APH</span></div>
+<div class="role">高速连接器/线缆咽喉，GPU集群内部铜互连主力</div>
+<div class="badges"><span class="b t2">◐ 观察</span><span class="b">US</span><span class="b">AI 算力链</span></div>
+<dl class="detail"><dt>护城河</dt><dd>连接器认证周期长、份额粘性极强</dd><dt>证伪条件 / 风险</dt><dd>光进铜退快于预期</dd>
+</dl></div><div class="card" data-chain="compute" data-tier="2" data-market="US"
+ data-q="阿斯特拉实验室 astera labs nasdaq:alab 互连-网络与交换" onclick="this.classList.toggle('open')">
+<div class="hd"><span class="nm">阿斯特拉实验室 Astera Labs</span><span class="tk">NASDAQ:ALAB</span></div>
+<div class="role">PCIe/CXL retimer与智能互连芯片，scale-up网络新玩家</div>
+<div class="badges"><span class="b t2">◐ 观察</span><span class="b">US</span><span class="b">AI 算力链</span></div>
+<dl class="detail"><dt>护城河</dt><dd>retimer近乎独占；与NVDA/超大厂协同设计</dd><dt>证伪条件 / 风险</dt><dd>大厂自研替代；估值极高容错低</dd>
+</dl></div></div></div><div class="segblock" data-chain="compute"><div class="seg">AI 算力链 ｜ 互连-光模块与CPO</div><div class="grid"><div class="card" data-chain="compute" data-tier="1" data-market="CN-A"
+ data-q="中际旭创 innolight szse:300308 互连-光模块与cpo" onclick="this.classList.toggle('open')">
+<div class="hd"><span class="nm">中际旭创 Innolight</span><span class="tk">SZSE:300308</span></div>
+<div class="role">全球高速光模块(800G/1.6T)出货第一</div>
+<div class="badges"><span class="b t1">★ 核心</span><span class="b">CN-A</span><span class="b">AI 算力链</span></div>
+<dl class="detail"><dt>护城河</dt><dd>高速率产品良率与交付规模全球领先；绑定北美大客户</dd><dt>证伪条件 / 风险</dt><dd>CPO替代可插拔快于预期；美国关税/供应链去中化</dd>
+</dl></div><div class="card" data-chain="compute" data-tier="1" data-market="CN-A"
+ data-q="新易盛 eoptolink szse:300502 互连-光模块与cpo" onclick="this.classList.toggle('open')">
+<div class="hd"><span class="nm">新易盛 Eoptolink</span><span class="tk">SZSE:300502</span></div>
+<div class="role">高速光模块头部，利润率弹性大</div>
+<div class="badges"><span class="b t1">★ 核心</span><span class="b">CN-A</span><span class="b">AI 算力链</span></div>
+<dl class="detail"><dt>护城河</dt><dd>成本控制+LPO/1.6T卡位</dd><dt>证伪条件 / 风险</dt><dd>同上（CPO路线+地缘）</dd>
+</dl></div><div class="card" data-chain="compute" data-tier="2" data-market="US"
+ data-q="coherent nyse:cohr 互连-光模块与cpo" onclick="this.classList.toggle('open')">
+<div class="hd"><span class="nm">Coherent</span><span class="tk">NYSE:COHR</span></div>
+<div class="role">光器件/光模块美国供应链核心，兼激光器</div>
+<div class="badges"><span class="b t2">◐ 观察</span><span class="b">US</span><span class="b">AI 算力链</span></div>
+<dl class="detail"><dt>护城河</dt><dd>垂直整合(磷化铟激光器自产)</dd><dt>证伪条件 / 风险</dt><dd>运营效率长期弱于中国同行</dd>
+</dl></div><div class="card" data-chain="compute" data-tier="2" data-market="US"
+ data-q="fabrinet nyse:fn 互连-光模块与cpo" onclick="this.classList.toggle('open')">
+<div class="hd"><span class="nm">Fabrinet</span><span class="tk">NYSE:FN</span></div>
+<div class="role">光模块代工咽喉（NVDA 800G/1.6T主力代工）</div>
+<div class="badges"><span class="b t2">◐ 观察</span><span class="b">US</span><span class="b">AI 算力链</span></div>
+<dl class="detail"><dt>护城河</dt><dd>高精度光学制造外包几乎唯一规模选择</dd><dt>证伪条件 / 风险</dt><dd>大客户集中；CPO时代代工环节价值重分配</dd>
+</dl></div><div class="card" data-chain="compute" data-tier="2" data-market="CN-A"
+ data-q="天孚通信 tfc szse:300394 互连-光模块与cpo" onclick="this.classList.toggle('open')">
+<div class="hd"><span class="nm">天孚通信 TFC</span><span class="tk">SZSE:300394</span></div>
+<div class="role">光引擎/无源器件精密制造，CPO时代潜在受益者</div>
+<div class="badges"><span class="b t2">◐ 观察</span><span class="b">CN-A</span><span class="b">AI 算力链</span></div>
+<dl class="detail"><dt>护城河</dt><dd>精密陶瓷/光引擎工艺，绑定头部光模块厂</dd><dt>证伪条件 / 风险</dt><dd>客户结构集中；地缘</dd>
+</dl></div></div></div><div class="segblock" data-chain="compute"><div class="seg">AI 算力链 ｜ 供电散热-液冷</div><div class="grid"><div class="card" data-chain="compute" data-tier="1" data-market="US"
+ data-q="维谛技术 vertiv nyse:vrt 供电散热-液冷" onclick="this.classList.toggle('open')">
+<div class="hd"><span class="nm">维谛技术 Vertiv</span><span class="tk">NYSE:VRT</span></div>
+<div class="role">数据中心电源+散热整体方案龙头，GB系列机柜液冷主力</div>
+<div class="badges"><span class="b t1">★ 核心</span><span class="b">US</span><span class="b">AI 算力链</span></div>
+<dl class="detail"><dt>护城河</dt><dd>与NVDA参考设计深度绑定；服务网络</dd><dt>证伪条件 / 风险</dt><dd>竞争加剧毛利承压；AI capex周期反转</dd>
+<dt>备注</dt><dd>R1: 液冷渗透率14%(2024)→33%(2025)→47%(2026E, TrendForce单一机构口径)3-0验证；物理驱动为TDP 700W→1000W+不可逆。液冷是第二陡斜率</dd></dl></div><div class="card" data-chain="compute" data-tier="2" data-market="CN-A"
+ data-q="英维克 envicool szse:002837 供电散热-液冷" onclick="this.classList.toggle('open')">
+<div class="hd"><span class="nm">英维克 Envicool</span><span class="tk">SZSE:002837</span></div>
+<div class="role">国内液冷温控龙头</div>
+<div class="badges"><span class="b t2">◐ 观察</span><span class="b">CN-A</span><span class="b">AI 算力链</span></div>
+<dl class="detail"><dt>护城河</dt><dd>国内数据中心液冷份额领先</dd><dt>证伪条件 / 风险</dt><dd>国内AI capex节奏；毛利率</dd>
+</dl></div></div></div><div class="segblock" data-chain="compute"><div class="seg">AI 算力链 ｜ 供电散热-电力设备与电源</div><div class="grid"><div class="card" data-chain="compute" data-tier="2" data-market="US"
+ data-q="伊顿 eaton nyse:etn 供电散热-电力设备与电源" onclick="this.classList.toggle('open')">
+<div class="hd"><span class="nm">伊顿 Eaton</span><span class="tk">NYSE:ETN</span></div>
+<div class="role">数据中心配电设备核心供应商</div>
+<div class="badges"><span class="b t2">◐ 观察</span><span class="b">US</span><span class="b">AI 算力链</span></div>
+<dl class="detail"><dt>护城河</dt><dd>电气设备认证与渠道；订单积压深</dd><dt>证伪条件 / 风险</dt><dd>电力设备供给瓶颈缓解后估值回归</dd>
+</dl></div><div class="card" data-chain="compute" data-tier="1" data-market="TW"
+ data-q="台达电子 delta electronics twse:2308 供电散热-电力设备与电源" onclick="this.classList.toggle('open')">
+<div class="hd"><span class="nm">台达电子 Delta Electronics</span><span class="tk">TWSE:2308</span></div>
+<div class="role">服务器电源(PSU)/电源架霸主，800V HVDC关键卡位</div>
+<div class="badges"><span class="b t1">★ 核心</span><span class="b">TW</span><span class="b">AI 算力链</span></div>
+<dl class="detail"><dt>护城河</dt><dd>电源效率技术+规模；NVDA下一代供电架构核心伙伴</dd><dt>证伪条件 / 风险</dt><dd>电源架构变化引入新竞争者</dd>
+</dl></div><div class="card" data-chain="compute" data-tier="3" data-market="CN-A"
+ data-q="麦格米特 megmeet szse:002851 供电散热-电力设备与电源" onclick="this.classList.toggle('open')">
+<div class="hd"><span class="nm">麦格米特 Megmeet</span><span class="tk">SZSE:002851</span></div>
+<div class="role">服务器电源新进入者，NVDA供应链</div>
+<div class="badges"><span class="b t3">○ 背景</span><span class="b">CN-A</span><span class="b">AI 算力链</span></div>
+<dl class="detail"><dt>护城河</dt><dd>成本+快速响应</dd><dt>证伪条件 / 风险</dt><dd>份额与认证进度不及预期</dd>
+</dl></div></div></div><div class="segblock" data-chain="compute"><div class="seg">AI 算力链 ｜ 供电散热-发电与核能</div><div class="grid"><div class="card" data-chain="compute" data-tier="1" data-market="US"
+ data-q="ge vernova nyse:gev 供电散热-发电与核能" onclick="this.classList.toggle('open')">
+<div class="hd"><span class="nm">GE Vernova</span><span class="tk">NYSE:GEV</span></div>
+<div class="role">燃气轮机三巨头之一，数据中心自备电源最现实选择——R1验证确认度最高的窄门</div>
+<div class="badges"><span class="b t1">★ 核心</span><span class="b">US</span><span class="b">AI 算力链</span></div>
+<dl class="detail"><dt>护城河</dt><dd>积压+槽位预订2026Q1达100GW(指引年底≥110GW)，2030年前槽位即将售罄；产能弹性仅+20%(20→24GW到2028年中)；新订单定价高于存量</dd><dt>证伪条件 / 风险</dt><dd>AI capex周期反转；扩产超预期(重型机组50→70-80台/年在推进)；估值已计入多少久期需测算</dd>
+<dt>备注</dt><dd>R1: 3-0×3通过验证，一手来源GEV Q1'26 8-K。同业西门子能源/三菱重工同样~5年积压——'窄门'是整个环节而非单一公司。下一步: 写thesis+测算当前价格计入的久期</dd></dl></div><div class="card" data-chain="compute" data-tier="3" data-market="US"
+ data-q="oklo nyse:oklo 供电散热-发电与核能" onclick="this.classList.toggle('open')">
+<div class="hd"><span class="nm">Oklo</span><span class="tk">NYSE:OKLO</span></div>
+<div class="role">SMR快堆先锋，数据中心核电叙事核心标的</div>
+<div class="badges"><span class="b t3">○ 背景</span><span class="b">US</span><span class="b">AI 算力链</span></div>
+<dl class="detail"><dt>护城河</dt><dd>NRC审批进度领先的快堆设计+燃料回收</dd><dt>证伪条件 / 风险</dt><dd>2028年前无收入；审批/建设延期即杀估值</dd>
+</dl></div><div class="card" data-chain="compute" data-tier="2" data-market="US"
+ data-q="星座能源 constellation energy nasdaq:ceg 供电散热-发电与核能" onclick="this.classList.toggle('open')">
+<div class="hd"><span class="nm">星座能源 Constellation Energy</span><span class="tk">NASDAQ:CEG</span></div>
+<div class="role">美国最大核电运营商，数据中心PPA直接受益者</div>
+<div class="badges"><span class="b t2">◐ 观察</span><span class="b">US</span><span class="b">AI 算力链</span></div>
+<dl class="detail"><dt>护城河</dt><dd>存量核电稀缺不可复制</dd><dt>证伪条件 / 风险</dt><dd>PPA定价政策干预</dd>
+</dl></div></div></div><div class="segblock" data-chain="compute"><div class="seg">AI 算力链 ｜ 土地运营-Neocloud与数据中心</div><div class="grid"><div class="card" data-chain="compute" data-tier="2" data-market="US"
+ data-q="coreweave nasdaq:crwv 土地运营-neocloud与数据中心" onclick="this.classList.toggle('open')">
+<div class="hd"><span class="nm">CoreWeave</span><span class="tk">NASDAQ:CRWV</span></div>
+<div class="role">最大独立GPU云，NVDA嫡系</div>
+<div class="badges"><span class="b t2">◐ 观察</span><span class="b">US</span><span class="b">AI 算力链</span></div>
+<dl class="detail"><dt>护城河</dt><dd>GPU获取优先权+建设速度</dd><dt>证伪条件 / 风险</dt><dd>重资产高杠杆；大客户(MSFT/OpenAI)合同重定价</dd>
+</dl></div><div class="card" data-chain="compute" data-tier="2" data-market="US"
+ data-q="nebius nasdaq:nbis 土地运营-neocloud与数据中心" onclick="this.classList.toggle('open')">
+<div class="hd"><span class="nm">Nebius</span><span class="tk">NASDAQ:NBIS</span></div>
+<div class="role">欧洲系GPU云，轻杠杆版CoreWeave</div>
+<div class="badges"><span class="b t2">◐ 观察</span><span class="b">US</span><span class="b">AI 算力链</span></div>
+<dl class="detail"><dt>护城河</dt><dd>自建软件栈+NVDA持股</dd><dt>证伪条件 / 风险</dt><dd>规模不及头部；客户集中</dd>
+</dl></div></div></div><div class="segblock" data-chain="physical"><div class="seg">Physical AI ｜ 大脑层-芯片与仿真</div><div class="grid"><div class="card" data-chain="physical" data-tier="1" data-market="US"
+ data-q="英伟达 nvidia (isaac/gr00t/thor) nasdaq:nvda 大脑层-芯片与仿真" onclick="this.classList.toggle('open')">
+<div class="hd"><span class="nm">英伟达 NVIDIA (Isaac/GR00T/Thor)</span><span class="tk">NASDAQ:NVDA</span></div>
+<div class="role">机器人大脑三件套：Thor芯片 + Isaac仿真 + GR00T基础模型，试图复制CUDA锁定</div>
+<div class="badges"><span class="b t1">★ 核心</span><span class="b">US</span><span class="b">Physical AI</span></div>
+<dl class="detail"><dt>护城河</dt><dd>仿真到部署(sim-to-real)全栈无人能及</dd><dt>证伪条件 / 风险</dt><dd>机器人厂商为控成本转向自研/开源栈</dd>
+<dt>备注</dt><dd>R1验证(置信medium,数字自报): GR00T合成数据管线11小时生成等效9个月人类演示数据；合成+真实混合训练成功率45.3%→83.2%(arXiv 2503.24361)。正确表述是'倍增稀缺真实数据'而非'替代数据瓶颈'</dd></dl></div></div></div><div class="segblock" data-chain="physical"><div class="seg">Physical AI ｜ 本体层-人形与四足整机</div><div class="grid"><div class="card" data-chain="physical" data-tier="2" data-market="US"
+ data-q="特斯拉 tesla (optimus) nasdaq:tsla 本体层-人形与四足整机" onclick="this.classList.toggle('open')">
+<div class="hd"><span class="nm">特斯拉 Tesla (Optimus)</span><span class="tk">NASDAQ:TSLA</span></div>
+<div class="role">人形机器人量产叙事第一标的，垂直整合(FSD大脑+自产执行器)</div>
+<div class="badges"><span class="b t2">◐ 观察</span><span class="b">US</span><span class="b">Physical AI</span></div>
+<dl class="detail"><dt>护城河</dt><dd>制造规模+真实世界数据+自研全栈</dd><dt>证伪条件 / 风险</dt><dd>量产时间表一再推迟；本体业务在车企估值中被稀释</dd>
+<dt>备注</dt><dd>R1验证: 时间表已滑坡——2025-10称2026Q1展示V3/年底建百万台产线，2026-04电话会后移为V3年中发布、Q3规模量产。跟踪V3实际发布作为论点触发器</dd></dl></div><div class="card" data-chain="physical" data-tier="3" data-market="HK"
+ data-q="优必选 ubtech hkex:9880 本体层-人形与四足整机" onclick="this.classList.toggle('open')">
+<div class="hd"><span class="nm">优必选 UBTECH</span><span class="tk">HKEX:9880</span></div>
+<div class="role">国内人形整机上市第一股，工业场景交付领先</div>
+<div class="badges"><span class="b t3">○ 背景</span><span class="b">HK</span><span class="b">Physical AI</span></div>
+<dl class="detail"><dt>护城河</dt><dd>先发交付订单+品牌</dd><dt>证伪条件 / 风险</dt><dd>持续亏损与股权稀释；订单质量(关联方)存疑</dd>
+</dl></div></div></div><div class="segblock" data-chain="physical"><div class="seg">Physical AI ｜ 关节层-减速器/丝杠/执行器（人形BOM价值最集中处）</div><div class="grid"><div class="card" data-chain="physical" data-tier="2" data-market="JP"
+ data-q="哈默纳科 harmonic drive systems tse:6324 关节层-减速器/丝杠/执行器（人形bom价值最集中处）" onclick="this.classList.toggle('open')">
+<div class="hd"><span class="nm">哈默纳科 Harmonic Drive Systems</span><span class="tk">TSE:6324</span></div>
+<div class="role">谐波减速器发明者与全球标准</div>
+<div class="badges"><span class="b t2">◐ 观察</span><span class="b">JP</span><span class="b">Physical AI</span></div>
+<dl class="detail"><dt>护城河</dt><dd>精度与寿命的隐性工艺壁垒数十年</dd><dt>证伪条件 / 风险</dt><dd>中国厂商(绿的等)以够用+便宜蚕食；人形转向行星滚柱丝杠方案</dd>
+</dl></div><div class="card" data-chain="physical" data-tier="2" data-market="CN-A"
+ data-q="绿的谐波 leaderdrive shse:688017 关节层-减速器/丝杠/执行器（人形bom价值最集中处）" onclick="this.classList.toggle('open')">
+<div class="hd"><span class="nm">绿的谐波 Leaderdrive</span><span class="tk">SHSE:688017</span></div>
+<div class="role">国产谐波减速器龙头</div>
+<div class="badges"><span class="b t2">◐ 观察</span><span class="b">CN-A</span><span class="b">Physical AI</span></div>
+<dl class="detail"><dt>护城河</dt><dd>国产替代+成本；绑定国内人形厂</dd><dt>证伪条件 / 风险</dt><dd>估值透支；技术上限</dd>
+</dl></div><div class="card" data-chain="physical" data-tier="2" data-market="CN-A"
+ data-q="三花智控 sanhua szse:002050 关节层-减速器/丝杠/执行器（人形bom价值最集中处）" onclick="this.classList.toggle('open')">
+<div class="hd"><span class="nm">三花智控 Sanhua</span><span class="tk">SZSE:002050</span></div>
+<div class="role">Optimus执行器/关节候选供应商(身份有多方佐证)，热管理主业现金流托底</div>
+<div class="badges"><span class="b t2">◐ 观察</span><span class="b">CN-A</span><span class="b">Physical AI</span></div>
+<dl class="detail"><dt>护城河</dt><dd>特斯拉深度绑定+精密制造规模</dd><dt>证伪条件 / 风险</dt><dd>Optimus放量不及预期；订单叙事已被公司公告辟谣一次，估值透支风险</dd>
+<dt>备注</dt><dd>R1证伪: '2025-10获特斯拉6.85亿美元订单'为谣言(0-3票)，公司2025-10-15澄清公告'不属实'；真实合作模式为长期框架+逐年定点。供应商身份本身成立，具体订单无公告级证据</dd></dl></div><div class="card" data-chain="physical" data-tier="3" data-market="CN-A"
+ data-q="拓普集团 tuopu shse:601689 关节层-减速器/丝杠/执行器（人形bom价值最集中处）" onclick="this.classList.toggle('open')">
+<div class="hd"><span class="nm">拓普集团 Tuopu</span><span class="tk">SHSE:601689</span></div>
+<div class="role">特斯拉系执行器候选供应商，平台型汽车零部件商</div>
+<div class="badges"><span class="b t3">○ 背景</span><span class="b">CN-A</span><span class="b">Physical AI</span></div>
+<dl class="detail"><dt>护城河</dt><dd>特斯拉协同开发历史+垂直整合</dd><dt>证伪条件 / 风险</dt><dd>机器人收入几乎为零而估值已计入预期；汽车主业周期；特斯拉营收占比下滑</dd>
+<dt>备注</dt><dd>R1证伪: 'Tier 0.5供应商/执行器总成'说法0-3票未过——高盛2025-11调研9家链企均未确认大订单，公司自答'没有大额订单，产能筹备中'；2025年报机器人执行器收入仅1359万元(占营收0.05%)。降为背景跟踪，等公告级证据再升级</dd></dl></div><div class="card" data-chain="physical" data-tier="2" data-market="CN-A"
+ data-q="恒立液压 hengli shse:601100 关节层-减速器/丝杠/执行器（人形bom价值最集中处）" onclick="this.classList.toggle('open')">
+<div class="hd"><span class="nm">恒立液压 Hengli</span><span class="tk">SHSE:601100</span></div>
+<div class="role">液压龙头切入行星滚柱丝杠——人形直线执行器的核心部件</div>
+<div class="badges"><span class="b t2">◐ 观察</span><span class="b">CN-A</span><span class="b">Physical AI</span></div>
+<dl class="detail"><dt>护城河</dt><dd>精密加工能力迁移；丝杠国产化稀缺标的</dd><dt>证伪条件 / 风险</dt><dd>丝杠量产良率与验证周期</dd>
+</dl></div></div></div><div class="segblock" data-chain="physical"><div class="seg">Physical AI ｜ 感知层-激光雷达/触觉/力控</div><div class="grid"><div class="card" data-chain="physical" data-tier="2" data-market="US(中概)"
+ data-q="禾赛科技 hesai nasdaq:hsai 感知层-激光雷达/触觉/力控" onclick="this.classList.toggle('open')">
+<div class="hd"><span class="nm">禾赛科技 Hesai</span><span class="tk">NASDAQ:HSAI</span></div>
+<div class="role">车载激光雷达出货第一，向机器人激光雷达横向扩张</div>
+<div class="badges"><span class="b t2">◐ 观察</span><span class="b">US(中概)</span><span class="b">Physical AI</span></div>
+<dl class="detail"><dt>护城河</dt><dd>规模成本曲线+芯片化自研</dd><dt>证伪条件 / 风险</dt><dd>纯视觉路线挤压；中美摘牌风险</dd>
+</dl></div><div class="card" data-chain="physical" data-tier="3" data-market="HK"
+ data-q="速腾聚创 robosense hkex:2498 感知层-激光雷达/触觉/力控" onclick="this.classList.toggle('open')">
+<div class="hd"><span class="nm">速腾聚创 RoboSense</span><span class="tk">HKEX:2498</span></div>
+<div class="role">激光雷达第二极，机器人增量收入占比提升快</div>
+<div class="badges"><span class="b t3">○ 背景</span><span class="b">HK</span><span class="b">Physical AI</span></div>
+<dl class="detail"><dt>护城河</dt><dd>机器人客户覆盖面广</dd><dt>证伪条件 / 风险</dt><dd>价格战毛利承压</dd>
+</dl></div><div class="card" data-chain="physical" data-tier="3" data-market="CN-A"
+ data-q="柯力传感 keli shse:603662 感知层-激光雷达/触觉/力控" onclick="this.classList.toggle('open')">
+<div class="hd"><span class="nm">柯力传感 Keli</span><span class="tk">SHSE:603662</span></div>
+<div class="role">力/力矩传感器——人形关节六维力控的国产候选</div>
+<div class="badges"><span class="b t3">○ 背景</span><span class="b">CN-A</span><span class="b">Physical AI</span></div>
+<dl class="detail"><dt>护城河</dt><dd>称重传感器现金流+六维力先发布局</dd><dt>证伪条件 / 风险</dt><dd>六维力放量时点难测；竞争者众</dd>
+</dl></div></div></div><div class="segblock" data-chain="physical"><div class="seg">Physical AI ｜ 电机-空心杯/无框力矩</div><div class="grid"><div class="card" data-chain="physical" data-tier="3" data-market="CN-A"
+ data-q="鸣志电器 moons' shse:603728 电机-空心杯/无框力矩" onclick="this.classList.toggle('open')">
+<div class="hd"><span class="nm">鸣志电器 Moons'</span><span class="tk">SHSE:603728</span></div>
+<div class="role">空心杯电机与步进系统，人形灵巧手核心部件候选</div>
+<div class="badges"><span class="b t3">○ 背景</span><span class="b">CN-A</span><span class="b">Physical AI</span></div>
+<dl class="detail"><dt>护城河</dt><dd>空心杯国产稀缺产能</dd><dt>证伪条件 / 风险</dt><dd>灵巧手方案未定型(腱绳/连杆/直驱之争)</dd>
+</dl></div></div></div>
+<div class="segblock" data-chain="private"><div class="seg">未上市 ｜ 咽喉卡位公司（跟踪其技术路线与 IPO 进展）</div><div class="grid"><div class="card" data-chain="private" data-tier="1"
+ data-market="PRIVATE" data-q="openai" onclick="this.classList.toggle('open')">
+<div class="hd"><span class="nm">OpenAI</span><span class="tk">未上市</span></div>
+<div class="role">消费级AI入口(ChatGPT)+最大算力采购方，其capex承诺是整条算力链的需求锚</div>
+<div class="badges"><span class="b t1">★ 核心</span><span class="b">IPO: 未上市；重组为PBC后IPO通道理论上打开，无明…</span></div>
+<dl class="detail"><dt>IPO 状态</dt><dd>未上市；重组为PBC后IPO通道理论上打开，无明确时间表</dd>
+<dt>间接敞口</dt><dd>微软MSFT(持股+分成)；软银9984(Vision Fund 2追加300亿美元；R1已验证)；甲骨文ORCL/CoreWeave CRWV(算力合同)</dd>
+<dt>信号价值</dt><dd>其数据中心合同(Stargate等)公告=链条需求脉冲；跟踪其供应商名单变化</dd></dl></div><div class="card" data-chain="private" data-tier="1"
+ data-market="PRIVATE" data-q="anthropic" onclick="this.classList.toggle('open')">
+<div class="hd"><span class="nm">Anthropic</span><span class="tk">未上市</span></div>
+<div class="role">企业级/编码AI第一品牌(Claude)，agent编码生态事实标准之一</div>
+<div class="badges"><span class="b t1">★ 核心</span><span class="b">IPO: 未上市</span></div>
+<dl class="detail"><dt>IPO 状态</dt><dd>未上市</dd>
+<dt>间接敞口</dt><dd>谷歌GOOGL(持股)；亚马逊AMZN(持股+Trainium绑定)</dd>
+<dt>信号价值</dt><dd>其Trainium采用深度=AMZN自研芯片路线的成色指标</dd></dl></div><div class="card" data-chain="private" data-tier="2"
+ data-market="PRIVATE" data-q="xai" onclick="this.classList.toggle('open')">
+<div class="hd"><span class="nm">xAI</span><span class="tk">未上市</span></div>
+<div class="role">算力军备最激进玩家(Colossus集群)，垂直整合X数据</div>
+<div class="badges"><span class="b t2">◐ 观察</span><span class="b">IPO: 未上市</span></div>
+<dl class="detail"><dt>IPO 状态</dt><dd>未上市</dd>
+<dt>间接敞口</dt><dd>特斯拉TSLA(关联)；其供应商如DELL/SMCI/VRT</dd>
+<dt>信号价值</dt><dd>建设速度=液冷/电源/燃机需求的极端样本</dd></dl></div><div class="card" data-chain="private" data-tier="2"
+ data-market="PRIVATE" data-q="anysphere (cursor)" onclick="this.classList.toggle('open')">
+<div class="hd"><span class="nm">Anysphere (Cursor)</span><span class="tk">未上市</span></div>
+<div class="role">AI编码工具增速最快者，AI-native dev入口卡位</div>
+<div class="badges"><span class="b t2">◐ 观察</span><span class="b">IPO: 未上市</span></div>
+<dl class="detail"><dt>IPO 状态</dt><dd>未上市</dd>
+<dt>间接敞口</dt><dd>无直接渠道；关注其模型采购流向(Anthropic/OpenAI)</dd>
+<dt>信号价值</dt><dd>AI编码工具战局=模型层收入结构的先行指标</dd></dl></div><div class="card" data-chain="private" data-tier="2"
+ data-market="PRIVATE" data-q="figure ai" onclick="this.classList.toggle('open')">
+<div class="hd"><span class="nm">Figure AI</span><span class="tk">未上市</span></div>
+<div class="role">人形机器人融资额最大独立玩家</div>
+<div class="badges"><span class="b t2">◐ 观察</span><span class="b">IPO: 未上市</span></div>
+<dl class="detail"><dt>IPO 状态</dt><dd>未上市</dd>
+<dt>间接敞口</dt><dd>微软/英伟达/英特尔等参投方</dd>
+<dt>信号价值</dt><dd>其BOM供应商披露=人形零部件选股直接线索</dd></dl></div><div class="card" data-chain="private" data-tier="2"
+ data-market="PRIVATE" data-q="physical intelligence" onclick="this.classList.toggle('open')">
+<div class="hd"><span class="nm">Physical Intelligence</span><span class="tk">未上市</span></div>
+<div class="role">机器人foundation model(π系列)最强独立团队</div>
+<div class="badges"><span class="b t2">◐ 观察</span><span class="b">IPO: 未上市</span></div>
+<dl class="detail"><dt>IPO 状态</dt><dd>未上市</dd>
+<dt>间接敞口</dt><dd>无</dd>
+<dt>信号价值</dt><dd>通用操作模型进展=人形放量时间表的领先指标</dd></dl></div><div class="card" data-chain="private" data-tier="1"
+ data-market="PRIVATE" data-q="unitree 宇树科技" onclick="this.classList.toggle('open')">
+<div class="hd"><span class="nm">Unitree 宇树科技</span><span class="tk">未上市</span></div>
+<div class="role">四足+人形本体性价比之王，中国人形链条的需求发动机</div>
+<div class="badges"><span class="b t1">★ 核心</span><span class="b">IPO: 已启动A股IPO辅导，进展需持续跟踪</span></div>
+<dl class="detail"><dt>IPO 状态</dt><dd>已启动A股IPO辅导，进展需持续跟踪</dd>
+<dt>间接敞口</dt><dd>A股参股公司与供应商群</dd>
+<dt>信号价值</dt><dd>IPO=A股人形板块最大催化剂之一；其供应商名单=选股清单</dd></dl></div><div class="card" data-chain="private" data-tier="3"
+ data-market="PRIVATE" data-q="cerebras" onclick="this.classList.toggle('open')">
+<div class="hd"><span class="nm">Cerebras</span><span class="tk">未上市</span></div>
+<div class="role">晶圆级AI芯片，推理速度差异化</div>
+<div class="badges"><span class="b t3">○ 背景</span><span class="b">IPO: 曾递交S-1，进程反复，需跟踪</span></div>
+<dl class="detail"><dt>IPO 状态</dt><dd>曾递交S-1，进程反复，需跟踪</dd>
+<dt>间接敞口</dt><dd>大客户G42相关</dd>
+<dt>信号价值</dt><dd>非GPU路线商业化成色的试金石</dd></dl></div><div class="card" data-chain="private" data-tier="3"
+ data-market="PRIVATE" data-q="groq" onclick="this.classList.toggle('open')">
+<div class="hd"><span class="nm">Groq</span><span class="tk">未上市</span></div>
+<div class="role">LPU推理芯片，低延迟推理卡位</div>
+<div class="badges"><span class="b t3">○ 背景</span><span class="b">IPO: 未上市</span></div>
+<dl class="detail"><dt>IPO 状态</dt><dd>未上市</dd>
+<dt>间接敞口</dt><dd>无直接</dd>
+<dt>信号价值</dt><dd>推理成本曲线下降速度的观测点</dd></dl></div><div class="card" data-chain="private" data-tier="3"
+ data-market="PRIVATE" data-q="spacex / starlink" onclick="this.classList.toggle('open')">
+<div class="hd"><span class="nm">SpaceX / Starlink</span><span class="tk">未上市</span></div>
+<div class="role">非AI主线但为&quot;窄门&quot;备选池：天基算力/通信卡位</div>
+<div class="badges"><span class="b t3">○ 背景</span><span class="b">IPO: Starlink分拆IPO长期传闻</span></div>
+<dl class="detail"><dt>IPO 状态</dt><dd>Starlink分拆IPO长期传闻</dd>
+<dt>间接敞口</dt><dd>DXYZ等封闭式工具(溢价风险极高，仅作观测)</dd>
+<dt>信号价值</dt><dd>备选</dd></dl></div></div></div>
+</div>
+<h2 id="reports" style="font-size:17px;margin:34px 0 10px">报告与论点</h2>
+<div class="list"><a class="row" href="r/research-2026-07-07-ai-chain-deep-research-r1.html"><span>深度研究 R1：AI 算力链 × Physical AI 链 · 经对抗验证的事实底座</span>
+<span class="kind">深度研究</span></a><a class="row" href="r/doc-risk-rules.html"><span>风控规则（v1，机械执行，豁免须书面记入 journal 且不可事后修改）</span>
+<span class="kind">文档</span></a><a class="row" href="r/doc-03-methodology.html"><span>myfin 方法论综合评估 v1</span>
+<span class="kind">文档</span></a><a class="row" href="r/doc-02-tech-stack.html"><span>技术栈选型：站在谁的肩膀上</span>
+<span class="kind">文档</span></a><a class="row" href="r/doc-01-architecture.html"><span>系统架构与演进路线</span>
+<span class="kind">文档</span></a><a class="row" href="r/doc-00-vision.html"><span>愿景与策略框架</span>
+<span class="kind">文档</span></a><a class="row" href="r/thesis-2026-07-07-gas-turbine-narrow-gate.html"><span>论点：燃气轮机是本轮 AI capex 中确定性最高、供给弹性最低的咽喉，市场可能仍低估其景气&quot;久期&quot;</span>
+<span class="kind">论点</span></a></div>
+<script>
+const tabs=[...document.querySelectorAll('nav.tabs button')];
+let chain='all';
+const apply=()=>{const t=document.getElementById('tier').value,q=document.getElementById('q').value.toLowerCase().trim();
+document.querySelectorAll('#cards .card').forEach(c=>{
+const ok=(chain==='all'||c.dataset.chain===chain)&&(!t||c.dataset.tier===t)&&(!q||c.dataset.q.includes(q));
+c.style.display=ok?'':'none'});
+document.querySelectorAll('.segblock').forEach(b=>{
+b.style.display=[...b.querySelectorAll('.card')].some(c=>c.style.display!=='none')?'':'none'})};
+tabs.forEach(b=>b.onclick=()=>{tabs.forEach(x=>x.classList.remove('on'));b.classList.add('on');chain=b.dataset.f;apply()});
+document.getElementById('tier').onchange=apply;document.getElementById('q').oninput=apply;
+</script>
+<div class="foot">生成于 2026-07-07 · 数据源:仓库 watchlist/docs/theses · <a href="index.html">总览</a></div>
+</div></body></html>

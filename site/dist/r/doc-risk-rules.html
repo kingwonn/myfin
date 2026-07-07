@@ -1,0 +1,122 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex"><title>风控规则（v1，机械执行，豁免须书面记入 journal 且不可事后修改）</title><style>
+:root{--surface:#fcfcfb;--plane:#f9f9f7;--ink:#0b0b0b;--ink2:#52514e;--muted:#898781;
+--grid:#e1e0d9;--border:rgba(11,11,11,.10);--s1:#2a78d6;--s2:#1baf7a;--s3:#eda100;
+--good:#0ca30c;--warn:#fab219;--crit:#d03b3b;--chip:#f0efec}
+:root[data-theme=dark],:root.dark{--surface:#1a1a19;--plane:#0d0d0d;--ink:#fff;--ink2:#c3c2b7;
+--grid:#2c2c2a;--border:rgba(255,255,255,.10);--s1:#3987e5;--s2:#199e70;--s3:#c98500;--chip:#383835}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--surface:#1a1a19;--plane:#0d0d0d;
+--ink:#fff;--ink2:#c3c2b7;--grid:#2c2c2a;--border:rgba(255,255,255,.10);--s1:#3987e5;--s2:#199e70;--s3:#c98500;--chip:#383835}}
+*{box-sizing:border-box;margin:0}
+body{background:var(--plane);color:var(--ink);font:15px/1.65 system-ui,-apple-system,"Segoe UI",sans-serif;padding-bottom:64px}
+a{color:var(--s1);text-decoration:none}a:hover{text-decoration:underline}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+header.top{padding:28px 0 10px}
+h1{font-size:22px;letter-spacing:.3px}
+.sub{color:var(--ink2);font-size:13px;margin-top:4px}
+nav.tabs{display:flex;gap:6px;margin:18px 0 14px;flex-wrap:wrap}
+nav.tabs button,nav.tabs a{border:1px solid var(--border);background:var(--surface);color:var(--ink2);
+padding:6px 14px;border-radius:20px;font-size:13px;cursor:pointer}
+nav.tabs .on{color:var(--ink);border-color:var(--ink2);font-weight:600}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:6px 0 20px}
+.tile{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px 16px}
+.tile .v{font-size:26px;font-weight:700}
+.tile .k{font-size:12px;color:var(--ink2);margin-top:2px}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 14px;align-items:center}
+.filters select,.filters input{background:var(--surface);color:var(--ink);border:1px solid var(--border);
+border-radius:8px;padding:6px 10px;font-size:13px}
+.filters input{flex:1;min-width:160px}
+.seg{margin:22px 0 10px;font-size:13px;color:var(--muted);text-transform:none;letter-spacing:.4px;
+border-bottom:1px solid var(--grid);padding-bottom:6px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:10px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px 16px;cursor:pointer}
+.card:hover{border-color:var(--ink2)}
+.card .hd{display:flex;justify-content:space-between;gap:8px;align-items:baseline}
+.card .nm{font-weight:650;font-size:14.5px}
+.card .tk{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+.card .role{color:var(--ink2);font-size:13px;margin-top:6px}
+.badges{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}
+.b{font-size:11px;padding:2px 8px;border-radius:10px;background:var(--chip);color:var(--ink2)}
+.b.t1{color:var(--good);font-weight:700}
+.b.t3{color:var(--muted)}
+.detail{display:none;margin-top:10px;border-top:1px dashed var(--grid);padding-top:10px;font-size:13px}
+.card.open .detail{display:block}
+.detail dt{color:var(--muted);font-size:11px;margin-top:6px}
+.detail dd{margin:1px 0 0}
+.mdbody{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:28px 32px;margin-top:14px;overflow-x:auto}
+.mdbody h1{font-size:20px;margin:0 0 12px}.mdbody h2{font-size:17px;margin:22px 0 8px}
+.mdbody h3{font-size:15px;margin:16px 0 6px}.mdbody p{margin:8px 0}.mdbody li{margin:3px 0 3px 0}
+.mdbody ul,.mdbody ol{padding-left:22px}
+.mdbody table{border-collapse:collapse;font-size:13px;margin:10px 0;min-width:50%}
+.mdbody th,.mdbody td{border:1px solid var(--grid);padding:6px 10px;text-align:left}
+.mdbody code{background:var(--chip);padding:1px 5px;border-radius:4px;font-size:12.5px}
+.mdbody pre{background:var(--chip);padding:12px;border-radius:8px;overflow-x:auto}
+.mdbody pre code{background:none;padding:0}
+.mdbody blockquote{border-left:3px solid var(--grid);padding-left:12px;color:var(--ink2)}
+.list a.row{display:flex;justify-content:space-between;background:var(--surface);border:1px solid var(--border);
+border-radius:10px;padding:12px 16px;margin-bottom:8px;color:var(--ink)}
+.list a.row:hover{border-color:var(--ink2);text-decoration:none}
+.list .kind{color:var(--muted);font-size:12px}
+.foot{margin-top:40px;color:var(--muted);font-size:12px}
+.empty{color:var(--muted);padding:30px 0;text-align:center}
+</style></head><body>
+<div class="wrap"><header class="top"><h1>言出法随 · myfin</h1>
+<div class="sub">AI 算力链 × Physical AI 投研系统 — 个人研究笔记，不构成投资建议</div></header><nav class="tabs"><a href="../index.html">← 返回总览</a></nav><article class="mdbody"><h1>风控规则（v1，机械执行，豁免须书面记入 journal 且不可事后修改）</h1>
+<p>来源：方法论调研 R1（见 <code>docs/03-methodology.md</code> 第一、四节）。这些规则凌驾于任何个股论点。</p>
+<h2>1. 资金结构：杠铃双层</h2>
+<ul>
+<li><strong>生存层</strong>：永不调入进攻层。</li>
+<li><strong>进攻层</strong>：按&quot;可能整体重挫 50%+&quot;设定预算；利润棘轮——进攻层盈利定期回流生存层，只进不出。</li>
+</ul>
+<h2>2. 仓位公式</h2>
+<ul>
+<li>单仓 = 主观概率×赔率的 raw Kelly × <strong>0.25~0.5</strong>（禁止全 Kelly）。</li>
+<li>单仓硬上限：进攻层的 15-20%。</li>
+<li>高波动标的（90 日年化波动 &gt;60%）：仓位 = 风险预算 ÷ (2-3 × ATR 止损距离)。</li>
+<li>风险单位是<strong>独立论点数</strong>而非标的数——整条 AI 链是同一叙事因子（DeepSeek 日全链 -17%~-21% 为证）。单桶（factor_bucket）暴露 ≤ 进攻层 40-50%；AI 叙事总暴露设硬顶。</li>
+<li>入仓前&quot;归零测试&quot;：该仓位归零，是否影响生活与后续弹药？否→可入。</li>
+</ul>
+<h2>3. 建仓三档金字塔</h2>
+<p>观察仓 ≤1/3 → 证据+价格双确认后 ≤2/3 → 拥挤度检查通过后满仓。
+观察仓先触发动量退出 → 直接清仓转复审，不补仓。</p>
+<h2>4. 退出三通道（任一触发即执行，不许用另两条&quot;还好&quot;否决）</h2>
+<ul>
+<li><code>exit_falsified</code>：论点证伪条件命中。</li>
+<li><code>exit_momentum</code>：具体价格/结构位破位。</li>
+<li><code>exit_valuation</code>：价格隐含预期超出自身牛市情形，或拥挤度极端。</li>
+</ul>
+<p>分批止盈默认：1 倍兑现 1/3、2 倍再 1/3、余仓移动止损。</p>
+<h2>5. 回撤阶梯（进攻层，机械执行）</h2>
+<table>
+<thead>
+<tr>
+<th>回撤</th>
+<th>动作</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-10%</td>
+<td>冻结新仓</td>
+</tr>
+<tr>
+<td>-15%</td>
+<td>无新证据的仓位一律减半</td>
+</tr>
+<tr>
+<td>-20%</td>
+<td>强制降至半仓 + 2 周冷却复盘</td>
+</tr>
+</tbody></table>
+<h2>6. 系统级下车信号（凌驾一切个股论点，任一触发→全组合复核）</h2>
+<ol>
+<li>≥2 家超大厂下修 capex 指引；</li>
+<li>capex 增速二阶导转负 + 债务融资占比恶化；</li>
+<li>scaling law 断裂或端侧推理里程碑达成（Gavin Baker bear case）；</li>
+<li>AI 循环融资/信贷指标恶化（超大厂发债利差、私募信贷违约率）。</li>
+</ol>
+<h2>7. 拥挤度即退出输入</h2>
+<p>自己的&quot;低拥挤&quot;标的变成共识核心仓、被新发主题 ETF 大量覆盖时，窄门已关闭——这本身就是减仓信号（RFS 2023：专门化 ETF 上市后 5 年风险调整亏约 30%，新 ETF 潮=顶部信号源）。</p>
+</article>
+<div class="foot">生成于 2026-07-07 · 数据源:仓库 watchlist/docs/theses · <a href="../index.html">总览</a></div>
+</div></body></html>

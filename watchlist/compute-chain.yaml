@@ -5,7 +5,9 @@
 #   risk: 什么情况下卡位失效（证伪条件）
 #   tier: 1=核心跟踪  2=观察  3=了解背景
 #   last_checked / notes
-# 状态: DRAFT——待深度研究报告交叉验证后定稿
+# 状态: R1 已部分验证(2026-07-07, 见 docs/research/2026-07-07-ai-chain-deep-research-r1.md)
+# R1 总量锚点: 高盛基线 2026-2031 累计 AI capex ~7.6万亿美元；最大敏感变量是芯片折旧年限之争
+# R1 未覆盖(补研队列): HBM/先进封装、光模块/CPO、IB vs 以太网、HVDC/变压器/SMR、neocloud经济性
 
 segments:
   - segment: 芯片-GPU与自研ASIC
@@ -149,8 +151,8 @@ segments:
         moat: 与NVDA参考设计深度绑定；服务网络
         risk: 竞争加剧毛利承压；AI capex周期反转
         tier: 1
-        last_checked: null
-        notes: ""
+        last_checked: 2026-07-07
+        notes: "R1: 液冷渗透率14%(2024)→33%(2025)→47%(2026E, TrendForce单一机构口径)3-0验证；物理驱动为TDP 700W→1000W+不可逆。液冷是第二陡斜率"
       - name: 英维克 Envicool
         ticker: "SZSE:002837"
         market: CN-A
@@ -196,12 +198,12 @@ segments:
       - name: GE Vernova
         ticker: "NYSE:GEV"
         market: US
-        role: 燃气轮机三巨头之一，数据中心自备电源最现实选择
-        moat: 燃机产能排到数年后；服务长尾
-        risk: 订单转化节奏；估值已高
-        tier: 2
-        last_checked: null
-        notes: ""
+        role: 燃气轮机三巨头之一，数据中心自备电源最现实选择——R1验证确认度最高的窄门
+        moat: 积压+槽位预订2026Q1达100GW(指引年底≥110GW)，2030年前槽位即将售罄；产能弹性仅+20%(20→24GW到2028年中)；新订单定价高于存量
+        risk: AI capex周期反转；扩产超预期(重型机组50→70-80台/年在推进)；估值已计入多少久期需测算
+        tier: 1
+        last_checked: 2026-07-07
+        notes: "R1: 3-0×3通过验证，一手来源GEV Q1'26 8-K。同业西门子能源/三菱重工同样~5年积压——'窄门'是整个环节而非单一公司。下一步: 写thesis+测算当前价格计入的久期"
       - name: Oklo
         ticker: "NYSE:OKLO"
         market: US
