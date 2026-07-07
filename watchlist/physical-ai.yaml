@@ -1,0 +1,127 @@
+# Physical AI 产业链跟踪清单
+# schema 同 compute-chain.yaml（moat/risk 必填；tier 1核心/2观察/3背景）
+# 状态: DRAFT——待深度研究报告交叉验证后定稿
+
+segments:
+  - segment: 大脑层-芯片与仿真
+    companies:
+      - name: 英伟达 NVIDIA (Isaac/GR00T/Thor)
+        ticker: "NASDAQ:NVDA"
+        market: US
+        role: 机器人大脑三件套：Thor芯片 + Isaac仿真 + GR00T基础模型，试图复制CUDA锁定
+        moat: 仿真到部署(sim-to-real)全栈无人能及
+        risk: 机器人厂商为控成本转向自研/开源栈
+        tier: 1
+        last_checked: null
+        notes: "Physical AI 视角下的 NVDA 与算力视角分开评估"
+
+  - segment: 本体层-人形与四足整机
+    companies:
+      - name: 特斯拉 Tesla (Optimus)
+        ticker: "NASDAQ:TSLA"
+        market: US
+        role: 人形机器人量产叙事第一标的，垂直整合(FSD大脑+自产执行器)
+        moat: 制造规模+真实世界数据+自研全栈
+        risk: 量产时间表一再推迟；本体业务在车企估值中被稀释
+        tier: 2
+        last_checked: null
+        notes: ""
+      - name: 优必选 UBTECH
+        ticker: "HKEX:9880"
+        market: HK
+        role: 国内人形整机上市第一股，工业场景交付领先
+        moat: 先发交付订单+品牌
+        risk: 持续亏损与股权稀释；订单质量(关联方)存疑
+        tier: 3
+        last_checked: null
+        notes: ""
+
+  - segment: 关节层-减速器/丝杠/执行器（人形BOM价值最集中处）
+    companies:
+      - name: 哈默纳科 Harmonic Drive Systems
+        ticker: "TSE:6324"
+        market: JP
+        role: 谐波减速器发明者与全球标准
+        moat: 精度与寿命的隐性工艺壁垒数十年
+        risk: 中国厂商(绿的等)以够用+便宜蚕食；人形转向行星滚柱丝杠方案
+        tier: 2
+        last_checked: null
+        notes: ""
+      - name: 绿的谐波 Leaderdrive
+        ticker: "SHSE:688017"
+        market: CN-A
+        role: 国产谐波减速器龙头
+        moat: 国产替代+成本；绑定国内人形厂
+        risk: 估值透支；技术上限
+        tier: 2
+        last_checked: null
+        notes: ""
+      - name: 三花智控 Sanhua
+        ticker: "SZSE:002050"
+        market: CN-A
+        role: 特斯拉Optimus执行器总成核心候选供应商，热管理主业现金流托底
+        moat: 特斯拉深度绑定+精密制造规模
+        risk: Optimus放量不及预期；总成份额被分食
+        tier: 1
+        last_checked: null
+        notes: ""
+      - name: 拓普集团 Tuopu
+        ticker: "SHSE:601689"
+        market: CN-A
+        role: 特斯拉系执行器候选供应商，平台型汽车零部件商
+        moat: 特斯拉协同开发历史+垂直整合
+        risk: 同三花；汽车主业周期
+        tier: 2
+        last_checked: null
+        notes: ""
+      - name: 恒立液压 Hengli
+        ticker: "SHSE:601100"
+        market: CN-A
+        role: 液压龙头切入行星滚柱丝杠——人形直线执行器的核心部件
+        moat: 精密加工能力迁移；丝杠国产化稀缺标的
+        risk: 丝杠量产良率与验证周期
+        tier: 2
+        last_checked: null
+        notes: ""
+
+  - segment: 感知层-激光雷达/触觉/力控
+    companies:
+      - name: 禾赛科技 Hesai
+        ticker: "NASDAQ:HSAI"
+        market: US(中概)
+        role: 车载激光雷达出货第一，向机器人激光雷达横向扩张
+        moat: 规模成本曲线+芯片化自研
+        risk: 纯视觉路线挤压；中美摘牌风险
+        tier: 2
+        last_checked: null
+        notes: ""
+      - name: 速腾聚创 RoboSense
+        ticker: "HKEX:2498"
+        market: HK
+        role: 激光雷达第二极，机器人增量收入占比提升快
+        moat: 机器人客户覆盖面广
+        risk: 价格战毛利承压
+        tier: 3
+        last_checked: null
+        notes: ""
+      - name: 柯力传感 Keli
+        ticker: "SHSE:603662"
+        market: CN-A
+        role: 力/力矩传感器——人形关节六维力控的国产候选
+        moat: 称重传感器现金流+六维力先发布局
+        risk: 六维力放量时点难测；竞争者众
+        tier: 3
+        last_checked: null
+        notes: ""
+
+  - segment: 电机-空心杯/无框力矩
+    companies:
+      - name: 鸣志电器 Moons'
+        ticker: "SHSE:603728"
+        market: CN-A
+        role: 空心杯电机与步进系统，人形灵巧手核心部件候选
+        moat: 空心杯国产稀缺产能
+        risk: 灵巧手方案未定型(腱绳/连杆/直驱之争)
+        tier: 3
+        last_checked: null
+        notes: ""

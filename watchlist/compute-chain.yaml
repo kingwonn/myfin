@@ -1,0 +1,243 @@
+# AI 算力中心产业链跟踪清单
+# schema（每个标的必填 moat 与 risk，缺一不许入库）:
+#   name / ticker(交易所:代码) / market / role(链条位置)
+#   moat: 为什么绕不开
+#   risk: 什么情况下卡位失效（证伪条件）
+#   tier: 1=核心跟踪  2=观察  3=了解背景
+#   last_checked / notes
+# 状态: DRAFT——待深度研究报告交叉验证后定稿
+
+segments:
+  - segment: 芯片-GPU与自研ASIC
+    companies:
+      - name: 英伟达 NVIDIA
+        ticker: "NASDAQ:NVDA"
+        market: US
+        role: AI训练/推理GPU绝对主导，CUDA生态+NVLink互连构成系统级锁定
+        moat: 生态锁定(CUDA)+全栈(芯片-互连-软件)+一年一代的节奏碾压
+        risk: 超大厂自研ASIC份额实质性侵蚀训练市场；中国市场政策性归零
+        tier: 2   # 确定性最高但弹性衰减，作为链条锚点跟踪而非收益来源
+        last_checked: null
+        notes: ""
+      - name: 博通 Broadcom
+        ticker: "NASDAQ:AVGO"
+        market: US
+        role: 定制ASIC(XPU)设计咽喉——谷歌TPU/Meta等大客户，兼以太网交换芯片(Tomahawk)霸主
+        moat: SerDes与先进封装设计能力稀缺；ASIC客户一旦流片即多年锁定
+        risk: 大客户自研设计团队内化；ASIC项目周期性砍单
+        tier: 1
+        last_checked: null
+        notes: ""
+      - name: 迈威尔 Marvell
+        ticker: "NASDAQ:MRVL"
+        market: US
+        role: 定制ASIC第二供应商 + 光电互连DSP
+        moat: 电互连/光DSP技术组合
+        risk: ASIC大单流失（亚马逊Trainium项目份额变化是关键信号）
+        tier: 2
+        last_checked: null
+        notes: ""
+
+  - segment: 芯片-HBM与存储
+    companies:
+      - name: SK海力士 SK Hynix
+        ticker: "KRX:000660"
+        market: KR
+        role: HBM市占率第一，英伟达主力供应商
+        moat: HBM良率与MR-MUF封装工艺领先一代；与NVDA深度绑定
+        risk: 三星HBM4追平后的价格战；HBM供需反转
+        tier: 1
+        last_checked: null
+        notes: ""
+      - name: 美光 Micron
+        ticker: "NASDAQ:MU"
+        market: US
+        role: HBM第三极，美国本土供应的地缘溢价
+        moat: HBM3E功耗优势；美国产能的政策价值
+        risk: HBM扩产潮导致2027供过于求
+        tier: 2
+        last_checked: null
+        notes: ""
+
+  - segment: 芯片-制造与先进封装
+    companies:
+      - name: 台积电 TSMC
+        ticker: "NYSE:TSM"
+        market: TW/US
+        role: 先进制程+CoWoS先进封装双咽喉，所有AI芯片的物理必经之路
+        moat: 制程代差+封装产能独占；客户无第二选择
+        risk: 地缘冲突；CoWoS产能过剩(2027后)
+        tier: 1
+        last_checked: null
+        notes: ""
+
+  - segment: 互连-网络与交换
+    companies:
+      - name: 安费诺 Amphenol
+        ticker: "NYSE:APH"
+        market: US
+        role: 高速连接器/线缆咽喉，GPU集群内部铜互连主力
+        moat: 连接器认证周期长、份额粘性极强
+        risk: 光进铜退快于预期
+        tier: 2
+        last_checked: null
+        notes: ""
+      - name: 阿斯特拉实验室 Astera Labs
+        ticker: "NASDAQ:ALAB"
+        market: US
+        role: PCIe/CXL retimer与智能互连芯片，scale-up网络新玩家
+        moat: retimer近乎独占；与NVDA/超大厂协同设计
+        risk: 大厂自研替代；估值极高容错低
+        tier: 2
+        last_checked: null
+        notes: ""
+
+  - segment: 互连-光模块与CPO
+    companies:
+      - name: 中际旭创 Innolight
+        ticker: "SZSE:300308"
+        market: CN-A
+        role: 全球高速光模块(800G/1.6T)出货第一
+        moat: 高速率产品良率与交付规模全球领先；绑定北美大客户
+        risk: CPO替代可插拔快于预期；美国关税/供应链去中化
+        tier: 1
+        last_checked: null
+        notes: ""
+      - name: 新易盛 Eoptolink
+        ticker: "SZSE:300502"
+        market: CN-A
+        role: 高速光模块头部，利润率弹性大
+        moat: 成本控制+LPO/1.6T卡位
+        risk: 同上（CPO路线+地缘）
+        tier: 1
+        last_checked: null
+        notes: ""
+      - name: Coherent
+        ticker: "NYSE:COHR"
+        market: US
+        role: 光器件/光模块美国供应链核心，兼激光器
+        moat: 垂直整合(磷化铟激光器自产)
+        risk: 运营效率长期弱于中国同行
+        tier: 2
+        last_checked: null
+        notes: ""
+      - name: Fabrinet
+        ticker: "NYSE:FN"
+        market: US
+        role: 光模块代工咽喉（NVDA 800G/1.6T主力代工）
+        moat: 高精度光学制造外包几乎唯一规模选择
+        risk: 大客户集中；CPO时代代工环节价值重分配
+        tier: 2
+        last_checked: null
+        notes: ""
+      - name: 天孚通信 TFC
+        ticker: "SZSE:300394"
+        market: CN-A
+        role: 光引擎/无源器件精密制造，CPO时代潜在受益者
+        moat: 精密陶瓷/光引擎工艺，绑定头部光模块厂
+        risk: 客户结构集中；地缘
+        tier: 2
+        last_checked: null
+        notes: ""
+
+  - segment: 供电散热-液冷
+    companies:
+      - name: 维谛技术 Vertiv
+        ticker: "NYSE:VRT"
+        market: US
+        role: 数据中心电源+散热整体方案龙头，GB系列机柜液冷主力
+        moat: 与NVDA参考设计深度绑定；服务网络
+        risk: 竞争加剧毛利承压；AI capex周期反转
+        tier: 1
+        last_checked: null
+        notes: ""
+      - name: 英维克 Envicool
+        ticker: "SZSE:002837"
+        market: CN-A
+        role: 国内液冷温控龙头
+        moat: 国内数据中心液冷份额领先
+        risk: 国内AI capex节奏；毛利率
+        tier: 2
+        last_checked: null
+        notes: ""
+
+  - segment: 供电散热-电力设备与电源
+    companies:
+      - name: 伊顿 Eaton
+        ticker: "NYSE:ETN"
+        market: US
+        role: 数据中心配电设备核心供应商
+        moat: 电气设备认证与渠道；订单积压深
+        risk: 电力设备供给瓶颈缓解后估值回归
+        tier: 2
+        last_checked: null
+        notes: ""
+      - name: 台达电子 Delta Electronics
+        ticker: "TWSE:2308"
+        market: TW
+        role: 服务器电源(PSU)/电源架霸主，800V HVDC关键卡位
+        moat: 电源效率技术+规模；NVDA下一代供电架构核心伙伴
+        risk: 电源架构变化引入新竞争者
+        tier: 1
+        last_checked: null
+        notes: ""
+      - name: 麦格米特 Megmeet
+        ticker: "SZSE:002851"
+        market: CN-A
+        role: 服务器电源新进入者，NVDA供应链
+        moat: 成本+快速响应
+        risk: 份额与认证进度不及预期
+        tier: 3
+        last_checked: null
+        notes: ""
+
+  - segment: 供电散热-发电与核能
+    companies:
+      - name: GE Vernova
+        ticker: "NYSE:GEV"
+        market: US
+        role: 燃气轮机三巨头之一，数据中心自备电源最现实选择
+        moat: 燃机产能排到数年后；服务长尾
+        risk: 订单转化节奏；估值已高
+        tier: 2
+        last_checked: null
+        notes: ""
+      - name: Oklo
+        ticker: "NYSE:OKLO"
+        market: US
+        role: SMR快堆先锋，数据中心核电叙事核心标的
+        moat: NRC审批进度领先的快堆设计+燃料回收
+        risk: 2028年前无收入；审批/建设延期即杀估值
+        tier: 3   # 彩票型仓位，严格小仓
+        last_checked: null
+        notes: ""
+      - name: 星座能源 Constellation Energy
+        ticker: "NASDAQ:CEG"
+        market: US
+        role: 美国最大核电运营商，数据中心PPA直接受益者
+        moat: 存量核电稀缺不可复制
+        risk: PPA定价政策干预
+        tier: 2
+        last_checked: null
+        notes: ""
+
+  - segment: 土地运营-Neocloud与数据中心
+    companies:
+      - name: CoreWeave
+        ticker: "NASDAQ:CRWV"
+        market: US
+        role: 最大独立GPU云，NVDA嫡系
+        moat: GPU获取优先权+建设速度
+        risk: 重资产高杠杆；大客户(MSFT/OpenAI)合同重定价
+        tier: 2
+        last_checked: null
+        notes: ""
+      - name: Nebius
+        ticker: "NASDAQ:NBIS"
+        market: US
+        role: 欧洲系GPU云，轻杠杆版CoreWeave
+        moat: 自建软件栈+NVDA持股
+        risk: 规模不及头部；客户集中
+        tier: 2
+        last_checked: null
+        notes: ""

@@ -1,0 +1,10 @@
+# local env & secrets
+.env
+*.local
+__pycache__/
+*.pyc
+.venv/
+node_modules/
+
+# data cache (pipelines write here; regenerable)
+data/cache/
