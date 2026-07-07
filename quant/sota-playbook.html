@@ -46,7 +46,7 @@ tr:last-child td{border-bottom:none}
 
 <header>
 <h1>量化 SOTA 玩法全景</h1>
-<div class="sub">myfin · <b>quant 分支</b> v0.1 ｜ 2026-07-07 ｜ 内容来自两轮多代理调研（关键论断 3 票对抗验证）；公司画像补洞轮（R2b，强制一手来源）运行中，回来后升 v0.2。个人研究笔记，不构成投资建议。</div>
+<div class="sub">myfin · <b>quant 分支</b> v0.2 ｜ 2026-07-07 ｜ 内容来自三轮多代理调研（关键论断 3 票对抗验证，R2b 强制一手来源）。配套：<code>quant/plan.md</code> 方案 v0.9。个人研究笔记，不构成投资建议。</div>
 <div class="legend"><span><span class="tag v">✓ 3-0</span> 对抗验证全票通过</span><span><span class="tag m">◐ medium</span> 部分验证/单一来源</span><span><span class="tag x">✗ 证伪</span> 验证否决</span><span><span class="tag no">… 待验证</span> R2b 补洞中</span></div>
 </header>
 
@@ -58,10 +58,10 @@ tr:last-child td{border-bottom:none}
 <div class="tile"><div class="hd"><span class="dot" style="background:var(--s3)"></span><b>机构中频 · 已现裂缝</b></div>
 <p>多因子/ML 选股（Two Sigma、DE Shaw、Millennium pod 制、中国头部私募）。2025 夏季震荡暴露死穴：<b>拥挤</b>。大资金被迫挤在同一批因子里，去杠杆时互相踩踏。<span class="tag v">✓ 3-0</span></p></div>
 <div class="tile"><div class="hd"><span class="dot" style="background:var(--s2)"></span><b>个人优势区 · 我们的地盘</b></div>
-<p>机构因容量/合规/成本<b>做不了</b>的地方：小容量机会、低频高认知决策、跨市场信息传导、拥挤时彻底离场的自由。幻方主动缩表就是反面印证。<span class="tag m">◐ 容量证据已验证，优势区学术证据待 R2b</span></p></div>
+<p>机构因容量/合规/成本<b>做不了</b>的地方：小容量机会、低频高认知决策、跨市场信息传导、拥挤时彻底离场的自由。幻方主动缩表就是反面印证。<span class="tag v">✓ R2b 已补：残存 edge 在小盘（2-1）+ 平方根成本模型（2-1）</span></p></div>
 </div>
 
-<h2><span class="no">02</span>2025-2026 两个已验证的实战数据点</h2>
+<h2><span class="no">02</span>已验证的实战数据点（四个）</h2>
 <div class="card">
 <b>数据点一：2025 夏季量化震荡——拥挤是中频量化的头号死穴 <span class="tag v">✓ 3-0 ×4</span></b>
 <div class="tbl"><table>
@@ -77,8 +77,16 @@ tr:last-child td{border-bottom:none}
 <b>数据点二：幻方主动缩表——容量是机构的镣铐 <span class="tag m">◐ medium（媒体求证，无官方披露）</span></b>
 <p style="color:var(--ink2);font-size:13.5px;margin-top:6px">幻方量化（梁文锋，即 DeepSeek 创始人）：2021 年规模一度破千亿元 → 封盘"只出不进" → 2024 年末约 500-600 亿元。头部机构为保住收益主动交出规模。注意配套证伪：<span class="tag x">✗ "骤降至100多亿"是假消息</span>（财联社定性，源头为匿名微信截图）；<span class="tag x">✗ "九坤/明汯/衍复同处500-600亿梯队" 1-2 否决</span>——中国私募 AUM 数据一律按传闻处理。</p>
 </div>
-<div class="principle"><b>由此固定的两条设计原则</b>
-<p>① <b>拥挤度一票否决</b>：任何信号/标的，拥挤度评分越线直接出局，不许用"但是逻辑很好"翻案。② <b>只做机构做不了的尺寸</b>：容量上限低于机构起投额的机会池，才是小资金该待的地方——"小"本身就是 edge。</p></div>
+<div class="card">
+<b>数据点三（R2b）：Medallion 是"纯 alpha"，不是模板 <span class="tag v">✓ 3-0 ×2</span></b>
+<p style="color:var(--ink2);font-size:13.5px;margin-top:6px">Cornell (2020, <i>JPM</i>) 因子回归：Medallion 1988-2018 费后收益的市场 beta ≈ <b>−1.0</b>、SMB/HML 载荷均为负——收益不是风险溢价，是纯 alpha，个人无法靠承担任何风险暴露复制。<b>连传奇数字都不可靠</b>：<span class="tag x">✗ "年化63.3%" 1-2 否决</span> <span class="tag x">✗ "31年无亏损年" 0-3 否决</span>——把 Medallion 当坐标系上限，别当目标。</p>
+</div>
+<div class="card">
+<b>数据点四（R2b）：客户/供应链动量三段论——Q1 实验的证据链 <span class="tag v">✓ 3-0/3-0/2-1</span></b>
+<p style="color:var(--ink2);font-size:13.5px;margin-top:6px">Pinchuk (2023, arXiv:2301.11394)：① 客户动量是<b>独立信号</b>（不被价格/盈余动量解释）；② <b>发表后衰减</b>——样本外月收益约砍半、市值加权丧失显著性（原始 122/106bps alpha 被 0-3 否决，不可引用）；③ 残存 edge <b>集中在小盘</b>——恰是机构容量放行个人的区间。配套（2-1，AQR 利益相关警示）：价格冲击呈平方根而非线性，小额耐心执行的真实容量高于教科书线性模型估计约 7 倍。</p>
+</div>
+<div class="principle"><b>由此固定的设计原则（已扩至七条，全文见 quant/plan.md）</b>
+<p>① <b>拥挤度一票否决</b>；② <b>只做机构做不了的尺寸</b>——"小"本身就是 edge；③ <b>发表后衰减贴现</b>：已发表异象预期先砍半再讨论；④ 前向验证 / 回测四关 / 无杠杆 / AI 不下单（详见方案 v0.9）。</p></div>
 
 <h2><span class="no">03</span>开源 SOTA：可直接组装的积木</h2>
 <p class="lede">来自 6 路方法论调研（2026-07，star 数与活跃度逐项核实）。原则：<b>借结构与提示词，不搬框架</b>——运行时始终是 Claude Code。</p>
@@ -109,7 +117,7 @@ tr:last-child td{border-bottom:none}
 <tr><td>中频统计套利 / ML 多因子</td><td>截面错定价</td><td><span class="tag m">勉强可行但不该做</span></td><td>正面撞机构最拥挤的地盘（2025 震荡为证）；数据与算力劣势</td></tr>
 <tr><td>CTA / 趋势跟踪</td><td>行为惯性+风险溢价</td><td><span class="tag m">可行</span></td><td>容量大不拥挤个股，但长期收益平庸化，作组合稳定器而非主引擎</td></tr>
 <tr><td>事件驱动（财报/公告/指数调整）</td><td>信息消化速度差</td><td><span class="tag v">友好</span></td><td>低频、认知型、小容量——机构懒得弯腰；PEAD 在小盘的残存待 R2b 验证</td></tr>
-<tr><td>跨市场信息传导（客户→供应商动量）</td><td>市场分割+注意力有限</td><td><span class="tag v">友好·首选实验</span></td><td>美股客户财报 → A股/亚洲供应商，正对我们两条产业链的知识优势；美股同市场版本已衰减，跨市场残留区待验证</td></tr>
+<tr><td>跨市场信息传导（客户→供应商动量）</td><td>市场分割+注意力有限</td><td><span class="tag v">友好·首选实验（证据链已验证）</span></td><td>R2b 补齐：独立信号 3-0 / 发表后衰减 3-0 / 残存在小盘 2-1——跨市场+小盘为残存区假说，Q1 前向实验规格已写死于 quant/plan.md 第四节（唯一可扫参数 N∈{5,10,20}，成功判据注册时锁定）</td></tr>
 <tr><td>小微盘异象</td><td>机构容量进不去</td><td><span class="tag m">可行但危险</span></td><td>2024-02 A股 DMA 崩盘的教训：小容量机会+杠杆+拥挤=挤兑现场，只可无杠杆小仓</td></tr>
 <tr><td>基本面量化 / quantamental</td><td>认知深度×纪律执行</td><td><span class="tag v">友好·即主线</span></td><td>这就是主分支在做的事——量化在此的角色是给论点提供数据武器，不是替代论点</td></tr>
 </table></div>
@@ -129,7 +137,7 @@ tr:last-child td{border-bottom:none}
 <p>① 拥挤度一票否决；② 只做机构做不了的尺寸；③ 一切验证只认前向（创建日快照起算）；④ 回测过四关（多重检验/摩擦×0.7/前视/前向）；⑤ 无杠杆、AI 不下单、亏光不影响生活的钱。</p></div>
 </div>
 
-<div class="note">⚠️ 诚实声明：第 01/05 节中机构画像与部分可复制性判断尚未经一手来源验证（标 <span class="tag no">…待验证</span> 或"初判"），R2b（强制 SEC/法庭文件/经审计披露级来源）完成后本页升级 v0.2 并修订错误。已验证与被证伪的内容均标注票数，出处见 <code>docs/research/2026-07-07-quant-firms-r2a.md</code>。</div>
+<div class="note">⚠️ 诚实声明（v0.2）：R2b 已完成——可复制性矩阵三个关键格子（Medallion 上限坐标 / 小盘低容量可行区 / 成本模型修正）已获验证。仍无确证：Jane Street/Citadel Sec/Millennium 关键数字、失败案例共同死因（含 2024-02 A股 DMA 崩盘监管文书）、组织设计可移植性——列入 R2c 定向补洞队列。出处：<code>quant/research/2026-07-07-quant-firms-r2b.md</code>、<code>docs/research/2026-07-07-quant-firms-r2a.md</code>。</div>
 
 <div class="foot">myfin quant 分支 · 生成于 2026-07-07 · 验证方法：多代理搜索 → 来源精读 → 每论断 3 票对抗验证（1×Opus 4.8 + 2×Sonnet 5）→ Fable 5 综合 ｜ 不构成投资建议</div>
 </div></body></html>
