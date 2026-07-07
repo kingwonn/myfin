@@ -1,0 +1,135 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex">
+<title>量化 SOTA 玩法全景 · quant 分支</title>
+<style>
+:root{--surface:#fcfcfb;--plane:#f9f9f7;--ink:#0b0b0b;--ink2:#52514e;--muted:#898781;
+--grid:#e1e0d9;--border:rgba(11,11,11,.10);--s1:#2a78d6;--s2:#1baf7a;--s3:#eda100;--crit:#d03b3b;
+--good:#0ca30c;--chip:#f0efec}
+:root[data-theme=dark]{--surface:#1a1a19;--plane:#0d0d0d;--ink:#fff;--ink2:#c3c2b7;--grid:#2c2c2a;
+--border:rgba(255,255,255,.10);--s1:#3987e5;--s2:#199e70;--s3:#c98500;--chip:#383835;--crit:#e66767}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--surface:#1a1a19;--plane:#0d0d0d;--ink:#fff;
+--ink2:#c3c2b7;--grid:#2c2c2a;--border:rgba(255,255,255,.10);--s1:#3987e5;--s2:#199e70;--s3:#c98500;--chip:#383835;--crit:#e66767}}
+*{box-sizing:border-box;margin:0}
+body{background:var(--plane);color:var(--ink);font:15px/1.7 system-ui,-apple-system,"Segoe UI",sans-serif;padding:0 0 72px}
+a{color:var(--s1);text-decoration:none}a:hover{text-decoration:underline}
+.wrap{max-width:940px;margin:0 auto;padding:0 22px}
+header{padding:34px 0 6px}
+h1{font-size:24px;letter-spacing:.3px;text-wrap:balance}
+.sub{color:var(--ink2);font-size:13.5px;margin-top:6px;max-width:64ch}
+h2{font-size:18px;margin:38px 0 4px}
+h2 .no{color:var(--muted);font-weight:600;margin-right:8px;font-variant-numeric:tabular-nums}
+.lede{color:var(--ink2);font-size:13.5px;margin:0 0 14px;max-width:70ch}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px 20px;margin:12px 0}
+table{border-collapse:collapse;width:100%;font-size:13.5px}
+th{color:var(--muted);font-weight:600;text-align:left;font-size:12px;letter-spacing:.4px}
+th,td{border-bottom:1px solid var(--grid);padding:9px 10px;vertical-align:top}
+tr:last-child td{border-bottom:none}
+.tbl{overflow-x:auto}
+.tag{display:inline-block;font-size:11px;padding:1px 8px;border-radius:9px;background:var(--chip);color:var(--ink2);white-space:nowrap}
+.tag.v{color:var(--good);font-weight:700}
+.tag.m{color:var(--s3);font-weight:600}
+.tag.x{color:var(--crit);font-weight:700}
+.tag.no{color:var(--muted)}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin:16px 0}
+.tile{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px 18px}
+.tile b{font-size:15px}
+.tile p{color:var(--ink2);font-size:13px;margin-top:6px}
+.tile .hd{display:flex;align-items:baseline;gap:8px}
+.dot{width:9px;height:9px;border-radius:50%;flex:none;position:relative;top:-1px}
+.principle{border-left:3px solid var(--s1);padding:4px 0 4px 14px;margin:14px 0}
+.principle b{display:block;margin-bottom:2px}
+.principle p{color:var(--ink2);font-size:13.5px;max-width:72ch}
+.note{background:var(--chip);border-radius:10px;padding:12px 16px;font-size:13px;color:var(--ink2);margin:14px 0}
+.foot{margin-top:46px;color:var(--muted);font-size:12px;border-top:1px solid var(--grid);padding-top:14px}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--muted);margin:10px 0 0}
+</style></head><body><div class="wrap">
+
+<header>
+<h1>量化 SOTA 玩法全景</h1>
+<div class="sub">myfin · <b>quant 分支</b> v0.1 ｜ 2026-07-07 ｜ 内容来自两轮多代理调研（关键论断 3 票对抗验证）；公司画像补洞轮（R2b，强制一手来源）运行中，回来后升 v0.2。个人研究笔记，不构成投资建议。</div>
+<div class="legend"><span><span class="tag v">✓ 3-0</span> 对抗验证全票通过</span><span><span class="tag m">◐ medium</span> 部分验证/单一来源</span><span><span class="tag x">✗ 证伪</span> 验证否决</span><span><span class="tag no">… 待验证</span> R2b 补洞中</span></div>
+</header>
+
+<h2><span class="no">01</span>三层格局：谁在玩什么</h2>
+<p class="lede">把整个量化世界压成三层——看清哪层永远进不去，哪层可以白嫖，哪层才是我们的地盘。</p>
+<div class="tiles">
+<div class="tile"><div class="hd"><span class="dot" style="background:var(--crit)"></span><b>机构级 · 个人不可入</b></div>
+<p>高频做市（Citadel Sec / Jane Street / Jump / HRT / XTX）与 Medallion 式全封闭统计套利。edge = 速度（微秒级基础设施）+ 交易所会员 + 独家数据 + 千次试错的本钱。工具已开源，但这三样开不了源。<span class="tag no">画像数字待 R2b 核实</span></p></div>
+<div class="tile"><div class="hd"><span class="dot" style="background:var(--s3)"></span><b>机构中频 · 已现裂缝</b></div>
+<p>多因子/ML 选股（Two Sigma、DE Shaw、Millennium pod 制、中国头部私募）。2025 夏季震荡暴露死穴：<b>拥挤</b>。大资金被迫挤在同一批因子里，去杠杆时互相踩踏。<span class="tag v">✓ 3-0</span></p></div>
+<div class="tile"><div class="hd"><span class="dot" style="background:var(--s2)"></span><b>个人优势区 · 我们的地盘</b></div>
+<p>机构因容量/合规/成本<b>做不了</b>的地方：小容量机会、低频高认知决策、跨市场信息传导、拥挤时彻底离场的自由。幻方主动缩表就是反面印证。<span class="tag m">◐ 容量证据已验证，优势区学术证据待 R2b</span></p></div>
+</div>
+
+<h2><span class="no">02</span>2025-2026 两个已验证的实战数据点</h2>
+<div class="card">
+<b>数据点一：2025 夏季量化震荡——拥挤是中频量化的头号死穴 <span class="tag v">✓ 3-0 ×4</span></b>
+<div class="tbl"><table>
+<tr><th>事实</th><th>数字</th></tr>
+<tr><td>2025-06-01 → 07-25 量化股票多空收益（高盛主经纪商样本）</td><td><b>−4.2%</b>，同期美股 <b>+8%</b> 创新高；主观多空经理无类似损失</td></tr>
+<tr><td>死因</td><td>拥挤因子平仓 → 非线性因子交互，集中于做空比例前 20% 股票（高做空股暴涨打爆空头腿），超出线性模型（Barra）预测</td></tr>
+<tr><td>先行信号</td><td>MSCI 因子拥挤度评分：动量/质量/做空比例/市值四因子尾部相关性同步下降 = 拥挤头寸系统性削减</td></tr>
+<tr><td>性质</td><td>7 月下旬因子反转、损失部分收复 → 周期性去杠杆，非策略失效 <span class="tag m">◐ 2-1</span></td></tr>
+</table></div>
+<p style="color:var(--ink2);font-size:13px;margin-top:8px">来源：<a href="https://www.msci.com/research-and-insights/blog-post/unraveling-summer-2025s-quant-fund-wobble">MSCI《Unraveling Summer 2025's Quant Fund Wobble》</a> + FT/Bloomberg 交叉验证</p>
+</div>
+<div class="card">
+<b>数据点二：幻方主动缩表——容量是机构的镣铐 <span class="tag m">◐ medium（媒体求证，无官方披露）</span></b>
+<p style="color:var(--ink2);font-size:13.5px;margin-top:6px">幻方量化（梁文锋，即 DeepSeek 创始人）：2021 年规模一度破千亿元 → 封盘"只出不进" → 2024 年末约 500-600 亿元。头部机构为保住收益主动交出规模。注意配套证伪：<span class="tag x">✗ "骤降至100多亿"是假消息</span>（财联社定性，源头为匿名微信截图）；<span class="tag x">✗ "九坤/明汯/衍复同处500-600亿梯队" 1-2 否决</span>——中国私募 AUM 数据一律按传闻处理。</p>
+</div>
+<div class="principle"><b>由此固定的两条设计原则</b>
+<p>① <b>拥挤度一票否决</b>：任何信号/标的，拥挤度评分越线直接出局，不许用"但是逻辑很好"翻案。② <b>只做机构做不了的尺寸</b>：容量上限低于机构起投额的机会池，才是小资金该待的地方——"小"本身就是 edge。</p></div>
+
+<h2><span class="no">03</span>开源 SOTA：可直接组装的积木</h2>
+<p class="lede">来自 6 路方法论调研（2026-07，star 数与活跃度逐项核实）。原则：<b>借结构与提示词，不搬框架</b>——运行时始终是 Claude Code。</p>
+<div class="tbl"><table>
+<tr><th>项目</th><th>规模/出处</th><th>核心玩法</th><th>我们拿走什么</th></tr>
+<tr><td><a href="https://github.com/TauricResearch/TradingAgents">TradingAgents</a></td><td>91.5k★ · Apache-2.0</td><td>模拟整个交易公司：四类分析师 → 多空辩论 → 交易员拍板 → 风控三方审议</td><td>bull/bear 对抗 + 三方风控辩论结构（已移植进 /thesis 技能）</td></tr>
+<tr><td><a href="https://github.com/virattt/ai-hedge-fund">ai-hedge-fund</a></td><td>60.9k★ · MIT</td><td>19 个投资大师 persona 各出带置信度的信号，风控与组合经理分权</td><td>多风格评审团（价值/逆向/尾部风险）+ 风控只设约束不做方向</td></tr>
+<tr><td><a href="https://github.com/microsoft/RD-Agent">RD-Agent(Q)</a></td><td>13.8k★ · MIT · NeurIPS 2025</td><td>LLM 多智能体自动"提假设→写码→回测→进化"因子工厂，与 Qlib 打通；自报 A 股回测 up to 2× ARR、成本&lt;$10/轮</td><td>假设-验证-反馈闭环范式；README 自带"非投资就绪"免责——当基线不当预期</td></tr>
+<tr><td><a href="https://github.com/HKUDS/Vibe-Trading">Vibe-Trading</a></td><td>18.3k★ · 港大 · 2026 新星</td><td>自然语言→可运行量化研究：456 因子库带 AST 前视偏差静态检查、18 数据源智能降级、MCP 化</td><td><b>AST 防前视偏差机制</b>（任何回测代码标配）+ 技能库化思路</td></tr>
+<tr><td><a href="https://github.com/hsliuping/TradingAgents-CN">TradingAgents-CN</a></td><td>29.9k★</td><td>A股/港股本地化：Tushare/AKShare 适配、国产 LLM 接入</td><td>A 股数据源封装与降级策略的现成参考</td></tr>
+<tr><td><a href="https://github.com/microsoft/qlib">Qlib</a></td><td>45.9k★ · MIT</td><td>AI 量化全流水线（数据→训练→嵌套回测），策略超市</td><td>若走因子路线的基座（P3 观察）</td></tr>
+</table></div>
+
+<h2><span class="no">04</span>学术 SOTA：四个值得偷的想法</h2>
+<div class="tbl"><table>
+<tr><th>论文/系统</th><th>出处</th><th>一句话玩法</th><th>并入我们系统的形态</th></tr>
+<tr><td>FinMem</td><td>arXiv 2311.13743</td><td>记忆按信息时效性分层衰减（新闻=天级、财报=季级、商业模式=年级）</td><td>已并入：/scan 事件半衰期标注</td></tr>
+<tr><td>FinCon</td><td>NeurIPS 2024</td><td>CVRF"言语强化"：定期对比两轮表现，把教训提炼成可引用的投资信念定向广播</td><td>已并入：/retro 信念沉淀 → journal/beliefs.md</td></tr>
+<tr><td>Trading-R1</td><td>arXiv 2509.11420</td><td>强制结构化投资论文：每个 claim 必须绑定 evidence，决策带波动率语境</td><td>已并入：论点模板 claim-evidence 绑定</td></tr>
+<tr><td>DeepFund / Agent Market Arena</td><td>NeurIPS'25 / WWW 2026</td><td>LLM 预训练含历史行情 → 回看式回测必被记忆污染，只认知识截止日之后的前向实盘评测；架构差异 &gt; 模型档次差异</td><td>已并入：前向验证纪律（系统级禁令）</td></tr>
+</table></div>
+
+<h2><span class="no">05</span>策略族 × 个人可复制性（初判）</h2>
+<p class="lede">初判版——待 R2b 的一手来源矩阵回来后修订。可行性含义：个人资金 + 开源工具 + AI 协作的现实约束下。</p>
+<div class="tbl"><table>
+<tr><th>策略族</th><th>收益本质</th><th>个人可行性</th><th>关键约束/机会</th></tr>
+<tr><td>高频做市 / 延迟套利</td><td>速度与库存管理</td><td><span class="tag x">不可行</span></td><td>微秒级基础设施+交易所会员，门票千万美元级</td></tr>
+<tr><td>中频统计套利 / ML 多因子</td><td>截面错定价</td><td><span class="tag m">勉强可行但不该做</span></td><td>正面撞机构最拥挤的地盘（2025 震荡为证）；数据与算力劣势</td></tr>
+<tr><td>CTA / 趋势跟踪</td><td>行为惯性+风险溢价</td><td><span class="tag m">可行</span></td><td>容量大不拥挤个股，但长期收益平庸化，作组合稳定器而非主引擎</td></tr>
+<tr><td>事件驱动（财报/公告/指数调整）</td><td>信息消化速度差</td><td><span class="tag v">友好</span></td><td>低频、认知型、小容量——机构懒得弯腰；PEAD 在小盘的残存待 R2b 验证</td></tr>
+<tr><td>跨市场信息传导（客户→供应商动量）</td><td>市场分割+注意力有限</td><td><span class="tag v">友好·首选实验</span></td><td>美股客户财报 → A股/亚洲供应商，正对我们两条产业链的知识优势；美股同市场版本已衰减，跨市场残留区待验证</td></tr>
+<tr><td>小微盘异象</td><td>机构容量进不去</td><td><span class="tag m">可行但危险</span></td><td>2024-02 A股 DMA 崩盘的教训：小容量机会+杠杆+拥挤=挤兑现场，只可无杠杆小仓</td></tr>
+<tr><td>基本面量化 / quantamental</td><td>认知深度×纪律执行</td><td><span class="tag v">友好·即主线</span></td><td>这就是主分支在做的事——量化在此的角色是给论点提供数据武器，不是替代论点</td></tr>
+</table></div>
+
+<h2><span class="no">06</span>我们的 quant 分支路线</h2>
+<div class="card">
+<b>定位</b>
+<p style="color:var(--ink2);font-size:13.5px;margin:6px 0 12px">副线，服务主线。第一性原则：<b>不和机构拼它们的强项（速度/数据/容量），只在它们弯不下腰的地方捡钱。</b></p>
+<div class="tbl"><table>
+<tr><th>阶段</th><th>内容</th><th>开启条件</th></tr>
+<tr><td>Q0（当前）</td><td>SOTA 情报收集（本页）+ R2b 可复制性矩阵 + 方案定稿 docs/05-quant-plan.md</td><td>进行中</td></tr>
+<tr><td>Q1</td><td>首个前向实验：<b>跨市场供应链动量</b>——用 vectorbt 验证"美股客户财报超预期 → A股/亚洲供应商 N 日持有"，AST 防前视 + 多重检验纪律 + 结果×0.7</td><td>主线日/周环稳定跑 4 周 + GitHub 写权限 + 用户点头</td></tr>
+<tr><td>Q2</td><td>事件驱动信号库（财报/公告/指数调整），只做纸面前向跟踪，统计命中率</td><td>Q1 前向窗口 ≥3 个月且未被证伪</td></tr>
+<tr><td>Q3</td><td>若前两步存活：小仓实钱，规则全部代码化（riskguard 类熔断），AI 永不碰扳机</td><td>Q2 命中率与回撤达标 + 复盘无纪律违规</td></tr>
+</table></div>
+<div class="principle" style="margin-top:14px"><b>quant 分支五条铁律</b>
+<p>① 拥挤度一票否决；② 只做机构做不了的尺寸；③ 一切验证只认前向（创建日快照起算）；④ 回测过四关（多重检验/摩擦×0.7/前视/前向）；⑤ 无杠杆、AI 不下单、亏光不影响生活的钱。</p></div>
+</div>
+
+<div class="note">⚠️ 诚实声明：第 01/05 节中机构画像与部分可复制性判断尚未经一手来源验证（标 <span class="tag no">…待验证</span> 或"初判"），R2b（强制 SEC/法庭文件/经审计披露级来源）完成后本页升级 v0.2 并修订错误。已验证与被证伪的内容均标注票数，出处见 <code>docs/research/2026-07-07-quant-firms-r2a.md</code>。</div>
+
+<div class="foot">myfin quant 分支 · 生成于 2026-07-07 · 验证方法：多代理搜索 → 来源精读 → 每论断 3 票对抗验证（1×Opus 4.8 + 2×Sonnet 5）→ Fable 5 综合 ｜ 不构成投资建议</div>
+</div></body></html>
