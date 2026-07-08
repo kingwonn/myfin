@@ -46,11 +46,11 @@ segments:
         ticker: "KRX:000660"
         market: KR
         role: HBM市占率第一，英伟达主力供应商
-        moat: HBM良率与MR-MUF封装工艺领先一代；与NVDA深度绑定
-        risk: HBM4三家同时过认证(2-1)——竞争转向良率与价格；2027供需反转风险
+        moat: 份额62%(2025Q2, Counterpoint 3-0)+MR-MUF工艺；三大厂合约"绝对定价权"(3-0)
+        risk: HBM4E先发窗口已从"年"级压缩到约3周(三星5-29首发→海力士6-18跟进)——代际垄断红利消失，HBM从卡位窄门退化为寡头定价权故事；2027供需反转
         tier: 1
-        last_checked: 2026-07-07
-        notes: "R5: 前三大厂'绝对定价权'、2027合约价或倍增(TrendForce 3-0)；HBM投片占DRAM 18%→30%(2025→2027)。'海力士62%份额'口径0-3被否，引用注意"
+        last_checked: 2026-07-08
+        notes: "R5完整版: 窄门排序降档至#7。'美光持久反超三星'0-3证伪——三星HBM4已量产且6月营收破10亿美元"
       - name: 美光 Micron
         ticker: "NASDAQ:MU"
         market: US
@@ -67,11 +67,11 @@ segments:
         ticker: "NYSE:TSM"
         market: TW/US
         role: 先进制程+CoWoS先进封装双咽喉，所有AI芯片的物理必经之路
-        moat: 制程代差+封装产能独占；客户无第二选择
-        risk: 地缘冲突；CoWoS产能过剩(2027后)
+        moat: 制程代差+封装产能独占；CoWoS双线订满、需求两年2.7倍、NVDA占配额~60%
+        risk: 地缘冲突；CoWoS窄门正在关闭——产能一年+63%、缺口20%→10%、过剩风险最早2027；Amkor亚利桑那70亿美元成美国第二来源
         tier: 1
-        last_checked: null
-        notes: ""
+        last_checked: 2026-07-08
+        notes: "R5完整版: CoWoS=时限窄门(2027关窗)+CoPoS 2028-29接力。台积电整体确定性不变，封装溢价故事有截止日"
 
   - segment: 互连-网络与交换
     companies:
