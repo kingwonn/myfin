@@ -101,19 +101,19 @@ segments:
         market: CN-A
         role: 全球高速光模块(800G/1.6T)出货第一
         moat: 高速率产品良率与交付规模全球领先；绑定北美大客户
-        risk: CPO替代可插拔快于预期；美国关税/供应链去中化
+        risk: LightCounting警示2026产能将超需求(3-0)；CPO替代观察窗2028+；"2030年千亿市场"是乐观情景勿作估值锚
         tier: 1
-        last_checked: null
-        notes: ""
+        last_checked: 2026-07-08
+        notes: "R4终版: 窗口期生意——H1'26仍~30%缺货,年底趋平衡。证伪触发器: 2026H2起scale-up CPO出货显著超'2030-31仅10-15%迁移'的基准节奏则重估"
       - name: 新易盛 Eoptolink
         ticker: "SZSE:300502"
         market: CN-A
         role: 高速光模块头部，利润率弹性大
-        moat: 成本控制+LPO/1.6T卡位
-        risk: 同上（CPO路线+地缘）
+        moat: 成本控制+LPO/1.6T卡位(1.6T芯片组市场2026E>20亿美元)
+        risk: 同旭创——产能超需求警示+CPO 2028+观察窗+乐观情景估值锚风险
         tier: 1
-        last_checked: null
-        notes: ""
+        last_checked: 2026-07-08
+        notes: "R4终版: 同旭创证伪触发器管理"
       - name: Coherent
         ticker: "NYSE:COHR"
         market: US
@@ -122,7 +122,7 @@ segments:
         risk: 6吋产能放量后瓶颈溢价消退；运营效率弱于中国同行
         tier: 1
         last_checked: 2026-07-08
-        notes: "R4: 记录级订单(800G+1.6T step-function增长, Q1FY26电话会3-0)。窄门排序#3"
+        notes: "R4终版: 2026年产能基本订满、订单排至2027-2028(3-0)——行业过剩警示下的头部分化受益方。窄门排序#3(InP上游)"
       - name: Lumentum
         ticker: "NASDAQ:LITE"
         market: US
