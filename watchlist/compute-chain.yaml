@@ -177,12 +177,12 @@ segments:
       - name: 伊顿 Eaton
         ticker: "NYSE:ETN"
         market: US
-        role: 数据中心配电设备核心供应商
-        moat: 电气设备认证与渠道；订单积压深
-        risk: 电力设备供给瓶颈缓解后估值回归；800VDC/SST路线中期分流传统配电设备
-        tier: 2
-        last_checked: 2026-07-07
-        notes: "R3(8-K 3-0): Q1'26电气积压+48%、数据中心订单+240% vs 收入+50%——积压堆积远超交付。NVDA 800VDC生态点名成员"
+        role: 传统配电(确定性最高)+SST/800VDC(最低拥挤早期窄门)双卡位
+        moat: 电气积压+48%、book-to-bill 1.2创纪录、DC订单+240%(8-K 3-0)；SST近十个试点含超大云厂商，2026H2正式订单、2027底交付(电话会3-0)——新旧路线两头都有位置
+        risk: 传统配电已近共识交易；SST订单节点(2026H2)不兑现则早期窄门论据失效
+        tier: 1
+        last_checked: 2026-07-08
+        notes: "R3完整版: T2→T1。跟踪点=2026H2 SST订单公告"
       - name: 台达电子 Delta Electronics
         ticker: "TWSE:2308"
         market: TW
@@ -225,12 +225,21 @@ segments:
       - name: 星座能源 Constellation Energy
         ticker: "NASDAQ:CEG"
         market: US
-        role: 美国最大核电运营商，数据中心PPA直接受益者
-        moat: 存量核电稀缺不可复制
-        risk: PPA定价政策干预
+        role: 美国最大核电运营商——并网稀缺时代的存量共址电源
+        moat: 存量核电稀缺不可复制；FERC EL25-49裁定+RM26-4规则制定=co-location监管路径落地(3-0)；PJM容量拍卖顶格成交仍短缺6,623MW
+        risk: PPA定价政策干预；共址规则最终版可能附加输电费用
+        tier: 1
+        last_checked: 2026-07-08
+        notes: "R3完整版: T2→T1。并网稀缺受益方案在窄门排序升至#2"
+      - name: Bloom Energy
+        ticker: "NYSE:BE"
+        market: US
+        role: SOFC燃料电池——"等不起并网"的桥接电源核心供给方
+        moat: FY25总backlog~200亿美元、产品backlog~60亿同比2.5倍(8-K 3-0×3)；营收+37%
+        risk: 高估值高波动；燃机/并网提速会压缩桥接窗口；AEP大单细节未验证
         tier: 2
-        last_checked: null
-        notes: ""
+        last_checked: 2026-07-08
+        notes: "R3完整版新增"
 
   - segment: 土地运营-Neocloud与数据中心
     companies:
