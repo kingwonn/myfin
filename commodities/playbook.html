@@ -1,0 +1,114 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex">
+<title>大宗商品玩法全景 · commodities 分支</title>
+<style>
+:root{--surface:#fcfcfb;--plane:#f9f9f7;--ink:#0b0b0b;--ink2:#52514e;--muted:#898781;
+--grid:#e1e0d9;--border:rgba(11,11,11,.10);--s1:#2a78d6;--s2:#1baf7a;--s3:#eda100;--crit:#d03b3b;
+--good:#0ca30c;--chip:#f0efec}
+:root[data-theme=dark]{--surface:#1a1a19;--plane:#0d0d0d;--ink:#fff;--ink2:#c3c2b7;--grid:#2c2c2a;
+--border:rgba(255,255,255,.10);--s1:#3987e5;--s2:#199e70;--s3:#c98500;--chip:#383835;--crit:#e66767}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--surface:#1a1a19;--plane:#0d0d0d;--ink:#fff;
+--ink2:#c3c2b7;--grid:#2c2c2a;--border:rgba(255,255,255,.10);--s1:#3987e5;--s2:#199e70;--s3:#c98500;--chip:#383835;--crit:#e66767}}
+*{box-sizing:border-box;margin:0}
+body{background:var(--plane);color:var(--ink);font:15px/1.7 system-ui,-apple-system,"Segoe UI",sans-serif;padding:0 0 72px}
+a{color:var(--s1);text-decoration:none}a:hover{text-decoration:underline}
+.wrap{max-width:940px;margin:0 auto;padding:0 22px}
+header{padding:34px 0 6px}
+h1{font-size:24px;letter-spacing:.3px;text-wrap:balance}
+.sub{color:var(--ink2);font-size:13.5px;margin-top:6px;max-width:64ch}
+h2{font-size:18px;margin:38px 0 4px}
+h2 .no{color:var(--muted);font-weight:600;margin-right:8px;font-variant-numeric:tabular-nums}
+.lede{color:var(--ink2);font-size:13.5px;margin:0 0 14px;max-width:70ch}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px 20px;margin:12px 0}
+table{border-collapse:collapse;width:100%;font-size:13.5px}
+th{color:var(--muted);font-weight:600;text-align:left;font-size:12px;letter-spacing:.4px}
+th,td{border-bottom:1px solid var(--grid);padding:9px 10px;vertical-align:top}
+tr:last-child td{border-bottom:none}
+.tbl{overflow-x:auto}
+.tag{display:inline-block;font-size:11px;padding:1px 8px;border-radius:9px;background:var(--chip);color:var(--ink2);white-space:nowrap}
+.tag.v{color:var(--good);font-weight:700}
+.tag.m{color:var(--s3);font-weight:600}
+.tag.x{color:var(--crit);font-weight:700}
+.tag.no{color:var(--muted)}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin:16px 0}
+.tile{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px 18px}
+.tile b{font-size:15px}
+.tile p{color:var(--ink2);font-size:13px;margin-top:6px}
+.tile .hd{display:flex;align-items:baseline;gap:8px}
+.dot{width:9px;height:9px;border-radius:50%;flex:none;position:relative;top:-1px}
+.principle{border-left:3px solid var(--s1);padding:4px 0 4px 14px;margin:14px 0}
+.principle b{display:block;margin-bottom:2px}
+.principle p{color:var(--ink2);font-size:13.5px;max-width:72ch}
+.note{background:var(--chip);border-radius:10px;padding:12px 16px;font-size:13px;color:var(--ink2);margin:14px 0}
+.foot{margin-top:46px;color:var(--muted);font-size:12px;border-top:1px solid var(--grid);padding-top:14px}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--muted);margin:10px 0 0}
+</style></head><body><div class="wrap">
+<header>
+<h1>大宗商品玩法全景</h1>
+<div class="sub">myfin · <b>commodities 分支</b> v0.1 ｜ 2026-07-08 ｜ C1 全景调研（107 代理，3 票对抗验证）产出。已验证与被证伪内容均标注票数；零覆盖区如实列为待补。个人研究笔记，不构成投资建议。</div>
+<div class="legend"><span><span class="tag v">✓ 3-0</span> 全票通过</span><span><span class="tag m">◐ 2-1/medium</span> 部分验证</span><span><span class="tag x">✗ 证伪</span> 验证否决</span><span><span class="tag no">… C2 待补</span> 零幸存声明区</span></div>
+</header>
+
+<h2><span class="no">01</span>先想清楚：商品线在系统里的角色</h2>
+<div class="tiles">
+<div class="tile"><div class="hd"><span class="dot" style="background:var(--s2)"></span><b>角色一 · 主线的跨市场验证器</b></div>
+<p>本轮最大收获：<b>~101GW 表后燃气机组已宣布、&gt;57GW 已下设备订单</b><span class="tag v">✓</span>——这是主线 GEV 燃机论点需求侧的独立实证。铜的 7-10 年矿山投产周期与主线"电力设备供给弹性陷阱"同构。商品数据先于股票财报反映产业链真相。</p></div>
+<div class="tile"><div class="hd"><span class="dot" style="background:var(--s1)"></span><b>角色二 · 独立收益线（门槛化）</b></div>
+<p>期货保证金仅名义 3-12% = 隐含 8-33 倍杠杆<span class="tag v">✓</span>，资本效率与爆仓风险同源。任何实验先过 C 阶段门（见 06），未定稿前零仓位。</p></div>
+<div class="tile"><div class="hd"><span class="dot" style="background:var(--crit)"></span><b>不碰清单</b></div>
+<p>实物贸易/仓储套利（Vitol 们的地盘：物流+融资+信息，个人无一可得）、商品高频、杠杆化单品种赌方向、长持 contango 品种的 ETF（展期损耗机制已验证<span class="tag v">✓</span>）。</p></div>
+</div>
+
+<h2><span class="no">02</span>市场结构 101（全部经验证的必修课）</h2>
+<div class="card"><div class="tbl"><table>
+<tr><th>概念</th><th>要点</th><th>票</th></tr>
+<tr><td>保证金</td><td>履约担保金而非贷款；名义 3-12%（股票 Reg T 50%）；两级制，破维持线补至初始</td><td><span class="tag v">✓ 3-0 ×3</span></td></tr>
+<tr><td>Contango / Backwardation</td><td>远月&gt;近月=升水（做多展期为负收益）；贴水则为正。累计展期损益可与整笔盈亏同量级——商品 ETF 长期损耗的机制根源</td><td><span class="tag v">✓ 3-0 ×2</span></td></tr>
+<tr><td>收益分解</td><td>总回报 ≈ 现货收益 + 展期收益 + 抵押品利息</td><td><span class="tag v">✓ 3-0</span></td></tr>
+<tr><td>COT 持仓报告</td><td>CFTC 每周五发布周二持仓，商业/非商业与四分类——股票市场没有的免费机构持仓透明度。注意：Managed Money≠CTA 的简单等号（该引申 1-2 被否）</td><td><span class="tag v">✓ 3-0</span> <span class="tag x">✗引申</span></td></tr>
+<tr><td>定价中枢</td><td>铜价格发现 2001-2013 样本：COMEX &gt; SHFE &gt; LME——挑战"LME 中枢"常识，但样本陈旧不可外推</td><td><span class="tag m">◐</span></td></tr>
+</table></div></div>
+
+<h2><span class="no">03</span>AI 需求映射（已验证数字）</h2>
+<div class="card"><div class="tbl"><table>
+<tr><th>品种</th><th>已验证事实</th><th>票</th></tr>
+<tr><td><b>铜 · 窄门首选</b></td><td>数据中心铜需求 110 万吨(2025)→250 万吨(2040, S&amp;P 基准，区间 170-270)；<b>无重大新矿则 2040 全球缺口 1000 万吨（≈需求 24%），S&amp;P 称"系统性风险"</b>；矿山投产周期 7-10 年</td><td><span class="tag v">✓ 3-0 ×2</span></td></tr>
+<tr><td>电力(美国)</td><td>数据中心用电占比 ~5%(2025)→14%(2030)，EPRI 区间 9-17% 内的进取主流值</td><td><span class="tag v">✓ 3-0</span></td></tr>
+<tr><td>电力(全球)</td><td>数据中心用电 415TWh(2024)→~945TWh(2030, IEA 基准)</td><td><span class="tag m">◐ 2-1</span></td></tr>
+<tr><td><b>天然气</b></td><td>气为数据中心最大单一边际电源(+130~175TWh 两口径并存)；美国数据中心气需求 2030 达 6.1 Bcf/d(RBC)；<b>101GW 表后燃机已宣布、57GW 已下设备订单</b>(7GW 在建为最软口径)</td><td><span class="tag v">✓ 3-0 ×2</span> <span class="tag m">◐部分</span></td></tr>
+<tr><td>铀/稀土/白银/镓锗锑</td><td>本轮零幸存声明——供需缺口/库存/价格分位全部待 C2 专项</td><td><span class="tag no">… C2</span></td></tr>
+</table></div></div>
+
+<h2><span class="no">04</span>个人可行策略初判</h2>
+<div class="card"><div class="tbl"><table>
+<tr><th>策略</th><th>证据</th><th>判定</th></tr>
+<tr><td>矿业股论点驱动</td><td>与主线方法完全同构（护城河=矿山品位与成本曲线，证伪=供给投产）；铜矿股是"铜窄门"的股票化表达</td><td><span class="tag v">首选 · 走主线流程</span></td></tr>
+<tr><td>趋势跟踪(分散多品种)</td><td>百年证据最强：1880-2016 全 67 市场每个十年均正收益、危机 alpha 8/10<span class="tag v">✓3-0×2</span>；但为假设性回测(AQR 自认可能高估+利益相关)，且 2025 年 SG Trend 实盘 -9.3% YTD<span class="tag v">✓</span>——须有多年承受力</td><td><span class="tag m">可行 · 需 C3 门槛</span></td></tr>
+<tr><td>供给冲击事件驱动</td><td>逻辑同主线物理证据链；案例库(原油宝/伦镍)本轮零验证</td><td><span class="tag no">待 C2 案例课</span></td></tr>
+<tr><td>内外盘价差</td><td>相关声明(95.98% 相关性/套利公式细节/INE 定价权)全部 1-2/0-3 被否</td><td><span class="tag x">证据不足 · 搁置</span></td></tr>
+</table></div></div>
+
+<h2><span class="no">05</span>商品侧窄门候选 v0.1</h2>
+<div class="card"><div class="tbl"><table>
+<tr><th>#</th><th>候选</th><th>确定性</th><th>供给弹性</th><th>依据</th></tr>
+<tr><td>1</td><td><b>铜</b>（表达优先级：矿业股论点 &gt; 期货 &gt; ETF）</td><td>高<span class="tag v">✓</span></td><td>极低（7-10 年投产）</td><td>2040 缺口 1000 万吨"系统性风险"；拥挤度待 C2 量化</td></tr>
+<tr><td>2</td><td>天然气链（气电需求侧）</td><td>高<span class="tag v">✓</span></td><td>中</td><td>101GW 表后燃机宣布量；与主线 GEV 论点互证——优先作为主线验证信号而非独立仓位</td></tr>
+<tr><td>3</td><td>铀（核电重启×SMR）</td><td>待研</td><td>预计低</td><td>C2 专项后定级</td></tr>
+<tr><td>4</td><td>稀土/钕铁硼（人形×管制）</td><td>待研</td><td>—</td><td>与 Physical AI 线协同，C2 专项</td></tr>
+</table></div></div>
+
+<h2><span class="no">06</span>C 阶段路线（复制 quant 分支的门槛模式）</h2>
+<div class="card"><div class="tbl"><table>
+<tr><th>阶段</th><th>内容</th><th>开启条件</th></tr>
+<tr><td>C0 ✅</td><td>分支章程+调研立项</td><td>完成</td></tr>
+<tr><td>C1 ✅</td><td>全景调研：结构 101+AI 映射+策略证据（本页）</td><td>完成</td></tr>
+<tr><td>C2</td><td>品种深化（铜矿股名单/铀/稀土）+通道与爆雷案例课+拥挤度量化</td><td>用户点头即启动</td></tr>
+<tr><td>C3</td><td>首个实验（候选：铜矿股论点 1 篇走主线 thesis 流程，或分散趋势纸面跟踪）</td><td>C2 完成 + 主线风控规则全适用 + 用户批准</td></tr>
+</table></div>
+<div class="principle" style="margin-top:14px"><b>commodities 分支铁律</b>
+<p>① 期货杠杆默认禁用（8-33 倍隐含杠杆是爆仓机制不是收益机制）；② ETF 先查期限结构（contango 品种不长持）；③ 矿业股走主线论点纪律；④ 与主线唯一接口=需求映射研究引用，不混仓；⑤ 爆雷案例课（C2）修完前不碰任何期货实盘。</p></div>
+</div>
+
+<div class="note">⚠️ 诚实声明（v0.1）：实物贸易商 edge、铀/稀土/白银/镓锗锑品种数据、USO 展期损耗量化、原油宝与伦镍案例细节——本轮零幸存声明，全部列 C2。被否决的声明（COT-CTA 等号、内外盘 95.98% 相关、CTA 行业 AUM 3400 亿、60/40+趋势改善数字）不得引用。出处：<code>commodities/research/2026-07-08-c1-final.md</code>。</div>
+<div class="foot">myfin commodities 分支 · 生成于 2026-07-08 · 验证方法：多代理搜索 → 来源精读(含搜索快照兜底) → 每论断 3 票对抗验证（1×Opus 4.8 + 2×Sonnet 5）→ Fable 5 综合 ｜ 不构成投资建议</div>
+</div></body></html>
