@@ -121,7 +121,7 @@ segments:
         moat: 磷化铟激光器自产；NVDA 20亿美元入股+多十亿采购承诺+产能优先权(2026-03 8-K, 3-0)；管理层自认EML曾是行业瓶颈、6吋线爬坡中
         risk: 6吋产能放量后瓶颈溢价消退；运营效率弱于中国同行
         tier: 1
-        last_checked: 2026-07-07
+        last_checked: 2026-07-08
         notes: "R4: 记录级订单(800G+1.6T step-function增长, Q1FY26电话会3-0)。窄门排序#3"
       - name: Lumentum
         ticker: "NASDAQ:LITE"
@@ -130,7 +130,7 @@ segments:
         moat: NVDA 20亿美元可转优先股入股($695.31/股)+采购承诺+先进激光器产能优先权；资金投向美国新建晶圆厂(2026-03 8-K, 3-0)
         risk: 产能扩张兑现节奏；估值已因NVDA入股重估
         tier: 1
-        last_checked: 2026-07-07
+        last_checked: 2026-07-08
         notes: "R4新增：与COHR并列'InP激光器窄门'。'40亿锁定EML供应'为二手总结(2-1)"
       - name: Fabrinet
         ticker: "NYSE:FN"
@@ -160,7 +160,7 @@ segments:
         moat: 与NVDA参考设计深度绑定；服务网络
         risk: 竞争加剧毛利承压；AI capex周期反转
         tier: 1
-        last_checked: 2026-07-07
+        last_checked: 2026-07-08
         notes: "R1: 液冷渗透率14%(2024)→33%(2025)→47%(2026E, TrendForce单一机构口径)3-0验证；物理驱动为TDP 700W→1000W+不可逆。液冷是第二陡斜率"
       - name: 英维克 Envicool
         ticker: "SZSE:002837"
@@ -211,7 +211,7 @@ segments:
         moat: 积压+槽位预订2026Q1达100GW(指引年底≥110GW)，2030年前槽位即将售罄；产能弹性仅+20%(20→24GW到2028年中)；新订单定价高于存量
         risk: AI capex周期反转；扩产超预期(重型机组50→70-80台/年在推进)；估值已计入多少久期需测算
         tier: 1
-        last_checked: 2026-07-07
+        last_checked: 2026-07-08
         notes: "R1: 3-0×3通过验证，一手来源GEV Q1'26 8-K。同业西门子能源/三菱重工同样~5年积压——'窄门'是整个环节而非单一公司。下一步: 写thesis+测算当前价格计入的久期"
       - name: Oklo
         ticker: "NYSE:OKLO"
