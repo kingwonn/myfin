@@ -49,7 +49,7 @@ segments:
         moat: 份额62%(2025Q2, Counterpoint 3-0)+MR-MUF工艺；三大厂合约"绝对定价权"(3-0)
         risk: HBM4E先发窗口已从"年"级压缩到约3周(三星5-29首发→海力士6-18跟进)——代际垄断红利消失，HBM从卡位窄门退化为寡头定价权故事；2027供需反转
         tier: 1
-        last_checked: 2026-07-08
+        last_checked: 2026-07-09
         notes: "R5完整版: 窄门排序降档至#7。'美光持久反超三星'0-3证伪——三星HBM4已量产且6月营收破10亿美元"
       - name: 美光 Micron
         ticker: "NASDAQ:MU"
@@ -70,7 +70,7 @@ segments:
         moat: 制程代差+封装产能独占；CoWoS双线订满、需求两年2.7倍、NVDA占配额~60%
         risk: 地缘冲突；CoWoS窄门正在关闭——产能一年+63%、缺口20%→10%、过剩风险最早2027；Amkor亚利桑那70亿美元成美国第二来源
         tier: 1
-        last_checked: 2026-07-08
+        last_checked: 2026-07-09
         notes: "R5完整版: CoWoS=时限窄门(2027关窗)+CoPoS 2028-29接力。台积电整体确定性不变，封装溢价故事有截止日"
 
   - segment: 互连-网络与交换
@@ -103,7 +103,7 @@ segments:
         moat: 高速率产品良率与交付规模全球领先；绑定北美大客户
         risk: LightCounting警示2026产能将超需求(3-0)；CPO替代观察窗2028+；"2030年千亿市场"是乐观情景勿作估值锚
         tier: 1
-        last_checked: 2026-07-08
+        last_checked: 2026-07-09
         notes: "R4终版: 窗口期生意——H1'26仍~30%缺货,年底趋平衡。证伪触发器: 2026H2起scale-up CPO出货显著超'2030-31仅10-15%迁移'的基准节奏则重估"
       - name: 新易盛 Eoptolink
         ticker: "SZSE:300502"
@@ -112,25 +112,25 @@ segments:
         moat: 成本控制+LPO/1.6T卡位(1.6T芯片组市场2026E>20亿美元)
         risk: 同旭创——产能超需求警示+CPO 2028+观察窗+乐观情景估值锚风险
         tier: 1
-        last_checked: 2026-07-08
+        last_checked: 2026-07-09
         notes: "R4终版: 同旭创证伪触发器管理"
       - name: Coherent
         ticker: "NYSE:COHR"
         market: US
         role: InP激光器(EML)+光模块垂直整合——R4确认的光互连真瓶颈环节
-        moat: 磷化铟激光器自产；NVDA 20亿美元入股+多十亿采购承诺+产能优先权(2026-03 8-K, 3-0)；管理层自认EML曾是行业瓶颈、6吋线爬坡中
-        risk: 6吋产能放量后瓶颈溢价消退；运营效率弱于中国同行
+        moat: 磷化铟激光器自产；NVDA 20亿美元入股+多十亿采购承诺+产能获取权(2026-03 8-K, 3-0)；Sherman德州6吋InP厂获5000万美元CHIPS资金(2026-07-03)——全球首条量产级6吋InP线，12个月内晶圆产出4倍
+        risk: 6吋产能放量后瓶颈溢价消退；中国InP出口管制收紧(铟产量占全球~70%,AXT称审批为最大瓶颈)——政策变量或压制估值倍数；运营效率弱于中国同行
         tier: 1
-        last_checked: 2026-07-08
+        last_checked: 2026-07-09
         notes: "R4终版: 2026年产能基本订满、订单排至2027-2028(3-0)——行业过剩警示下的头部分化受益方。窄门排序#3(InP上游)"
       - name: Lumentum
         ticker: "NASDAQ:LITE"
         market: US
         role: InP激光器(EML/CW)咽喉，NVDA光子学供应安全的另一半
         moat: NVDA 20亿美元可转优先股入股($695.31/股)+采购承诺+先进激光器产能优先权；资金投向美国新建晶圆厂(2026-03 8-K, 3-0)
-        risk: 产能扩张兑现节奏；估值已因NVDA入股重估
+        risk: 产能扩张兑现节奏；中国InP出口管制风险(同COHR)；估值已因NVDA入股重估
         tier: 1
-        last_checked: 2026-07-08
+        last_checked: 2026-07-09
         notes: "R4新增：与COHR并列'InP激光器窄门'。'40亿锁定EML供应'为二手总结(2-1)"
       - name: Fabrinet
         ticker: "NYSE:FN"
@@ -160,7 +160,7 @@ segments:
         moat: 与NVDA参考设计深度绑定；服务网络
         risk: 竞争加剧毛利承压；AI capex周期反转
         tier: 1
-        last_checked: 2026-07-08
+        last_checked: 2026-07-09
         notes: "R1: 液冷渗透率14%(2024)→33%(2025)→47%(2026E, TrendForce单一机构口径)3-0验证；物理驱动为TDP 700W→1000W+不可逆。液冷是第二陡斜率"
       - name: 英维克 Envicool
         ticker: "SZSE:002837"
@@ -181,7 +181,7 @@ segments:
         moat: 电气积压+48%、book-to-bill 1.2创纪录、DC订单+240%(8-K 3-0)；SST近十个试点含超大云厂商，2026H2正式订单、2027底交付(电话会3-0)——新旧路线两头都有位置
         risk: 传统配电已近共识交易；SST订单节点(2026H2)不兑现则早期窄门论据失效
         tier: 1
-        last_checked: 2026-07-08
+        last_checked: 2026-07-09
         notes: "R3完整版: T2→T1。跟踪点=2026H2 SST订单公告"
       - name: 台达电子 Delta Electronics
         ticker: "TWSE:2308"
@@ -209,9 +209,9 @@ segments:
         market: US
         role: 燃气轮机三巨头之一，数据中心自备电源最现实选择——R1验证确认度最高的窄门
         moat: 积压+槽位预订2026Q1达100GW(指引年底≥110GW)，2030年前槽位即将售罄；产能弹性仅+20%(20→24GW到2028年中)；新订单定价高于存量
-        risk: AI capex周期反转；扩产超预期(重型机组50→70-80台/年在推进)；估值已计入多少久期需测算
+        risk: AI capex周期反转；扩产超预期；Barclays"订单周期见顶"警示(2026-07-07,近6个月年化订单50GW超历史峰值)——积压是真的但下单速率可能见顶=久期风险
         tier: 1
-        last_checked: 2026-07-08
+        last_checked: 2026-07-09
         notes: "R1: 3-0×3通过验证，一手来源GEV Q1'26 8-K。同业西门子能源/三菱重工同样~5年积压——'窄门'是整个环节而非单一公司。下一步: 写thesis+测算当前价格计入的久期"
       - name: Oklo
         ticker: "NYSE:OKLO"
@@ -229,17 +229,17 @@ segments:
         moat: 存量核电稀缺不可复制；FERC EL25-49裁定+RM26-4规则制定=co-location监管路径落地(3-0)；PJM容量拍卖顶格成交仍短缺6,623MW
         risk: PPA定价政策干预；共址规则最终版可能附加输电费用
         tier: 1
-        last_checked: 2026-07-08
+        last_checked: 2026-07-09
         notes: "R3完整版: T2→T1。并网稀缺受益方案在窄门排序升至#2"
       - name: Bloom Energy
         ticker: "NYSE:BE"
         market: US
         role: SOFC燃料电池——"等不起并网"的桥接电源核心供给方
-        moat: FY25总backlog~200亿美元、产品backlog~60亿同比2.5倍(8-K 3-0×3)；营收+37%
-        risk: 高估值高波动；燃机/并网提速会压缩桥接窗口；AEP大单细节未验证
-        tier: 2
-        last_checked: 2026-07-08
-        notes: "R3完整版新增"
+        moat: "⚠存疑待复核：200亿backlog为公司单方未审计披露，Hunterbrook做空报告(2026-07-08)称经审计约束性履约义务仅~4.92亿；营收+37%为已审计事实"
+        risk: 做空指控双杀点——钪供应链实际依赖中国(与CEO公开声明矛盾)+扩产的钪原料硬约束(年需~220吨vs全球供给~240吨)；做空方利益相关，双方主张均待独立复核
+        tier: 3
+        last_checked: 2026-07-09
+        notes: "红色事项#1: 触发'关键数字须两源互证'纪律。T2→T3直至独立复核完成。复核路径：10-K/10-Q的RPO(剩余履约义务)审计披露 vs 公司下次财报回应"
 
   - segment: 土地运营-Neocloud与数据中心
     companies:

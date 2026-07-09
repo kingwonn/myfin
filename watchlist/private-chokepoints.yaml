@@ -61,7 +61,7 @@ companies:
     indirect_exposure: [A股参股公司与供应商群]
     signal_value: IPO=A股人形板块最大催化剂之一；其供应商名单=选股清单；挂牌首月表现=板块拥挤度试金石
     tier: 1
-    last_checked: 2026-07-08
+    last_checked: 2026-07-09
 
   - name: Cerebras
     position: 晶圆级AI芯片，推理速度差异化
