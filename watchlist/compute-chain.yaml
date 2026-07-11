@@ -71,7 +71,7 @@ segments:
         risk: 地缘冲突；CoWoS窄门正在关闭——产能一年+63%、缺口20%→10%、过剩风险最早2027；Amkor亚利桑那70亿美元成美国第二来源
         tier: 1
         last_checked: 2026-07-10
-        notes: "R5完整版: CoWoS=时限窄门(2027关窗)+CoPoS 2028-29接力。台积电整体确定性不变，封装溢价故事有截止日"
+        notes: "R5完整版: CoWoS=时限窄门(2027关窗)。E1新增: SemiAnalysis称4-die Rubin Ultra因CoWoS-L大尺寸基板翘曲被取消(2-1,NVDA否认)——CoWoS-L技术执行风险首次具象化，跟踪台积电财报口径"
 
   - segment: 互连-网络与交换
     companies:
@@ -182,7 +182,7 @@ segments:
         risk: 传统配电已近共识交易；SST订单节点(2026H2)不兑现则早期窄门论据失效
         tier: 1
         last_checked: 2026-07-10
-        notes: "R3完整版: T2→T1。跟踪点=2026H2 SST订单公告"
+        notes: "R3完整版: T2→T1。跟踪点=2026H2 SST订单公告。E1警示: SemiAnalysis判断800VDC推迟至2028/基线Rubin留在50V(2-1,NVDA否认)——若伊顿2026H2订单跳票,SST早期窄门降档"
       - name: 台达电子 Delta Electronics
         ticker: "TWSE:2308"
         market: TW
