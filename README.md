@@ -24,6 +24,7 @@ myfin/
 ├── CLAUDE.md                 # AI 运行时的操作手册（Claude Code 每次会话自动加载）
 ├── docs/
 │   ├── 00-vision.md          # 愿景、策略框架、"窄门"定义
+│   ├── 05-sota-system.md     # ★ SOTA 投资系统总蓝图（先读这个）
 │   ├── 01-architecture.md    # 系统三层架构与演进路线
 │   ├── 02-tech-stack.md      # 开源选型：站在谁的肩膀上
 │   └── research/             # 深度研究报告（带引用、经交叉验证）
