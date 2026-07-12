@@ -1,0 +1,201 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>系统全面评审（独立代理） · 言出法随</title><style>
+:root{--bg:#FAF9F6;--surface:#fff;--ink:#1C2128;--muted:#5F6B68;--line:#E3E1DA;
+--accent:#0E7C66;--accent-soft:#E2F0EC;--warn:#B07C24;--warn-soft:#F5EDDD;
+--bad:#B4433A;--bad-soft:#F6E7E5;--chip:#F0EEE8}
+@media (prefers-color-scheme: dark){:root{--bg:#101418;--surface:#171C22;--ink:#E8E6E1;
+--muted:#96A09D;--line:#2A313A;--accent:#3FB394;--accent-soft:#15302A;--warn:#D0A050;
+--warn-soft:#32291A;--bad:#D4756C;--bad-soft:#33201E;--chip:#222831}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+font:15px/1.75 -apple-system,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif}
+.wrap{max-width:1080px;margin:0 auto;padding:28px 20px 70px}
+header.site{display:flex;flex-wrap:wrap;align-items:baseline;gap:14px;margin-bottom:6px}
+header.site h1{font-family:"Noto Serif SC","Songti SC",serif;font-size:26px;margin:0}
+header.site .date{color:var(--muted);font-size:13px}
+nav.top{margin-left:auto;display:flex;gap:14px;font-size:14px}
+a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
+h2{font-family:"Noto Serif SC","Songti SC",serif;font-size:20px;margin:36px 0 10px;text-wrap:balance}
+h3{font-size:16px;margin:22px 0 8px}
+.sub{color:var(--muted);font-size:13.5px;margin:0 0 14px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:12px 0}
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:8px;margin:12px 0;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:13.5px}
+th{font-size:12px;color:var(--muted);text-align:left;background:var(--chip);white-space:nowrap}
+th,td{padding:8px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:none}
+.t1,.t2,.t3{display:inline-block;font:600 11px/1 ui-monospace,Menlo,monospace;padding:3px 7px;border-radius:999px;white-space:nowrap}
+.t1{background:var(--accent-soft);color:var(--accent)}
+.t2{background:var(--warn-soft);color:var(--warn)}
+.t3{background:var(--chip);color:var(--muted)}
+.chip{display:inline-block;font:600 11.5px/1.6 ui-monospace,Menlo,monospace;padding:1px 8px;border-radius:999px;background:var(--chip)}
+.chk{display:flex;gap:12px;flex-wrap:wrap}
+.chk .card{flex:1 1 240px;margin:0}
+.chk .d{font:700 13px ui-monospace,Menlo,monospace;color:var(--accent)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:860px){.grid2{grid-template-columns:1fr}}
+.tv{background:var(--surface);border:1px solid var(--line);border-radius:10px;overflow:hidden;min-height:60px}
+.md{max-width:820px}
+.md table{font-size:13.5px}
+.md h1{font-family:"Noto Serif SC","Songti SC",serif;font-size:24px}
+.md h2{font-size:19px}.md blockquote{border-left:3px solid var(--accent);margin:12px 0;padding:4px 16px;color:var(--muted)}
+.md code{background:var(--chip);padding:1px 5px;border-radius:4px;font-size:12.5px}
+.md pre{background:var(--chip);padding:12px;border-radius:8px;overflow-x:auto}
+footer{margin-top:50px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font-size:12.5px;max-width:76ch}
+.lessons .card p{margin:4px 0}
+.note{background:var(--warn-soft);border-left:3px solid var(--warn);border-radius:0 8px 8px 0;padding:10px 16px;font-size:13.5px}
+</style></head><body><div class="wrap">
+<header class="site"><h1>系统全面评审（独立代理）</h1><span class="date">构建 2026-07-12 · 数据截至构建日</span>
+<nav class="top"><a href="../index.html">看盘台</a><a href="../learn.html">学习中心</a>
+<a href="https://github.com/kingwonn/myfin" target="_blank">GitHub 仓库</a></nav></header>
+<div class='md'><h1>系统全面评审（独立评审代理，2026-07-12）</h1>
+<ul>
+<li>评审方式：只读横扫三分支 + 数值探针实测（reward_function 副本实际运行复现 bug）+ git 历史追溯</li>
+<li>性质：独立第三方视角，结论未经美化，原文存档。修复动作另行排期，不改写本文。</li>
+</ul>
+<h1>「言出法随」系统全面评审报告（2026-07-12，独立评审）</h1>
+<h2>总评</h2>
+<p>这套系统的<strong>研究与证伪层是真材实料</strong>——对抗验证确实拦下了大量假叙事，"未能核实/零过验如实声明"的诚实文化在 C3、E1b、R2d 等报告中被抽查证实属实，这在同类 AI 投研系统里罕见。但<strong>现在不敢用于真钱决策</strong>：差距不在"信息真不真"，而在"真信息值多少钱"——全系统没有一处弹性测算、隐含预期或拥挤度的量化实现，唯一论点的仓位与退出价位全部空缺，"拥挤度一票否决"是一把没有刻度的尺子。quant 分支的奖励函数存在一个致命缺陷（收益项与持仓完全解耦）加一个已证实的双重计费 bug，"自检 9/9 通过"给出的是虚假信心。watchlist 有一处已持续 4 天的层级失同步（绿的谐波），说明"journal 记录动作→落地到跟踪清单"的闭环并不可靠。结论：<strong>可以放心用它做研究情报与证伪过滤，不能在补齐定价/拥挤度量化与退出价位之前让它支持任何仓位决策。</strong></p>
+<hr />
+<h2>发现清单</h2>
+<h3>🔴 必须修（会导致错误决策或纪律失效）</h3>
+<p><strong>R-1｜奖励函数的收益项与持仓完全解耦——该奖励无法训练出任何配置策略</strong>
+- 位置：<code>quant:quant/algo/reward_function.py</code> L61-77（<code>vol_normalized_return</code> 只吃 <code>prices</code> 和 <code>t</code>）、L154（<code>r_vol = vol_normalized_return(prices, t)</code> 未乘任何持仓权重）。
+- 实测：全现金组合与满仓组合在同一步得到<strong>完全相同</strong>的 reward（实测均为 -0.0862）。代理不管持有什么都收下市场前向收益分，唯一与动作相关的只有成本/事件/换手三个罚项——最优策略退化为"永不交易"。Trading-R1 原型中该分数是乘在评级动作上的，这里抄丢了耦合环节。
+- 修法：<code>r_vol</code> 必须按持仓加权（组合前向收益/组合波动），或按 Trading-R1 原样对"动作评级×前向收益符号"打分；并在自检中加入"满仓 vs 空仓在牛/熊路径下 reward 必须分化"的用例。</p>
+<p><strong>R-2｜事件惩罚 λ 双重计费：SHOCK 态实际惩罚是设计值的 2 倍（4x vs 2x）</strong>
+- 位置：<code>reward_function.py</code> L124（<code>penalty = clip(lam * over / cap)</code>，函数内已乘 λ）与 L159-162（<code>total = ... - lam_e * ev_pen</code>，再乘一次 λ）。
+- 实测：SHOCK、超帽 0.3/0.5 时，设计值应为 2×0.6=1.2，实际扣 2.4，等效乘子 4.0。与 <code>quant:quant/algo/event-risk-layer.md</code> L78 "λ_event：NEUTRAL=0/ELEVATED=1.0/SHOCK=2.0" 的接口定义不符（ELEVATED=1.0 恰好掩盖了此 bug，自检测不出来）。
+- 修法：<code>event_penalty</code> 内去掉 <code>lam</code>，只返回超帽比例；或 <code>step_reward</code> 不再乘 <code>lam_e</code>。二选一并加回归用例。</p>
+<p><strong>R-3｜watchlist 与 journal 失同步：绿的谐波降级 T3 从未落地</strong>
+- 位置：<code>/home/user/myfin/watchlist/physical-ai.yaml</code> L53-61（<code>tier: 2</code>、<code>last_checked: null</code>、<code>notes: ""</code>，git 历史证实该条目自创建起从未被改过）vs <code>/home/user/myfin/journal/2026-07-08.md</code> "绿的 T2→T3（PE 574倍+产能+546%+Optimus供货证伪）" vs <code>/home/user/myfin/docs/research/2026-07-11-advice-physical-ai.md</code> 分层表（绿的=T3）。
+- 危害：一个板块级极端拥挤样本（PE 484-574 倍）在操作清单里仍挂观察级；/scan 按 tier 遍历时会给它错误的权重。更严重的是它证明"研究结论→watchlist 落地"的机械环节可以静默失败，而系统的所有跟踪都建在这张表上。
+- 修法：立即改 tier 并补 notes；给 /scan 增加一步"journal 中的 T 层变动 vs YAML 现值"一致性核对。</p>
+<p><strong>R-4｜"拥挤度一票否决"没有任何度量实现——否决权没有刻度</strong>
+- 位置：<code>/home/user/myfin/pipelines/</code> 只有 README（规划文字）；<code>/home/user/myfin/docs/03-methodology.md</code> L19 明言 crowding 周频分数是"三条窄门判据中唯一可全自动化的，最先建"——至今未建；<code>quant:quant/plan.md</code> 七条铁律第 1 条与 R2c 红线 R2 都以它为前提，实现状态栏自己写着"规格待写入"。
+- 现状后果已经显形：R6b 对人形板块手工凑了 3/5 个信号，而主线一号仓位 GEV 的拥挤度只有一句"中等偏高"的定性（<code>theses/2026-07-07-gas-turbine-narrow-gate.md</code> §6），照样排窄门第 1。否决项退化为叙事判断——这恰是 R2a/R2c 自己论证过的头号死法。
+- 修法：按 03-methodology 的 MSCI 五信号规格先做最小可用版（估值分位+换手分位可用免费数据），并给"否决阈值"定数；建成前，所有建议书中的桶位建议应标注"拥挤度未量化"。</p>
+<h3>🟡 应该修</h3>
+<p><strong>Y-1｜event-risk-layer.md 声称"reward_function.py 已实现"的接口有一半不存在</strong>
+- 位置：<code>quant:quant/algo/event-risk-layer.md</code> "与奖励函数的接口（reward_function.py 已实现）"一节列了 4 项，其中"传播度调节"与"W1 三杀日禁止奖励清仓逃跑"在代码中完全没有（rf.py 全文无 W1、无传播度、无清仓不给正分逻辑）；E3 的"该标的仓位上限 ×0.5"个股级帽也未实现（代码只看 gross 总敞口——实测 SHOCK 态把全部仓位轮动进单一高风险标的，罚分为 0）。
+- 修法：把该节改为"已实现/待实现"两栏，如实标注。</p>
+<p><strong>Y-2｜event-risk-layer.md 内部参数自相矛盾：ELEVATED ×0.7 vs 帽 0.75</strong>
+- 位置：同文件 L35（E1："存量敞口 ×0.7"）vs L78（接口："敞口帽 1.0/<strong>0.75</strong>/0.5"）；代码取 0.75。统一其一。</p>
+<p><strong>Y-3｜自检套件三处失真，"9/9 通过"可信度打折</strong>
+- <code>reward_function.py</code> L196-203 非对称性检查是<strong>空转的</strong>：崩盘/反弹两侧分数都被 clip 到 ±3.0（实测 -3.0 vs +3.0），<code>abs(down) &gt; abs(up)*0.9</code> 在 ASYMMETRY=1.0 时也照样通过；L231-234 换手检查断言的是原始换手率&gt;帽，没验证罚分入账；L89-96 终止档返回 <code>-DD_TERMINAL_PENALTY</code>=+10.0，违反 L8 "every component clipped to [-3,3]" 的自述（parts 里出现 10.0）。另外 DD∈[0.18, 0.199] 区间罚分饱和在 3.0（实测），临终止前梯度死区。
+- 修法：非对称测试改用小幅（不触 clip）冲击；换手测试断言 total 差值；终止分支语义理清。</p>
+<p><strong>Y-4｜journal 战绩数字自相矛盾，违反"不美化历史"</strong>
+- 位置：<code>/home/user/myfin/journal/2026-07-11.md</code> L51 "838 代理（<strong>0 错误</strong>）" vs 同文件 L14 "C2 106/108、R2c 98/108"（12 个 agent 未完成）；"112 确认/28 证伪"的总数无法从各报告票数复算（E1 20 过验+M1b 19+E1b 19+C2 17+R2c 19 已超过中期口径的 74）。
+- 修法：追加一条更正条目（不改写原文），定义"错误"的口径；今后聚合战绩必须可从各报告复算。</p>
+<p><strong>Y-5｜唯一论点文件不符合 TEMPLATE，且评审日期与 journal 脱节</strong>
+- 位置：<code>/home/user/myfin/theses/2026-07-07-gas-turbine-narrow-gate.md</code> 与 <code>theses/TEMPLATE.md</code> 同一 commit（3d376b9）入库，却缺：头部"波动率语境"字段、第 4 节未用 <code>exit_falsified/exit_momentum/exit_valuation</code> 三通道结构（<strong>exit_momentum 价位完全空缺</strong>）、无 5b 仓位建议、§6 拥挤度无日期评分、无 §8；"相关标的：西门子能源、三菱重工"不在任何 watchlist（模板要求"须存在于 watchlist"）。L37 "重新评审时间：2026-10-15" 与 <code>journal/2026-07-09.md</code> L16 "检查点：GEV 7/22 财报（thesis 评审日提前到位）"矛盾——journal 说提前了，文件没改。
+- 修法：按模板补结构（draft 状态下允许留白但字段要在）；评审日改为 2026-07-22。</p>
+<p><strong>Y-6｜private-chokepoints.yaml 全部 10 个条目无 moat/risk，05-sota-system 的宣称与之冲突</strong>
+- 位置：<code>/home/user/myfin/watchlist/private-chokepoints.yaml</code>（自定义 schema，无 moat/risk 字段）违反 CLAUDE.md "新增标的必须填 moat 与 risk，缺一不可"；<code>/home/user/myfin/docs/05-sota-system.md</code> L27 "watchlist（47 标的<strong>全带证伪触发器</strong>）"不实——实际 49 条（含 NVDA 重复计入两链），其中 10 条无任何证伪字段。
+- 修法：要么在 CLAUDE.md 给未上市清单明确豁免并改 05-sota 表述，要么补 risk 字段（signal_value 里其实已有素材）。</p>
+<p><strong>Y-7｜分支纪律三处漏损</strong>
+- ① quant 研究报告滞留主线：<code>docs/research/2026-07-07-quant-firms-r2a.md</code>、<code>2026-07-07-intake-01-diy-quant-stack.md</code>（先于政策 commit dddbbe8 入库，从未迁移或加指引注）；政策生效后 <code>2026-07-11-e1-experts.md</code> §二（量化回测铁律）仍落在主线。② 跨分支悬空引用：<code>quant:quant/algo/event-risk-layer.md</code> 开头引用 <code>docs/research/2026-07-11-m1-blackswan.md</code>，该文件不在 quant 分支树中（M1 在主线、M1b 在 quant，同一研究线被劈在两条分支）。③ 分支 CLAUDE.md 漂移：quant/commodities 两分支的 CLAUDE.md 均无 2026-07-11 的"表达纪律"（grep 计数 0）——在那两条分支上开会话时最新纪律不生效。
+- 修法：主线加"quant 内容索引指针"文件或迁移；纪律性文件（CLAUDE.md）变更后 cherry-pick 到全部分支。</p>
+<p><strong>Y-8｜研究引擎脚本不在仓库，"仓库即系统"不闭合</strong>
+- 位置：<code>/home/user/myfin/CLAUDE.md</code> L55 "已在 dr-tiered-*.js 脚本全量落地"——三条分支全文搜索均无此文件（仓库内唯一 js 为 site/build.mjs）。838 代理、3 票验证的全部基础设施与逐条投票记录（journal.jsonl）都在仓库外，验证质量无法从仓库审计、无法复现。
+- 修法：脚本与投票日志入库（或至少入 quant 分支+.gitignore 豁免）。</p>
+<p><strong>Y-9｜beliefs.md 不存在，但三处流程依赖它</strong>
+- 位置：<code>.claude/commands/retro.md</code>（"同步汇总到 journal/beliefs.md"）、<code>.claude/commands/thesis.md</code> 第 4 步（"检索 journal/beliefs.md…注入评审"）、<code>docs/04-evolution-loop.md</code> 环 3。已产生的 5+ 条"信念条目"散落在每日 journal 里，/thesis 的自动注入无从执行——季环闭环实际断裂。
+- 修法：建 <code>journal/beliefs.md</code> 并回收既有条目（追加式）。</p>
+<p><strong>Y-10｜tier-1 覆盖漏洞：三个核心标的从未被扫描</strong>
+- 位置：<code>watchlist/compute-chain.yaml</code> 博通 AVGO（tier 1，<code>last_checked: null</code>）、台达电子（tier 1，null）；<code>watchlist/private-chokepoints.yaml</code> Anthropic（tier 1，null）。日环已跑 3 轮（07-08/09/10），/scan 声称遍历 tier 1+2，但这三个 tier-1 从未留下检查痕迹。修法：/scan 输出加"本轮未覆盖清单"，null 值老化告警。</p>
+<p><strong>Y-11｜来源链接纪律在 07-11 批次系统性退化</strong>
+- CLAUDE.md 要求 docs/research/ "关键数字必须带来源链接"。R1/R3-R6/C2 有 SEC/论文 URL；但 <code>2026-07-11-e1-experts.md</code>（高盛 31→66GW 无链接）、<code>2026-07-11-m1-blackswan.md</code>（全文零 URL）、<code>quant:quant/algo/event-risk-layer.md</code>（解放日全套参数零 URL，仅"票据见 M1b"，而 M1b 也只有文字来源名）。修法：至少给校准锚级参数补一手链接。</p>
+<p><strong>Y-12｜Bloom 旧结论未回填勘误</strong>
+- 位置：<code>/home/user/myfin/docs/research/2026-07-07-chains-r3r4r5r6.md</code> L108-110 仍原样陈列 "Bloom FY2025 总 backlog ~200 亿（8-K 3-0×3）——需求外溢<strong>实证</strong>"，而 07-09 红色事项已确认该数字是"公司单方未审计口径、被做空报告挑战、moat 降级存疑"（watchlist 与 journal 已改，报告没有）。追加不改写≠不加勘误注——读旧报告的人会把已降级的证据当实证。修法：在该节尾部追加带日期的勘误注（指向 journal 2026-07-09）。</p>
+<p><strong>Y-13｜同源数字两版并存未对齐</strong>
+- ① IEA 全球数据中心用电：<code>commodities:commodities/research/2026-07-07-c1-partial.md</code>（460TWh→1000+TWh/2030）vs <code>2026-07-08-c1-final.md</code>（415TWh→~945TWh/2030），同标 IEA、均带票数、无一句调和说明。② 绿的谐波 PE：574 倍（R6 完整版，07-08）→ 484.79 倍（R6b，07-11），板块同期 20 日 +44.5%，PE 反而下降，两个口径（问询函 vs 监管披露）未说明换算关系。修法：后一报告出现同指标新值时强制加"与前值差异原因"一行。</p>
+<h3>🟢 建议</h3>
+<ul>
+<li><strong>G-1</strong> <code>site/dist/index.html</code> 停留在 07-07 内容（grep "2026-07-1" 计 0），与 journal 07-07 "每轮完成动作…重建可视化" 的承诺不符；要么重建要么在 README 标注可视化已冻结。</li>
+<li><strong>G-2</strong> <code>journal/2026-07-07.md</code> 在 commit 69d724d 中删改了 2 行研究计划板状态（git log -p 可见）——同日状态板更新属灰区，建议今后状态板单独放 <code>docs/</code>，journal 保持纯追加。</li>
+<li><strong>G-3</strong> <code>reward_function.py</code> 多周期前向收益（3/7/15 日）逐步计酬会对同一段未来重复计分（相邻步的 horizon 重叠），做 RL 时会污染 credit assignment；训练版应改为持有期对齐或折扣去重。</li>
+<li><strong>G-4</strong> 03-methodology §1.1 的 watchlist schema 升级（factor_bucket/moat 结构化/links 等 9 个字段）一项都未落地，"两周内落地顺序"已过 5 天，建议在 journal 待办中挂明确截止日。</li>
+<li><strong>G-5</strong> 马拉松式聚合口径（"X 轮/Y 代理/Z 确认"）建议附机器可读的 tally 文件，人不再手加。</li>
+</ul>
+<hr />
+<h2>三维评分表</h2>
+<blockquote>
+<p>先声明：题目所述"journal/docs 里刚定的三维框架（有效性/成熟度 L1-L5/信息完整度）"<strong>在仓库任何分支中未能核实</strong>（全分支 grep "成熟度/有效性/信息完整度/三维/L1-L5" 仅命中 01-architecture 的三层架构图，非评分框架）。下表的"系统自评"取最接近的既有自述：<code>docs/05-sota-system.md</code> 五部件状态栏与各报告的覆盖率自报。我的 L 级定义：L1 概念/L2 有设计稿/L3 部分实现·人肉运转/L4 实现+可审计测试/L5 前向验证过。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>维度/部件</th>
+<th>系统自评</th>
+<th>我的独立评分</th>
+<th>差异理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>有效性</strong>（前向检查点可判定、可追责）</td>
+<td>自评隐含高（05-sota："争议裁决日历"已挂牌）</td>
+<td><strong>5/10</strong></td>
+<td>检查点确实存在且挂了日历（GEV 7/22、CPO Q3、Bloom RPO、宇树首日），但 4 个中只有 Bloom（10-Q RPO vs backlog）有无歧义判据；"订单增速显著转负""CPO 出货显著超基准节奏"无预注册数值门槛（"显著"由事后的人解释）；thesis 评审日与 journal 脱节（Y-5）证明追责闭环靠自觉</td>
+</tr>
+<tr>
+<td><strong>成熟度①研究引擎</strong></td>
+<td>✅ 运行中，8 轮（≈L4-5）</td>
+<td><strong>L3</strong></td>
+<td>产出真实且质量高，但引擎脚本与逐条投票记录不在仓库（Y-8），战绩不可复算（Y-4）——能跑但不可审计</td>
+</tr>
+<tr>
+<td><strong>成熟度②知识库</strong></td>
+<td>✅ 持续更新（≈L4）</td>
+<td><strong>L3</strong></td>
+<td>结构好、更新勤，但存在失同步（R-3）、schema 升级未做（G-4）、beliefs.md 缺失（Y-9）、私有清单缺证伪字段（Y-6）</td>
+</tr>
+<tr>
+<td><strong>成熟度③纪律层</strong></td>
+<td>✅ 成文并执行（≈L4）</td>
+<td><strong>L2.5</strong></td>
+<td>成文质量高；但"执行"从未被真仓检验，且两个关键纪律（拥挤度否决、弹性测算前不转 active）分别是无刻度（R-4）和全系统待办</td>
+</tr>
+<tr>
+<td><strong>成熟度④事件风险层</strong></td>
+<td>v1.0 定稿（≈L3）</td>
+<td><strong>L2</strong></td>
+<td>参数标定工作扎实（解放日锚、TACO 库），但状态机本体无代码，"已实现"清单一半不实（Y-1），文内参数自矛盾（Y-2）</td>
+</tr>
+<tr>
+<td><strong>成熟度⑤量化引擎/奖励函数</strong></td>
+<td>代码自检 9/9（≈L3）</td>
+<td><strong>L2</strong></td>
+<td>骨架有致命解耦缺陷（R-1）+双重计费（R-2）+空转测试（Y-3），现状不可用于任何训练或纸面实验计分</td>
+</tr>
+<tr>
+<td><strong>成熟度⑥数据管道</strong></td>
+<td>Phase 1 下周起（自认 L1）</td>
+<td><strong>L1</strong></td>
+<td>一致：仅 README</td>
+</tr>
+<tr>
+<td><strong>信息完整度</strong>（子问题覆盖率自报真实性）</td>
+<td>各报告自报（如 E1b"五缺一"、C3"四块零过验"）</td>
+<td><strong>8/10</strong></td>
+<td>抽查 3 份全部属实：E1b 自报补齐 4/5——正文确为 4 节+留白 5 开放✓；C3 自报四块未答——正文确无长协价/浓缩/气电订单/HH 曲线✓；C2 自报 25→17+8 且缺口后续真被 C3 补✓。扣分项：马拉松聚合口径不可复算（Y-4）</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>三个最可能亏钱的结构性弱点</h2>
+<p><strong>弱点一：验证机器拦得住谣言，拦不住"真实但已充分定价"——而系统恰好只买得起后者。</strong>
+全系统通过 3-0 验证的证据几乎全是 8-K/财报/监管披露级——这类信息正是定价最充分的。系统声称的差异化是"跟踪久期证据的更新速度"（gas-turbine thesis §1），但兑现这个差异化所需的工具——弹性测算、价格隐含预期反推——在全仓库是零实现：唯一论点的 §5 是占位符（"待办：测算当前市值隐含预期"），三份建议书给出了完整的桶位操作骨架却没有任何一个标的的"价格已计入多少"。GEV/ETN/CEG/TSM/COHR 全是 2025-26 年共识 AI 赢家；Barclays"订单见顶"是对这套论点的标准攻击，而系统的回应只有"等 7/22 财报"、没有一个数值先验。这样运行下去，系统会积累一批"事实全对、买点全错"的仓位，在估值压缩中亏钱，且每次复盘都会显示"证据链没错"——最难被自身进化环纠正的亏法。</p>
+<p><strong>弱点二：拥挤度是唯一的一票否决项，却是全系统唯一没有度量的判据——否决权会被叙事悄悄赎回。</strong>
+R2a（2025 夏季量化震荡）、R2c（Quant Quake）两轮研究得出的核心教训就是"拥挤是头号死穴"，系统据此把拥挤度设为生存级否决项；但 pipelines 为空、五信号脚本未建、否决阈值未定义（R-4）。实际运行中已出现该弱点的完整表型：人形板块靠手工凑 3/5 信号判了"极端拥挤→零仓位"（做对了），而主线头号标的 GEV 只有一句"中等偏高"的定性就排进窄门第 1、写进建议书 T1 桶。没有刻度的否决权必然被"我们的差异化认知在久期"这类叙事逐案豁免——这与系统自己记录的机构死法（每个人都觉得自己的拥挤仓位有独特逻辑）完全同构。等到新发 AI 电力 ETF 潮（risk-rules §7 自己写的顶部信号）出现时，系统将没有任何机械装置强制它下车。</p>
+<p><strong>弱点三：下车机制全是滞后指标+人肉延迟，而持仓将是同一叙事因子的高 beta 端。</strong>
+系统级下车信号（risk-rules §6）的第一条是"≥2 家超大厂下修 capex 指引"——这是周期确认信号而非领先信号：等两家超大厂正式下修指引时，电力/光互连这些高 beta 环节的股价早已完成主跌（系统自己引用的 DeepSeek 日全链 -17%~-21% 就是证明：单日事件，无任何指引下修）。本应补位的价格通道 <code>exit_momentum</code> 在唯一论点里是空的（Y-5），事件风险层的自动刹车只存在于纸面状态机（无代码、无数据接入），组合层（Phase 3）尚不存在。同时主线全部候选仓位——燃机、并网、变压器、InP、CoWoS——是同一个 AI-capex 因子的不同表达，单桶 40-50% 的帽子挡不住因子级回撤。合成后果：一旦 AI capex 叙事转向，这套系统的结构是"满仓单因子高 beta + 滞后触发器 + 手动执行"，回撤阶梯（-10%冻结/-15%减半/-20%半仓）会成为唯一真正执行的防线——那意味着每次都先亏 10-20% 才开始反应。</p>
+<hr />
+<h3>附：本次评审核实手段说明</h3>
+<p>reward_function.py 自检在副本上实际运行（9/9 通过复现），R-1/R-2/Y-3 的每个数字均为本机数值探针实测；watchlist 失同步经 <code>git log -p</code> 追溯确认"从未修改"；journal 追加性经全历史删除行扫描核实（仅 07-07 状态板 2 行灰区删改）；"三维评分框架"与 "dr-tiered-*.js" 的缺失经三分支全文检索确认。未做外部数据核实（评审范围限仓库内一致性），文中各研究数字的真伪不在本次裁决范围。</p></div>
+<footer>言出法随 · AI-native 投研系统 ｜ 本站由 <code>site/build_pages.py</code> 从仓库数据自动生成，
+行情组件来自 TradingView（免费嵌入，实时性以其为准）。个人研究笔记，不构成投资建议；
+系统不执行任何真实交易。<br>关键结论均经 3 票对抗验证，票数标注见各报告原文。</footer>
+</div></body></html>
