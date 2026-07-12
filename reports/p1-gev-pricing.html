@@ -1,0 +1,198 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>P1 定价裁决：GEV 隐含预期反推 · 言出法随</title><style>
+:root{--bg:#FAF9F6;--surface:#fff;--ink:#1C2128;--muted:#5F6B68;--line:#E3E1DA;
+--accent:#0E7C66;--accent-soft:#E2F0EC;--warn:#B07C24;--warn-soft:#F5EDDD;
+--bad:#B4433A;--bad-soft:#F6E7E5;--chip:#F0EEE8}
+@media (prefers-color-scheme: dark){:root{--bg:#101418;--surface:#171C22;--ink:#E8E6E1;
+--muted:#96A09D;--line:#2A313A;--accent:#3FB394;--accent-soft:#15302A;--warn:#D0A050;
+--warn-soft:#32291A;--bad:#D4756C;--bad-soft:#33201E;--chip:#222831}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+font:15px/1.75 -apple-system,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif}
+.wrap{max-width:1080px;margin:0 auto;padding:28px 20px 70px}
+header.site{display:flex;flex-wrap:wrap;align-items:baseline;gap:14px;margin-bottom:6px}
+header.site h1{font-family:"Noto Serif SC","Songti SC",serif;font-size:26px;margin:0}
+header.site .date{color:var(--muted);font-size:13px}
+nav.top{margin-left:auto;display:flex;gap:14px;font-size:14px}
+a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
+h2{font-family:"Noto Serif SC","Songti SC",serif;font-size:20px;margin:36px 0 10px;text-wrap:balance}
+h3{font-size:16px;margin:22px 0 8px}
+.sub{color:var(--muted);font-size:13.5px;margin:0 0 14px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:12px 0}
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:8px;margin:12px 0;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:13.5px}
+th{font-size:12px;color:var(--muted);text-align:left;background:var(--chip);white-space:nowrap}
+th,td{padding:8px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:none}
+.t1,.t2,.t3{display:inline-block;font:600 11px/1 ui-monospace,Menlo,monospace;padding:3px 7px;border-radius:999px;white-space:nowrap}
+.t1{background:var(--accent-soft);color:var(--accent)}
+.t2{background:var(--warn-soft);color:var(--warn)}
+.t3{background:var(--chip);color:var(--muted)}
+.chip{display:inline-block;font:600 11.5px/1.6 ui-monospace,Menlo,monospace;padding:1px 8px;border-radius:999px;background:var(--chip)}
+.chk{display:flex;gap:12px;flex-wrap:wrap}
+.chk .card{flex:1 1 240px;margin:0}
+.chk .d{font:700 13px ui-monospace,Menlo,monospace;color:var(--accent)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:860px){.grid2{grid-template-columns:1fr}}
+.tv{background:var(--surface);border:1px solid var(--line);border-radius:10px;overflow:hidden;min-height:60px}
+.md{max-width:820px}
+.md table{font-size:13.5px}
+.md h1{font-family:"Noto Serif SC","Songti SC",serif;font-size:24px}
+.md h2{font-size:19px}.md blockquote{border-left:3px solid var(--accent);margin:12px 0;padding:4px 16px;color:var(--muted)}
+.md code{background:var(--chip);padding:1px 5px;border-radius:4px;font-size:12.5px}
+.md pre{background:var(--chip);padding:12px;border-radius:8px;overflow-x:auto}
+footer{margin-top:50px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font-size:12.5px;max-width:76ch}
+.lessons .card p{margin:4px 0}
+.note{background:var(--warn-soft);border-left:3px solid var(--warn);border-radius:0 8px 8px 0;padding:10px 16px;font-size:13.5px}
+</style></head><body><div class="wrap">
+<header class="site"><h1>P1 定价裁决：GEV 隐含预期反推</h1><span class="date">构建 2026-07-12 · 数据截至构建日</span>
+<nav class="top"><a href="../index.html">看盘台</a><a href="../learn.html">学习中心</a>
+<a href="https://github.com/kingwonn/myfin" target="_blank">GitHub 仓库</a></nav></header>
+<div class='md'><h1>P1：GEV 隐含预期反推——系统第一次定价层裁决</h1>
+<ul>
+<li>日期：2026-07-12 ｜ 输入件：deep-research 管线 109 代理（0 错误），公司口径数字全部 SEC 8-K 级 3 票验证；反推测算由 Fable 综合完成</li>
+<li><strong>裁决一句话：好公司，贵价格——市场不但没有低估燃机景气的久期，已经把久期买到了约 2030 年。</strong></li>
+<li>数据截止：财报口径 2026-04-22（Q1 发布），市值口径 2026-07-12。不构成投资建议。</li>
+</ul>
+<h2>小白版重点（五句话）</h2>
+<ol>
+<li>我们原论点猜"市场可能低估燃机景气能持续多久"。查完账发现：<strong>猜错了方向</strong>——按公司自己的 2028 目标算，现在的股价相当于"2028 计划全部兑现、之后还要再高速增长好几年"都已经被买进价格里了。</li>
+<li>打个比方：GEV 2028 年计划赚约 104 亿美元（EBITDA 口径），现在 2930 亿美元的市值 = <strong>28 倍的 2028 年利润</strong>——你花的钱要靠 2028 年之后的增长才能挣回"正常回报"。</li>
+<li>之前发现的"P/E 倒挂之谜"破案了：表面 32 倍不贵是<strong>假象</strong>——里面混了一笔 45 亿美元的一次性并购重估收益；洗掉后真实的前瞻市盈率约 <strong>50-60 倍</strong>。</li>
+<li>事实层依然全是好消息（订单积压 100GW、新单提价 10-20%、指引连续上调）——<strong>问题从来不在事实，在价格</strong>。这正是评审警告的"事实全对、买点全错"的活教材，我们在买之前抓住了它。</li>
+<li>结论动作：燃机论点<strong>不转 active</strong>，新增估值闸门——要么价格回撤到位（约 -25% 以上），要么基本面上修到位（2028 利润目标再上调 ~35%），两条路任一条通了才谈仓位。</li>
+</ol>
+<h2>一、经验证的输入件（全部公司口径，SEC 8-K 锚定）</h2>
+<table>
+<thead>
+<tr>
+<th>项</th>
+<th>数字</th>
+<th>票</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FY2025 实绩</td>
+<td>收入 $38.1B（+9%）；调整后 EBITDA $3.2B（8.4%）；FCF $3.7B；订单 $59.3B（+34% 有机）；积压 $150.2B（+25%+），积压中设备利润 +$8B/利润率+6pct</td>
+<td>3-0 ×5</td>
+</tr>
+<tr>
+<td>FY2026 指引（4/22 二度上调后）</td>
+<td>收入 $44.5-45.5B；调整后 EBITDA 利润率 12-14%；FCF $6.5-7.5B（内含 Prolec 并表 ~$3B 收入）</td>
+<td>3-0</td>
+</tr>
+<tr>
+<td>2028 目标（2025-12-09 投资者日）</td>
+<td>有机收入 ~$52B（低双位数 CAGR）；EBITDA 利润率 <strong>20%</strong>（Power 22%/Elec 22%/Wind 6%）；FCF 转化 100%，2025-28 累计 FCF ≥$22B；总积压 2028 ~$200B（Q1 已把该目标提前到 2027）</td>
+<td>3-0 ×3</td>
+</tr>
+<tr>
+<td>2026Q1 分部</td>
+<td>Power：收入 $4,971M、EBITDA 16.3%（+470bps）、订单 +60%；Elec：订单 +86%（B2B~2.5）、利润率 17.8%；<strong>Wind：-26.7% 利润率</strong>（关税+海上合同损失）</td>
+<td>3-0 ×3</td>
+</tr>
+<tr>
+<td>燃机供需</td>
+<td>积压+槽位：62GW（25Q3）→83GW（25 年末）→<strong>100GW</strong>（26Q1）→目标 ≥110GW（26 年末）；产能 20GW/年（26 年中），24GW"可延展"（非承诺）；CEO：2026 年底售罄至 2030</td>
+<td>3-0</td>
+</tr>
+<tr>
+<td>新单价差</td>
+<td>新投标/中标定价较积压定价<strong>高 10-20%</strong>（财报电话会口径，经转述，原文待回查）</td>
+<td>定性 3-0/量化转述</td>
+</tr>
+<tr>
+<td>市值快照</td>
+<td>$293.2B、$1,092.06（2026-07-12）</td>
+<td>快照</td>
+</tr>
+</tbody>
+</table>
+<p><strong>零幸存声明（P1b 补研队列）</strong>：卖方共识（26/27/28E）、ETN/西门子能源/三菱重工可比倍数、Barclays 见顶论原文——市场口径三件套全缺，本测算为"公司指引 vs 市值"的单边反推，可比倍数只能用 [假设] 带入。</p>
+<h2>二、反推测算（每一步算术透明，假设全部标注）</h2>
+<p><strong>第 0 步，洗掉会计噪音</strong>：2026Q1 净利率 50.9% 含 $4.5B 一次性 Prolec 重估收益，不可用。trailing P/E ~32 被这笔收益压低——洗掉后干净的前瞻市盈率约 <strong>50-60 倍</strong>（forward P/E 60 的来源口径由此得到解释，此前标注的"倒挂反常"撤销）。[算术+推断]</p>
+<p><strong>第 1 步，today 的倍数</strong>（EV≈$285B，[假设] 净现金 ~$8B 待核实，敏感度 ±3%）：</p>
+<table>
+<thead>
+<tr>
+<th>年份</th>
+<th>公司目标 EBITDA</th>
+<th>EV/EBITDA</th>
+<th>P/FCF</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026E（指引中点）</td>
+<td>45.0×13% = <strong>$5.85B</strong></td>
+<td><strong>~49x</strong></td>
+<td>293/7.0 = <strong>~42x</strong></td>
+</tr>
+<tr>
+<td>2028T（有机目标）</td>
+<td>52×20% = <strong>$10.4B</strong></td>
+<td><strong>~27x</strong></td>
+<td>~34x（按 2028 FCF ~$8.5B 估）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>第 2 步，隐含预期</strong>——要让今天的 EV 在"正常优质电气设备公司"的倍数下站住（[假设] 成熟态 EV/EBITDA 13-18x，可比数据缺失期间的替代假设）：</p>
+<table>
+<thead>
+<tr>
+<th>退出倍数假设</th>
+<th>需要的 EBITDA</th>
+<th>相当于 2028 目标的</th>
+<th>按 2028 后 15%/年 增速需再涨到哪年</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>18x</td>
+<td>$15.8B</td>
+<td>1.5 倍</td>
+<td>~2031</td>
+</tr>
+<tr>
+<td>15x</td>
+<td>$19.0B</td>
+<td>1.8 倍</td>
+<td>~2032</td>
+</tr>
+<tr>
+<td>13x</td>
+<td>$21.9B</td>
+<td>2.1 倍</td>
+<td>~2033</td>
+</tr>
+</tbody>
+</table>
+<p><strong>读法（小白版）</strong>：假设股价从今天起<strong>原地不动</strong>，公司需要把 2028 目标全兑现、然后继续以 15%/年再增长三到五年，估值才回落到"正常公司"水平。换句话说：<strong>当前价格已经预支了到 2030-2032 年的成长</strong>。若还要求股价本身每年再涨 10%，隐含要求变成 2030 年 EBITDA 达 $22-29B——是 2028 目标的 2-3 倍，两年翻倍以上，不现实。[推断，算术在上]</p>
+<p><strong>第 3 步，脆弱性检查</strong>：
+- 若 2028 利润率只到 16%（而非 20%，Wind 拖后腿是现实风险：Q1 利润率 -26.7%，2028 的 6% 被独立评论称"复苏情形而非底线"）→ EBITDA $8.3B → 隐含倍数升至 34x，气穴更深。
+- FCF 质量注记：Q1 FCF $4.8B 主要靠<strong>燃机预付款</strong>（营运资金流入）——订单流入一旦正常化，FCF 会向利润收敛，P/FCF 42x 是被预付款美化的下限口径。[事实+推断]
+- 反方的反方：新单价差 +10-20% 若全额落进 2029+ 交付的利润，2028 之后 Power 利润率有超 22% 的可能——这是当前价格里唯一"还没被完全计价"的候选项，也是 7/22 判分卡 A 档要盯的东西。</p>
+<h2>三、对论点的裁决</h2>
+<ol>
+<li><strong>原论点第 1 段的"市场可能仍低估久期"假设被本测算证伪级削弱</strong>：市场已把久期买到 ~2030。论点的合法形态修订为："事实跟踪 + 回撤介入"——即原触发器里"宏观回撤给出估值折让"从备选升级为<strong>主通道</strong>。</li>
+<li><strong>新增估值闸门（转 active 的硬条件，写入论点文件）</strong>：以下两条任一满足才可评审转 active：</li>
+<li><strong>价格路径</strong>：隐含 EV/EBITDA(2028T) ≤ 20x ⇒ 市值 ≤ ~$215B ⇒ 股价 ≤ <strong>~$800</strong>（较 7/12 收盘约 -27%）[闸门建议值，用户可调]；</li>
+<li><strong>基本面路径</strong>：2028 EBITDA 目标上修至 ~$14B+（收入或利润率超预期升级，使当前价对应 ≤20x）。</li>
+<li>7/22 判分卡照旧执行——它裁决的是<strong>事实层</strong>（订单是否见顶）；本报告裁决的是<strong>定价层</strong>（多少已在价格里）。两层各自独立记分。</li>
+</ol>
+<h2>四、缺口与下一步（P1b）</h2>
+<ol>
+<li>卖方共识三年期（换检索面：财报预览文章/业绩电话会提问引述/ETF 持仓报告转述）；</li>
+<li>可比倍数（ETN/ENR.DE/7011.T）——改从各公司 IR 页+财经数据站快照抓；</li>
+<li>Barclays 见顶论原文（分析师/日期/论据）——补齐 7/22 判分卡 C 档的对手论点原文；</li>
+<li>GEV 净现金精确值（10-Q 资产负债表，消 [假设]）；</li>
+<li>10-20% 价差的电话会原文逐字回查。</li>
+</ol>
+<h2>五、方法论沉淀</h2>
+<p>本报告是 <code>docs/pricing-method.md</code>（待写）的第一个实例：<strong>任何 T1 标的转 active 前，必须完成"洗噪音→今日倍数→隐含预期→脆弱性→闸门"五步</strong>。信念条目候选：<strong>"研究解决'是不是真的'，定价解决'值不值得买'——两问缺一都会亏钱，且亏法不同。"</strong></p></div>
+<footer>言出法随 · AI-native 投研系统 ｜ 本站由 <code>site/build_pages.py</code> 从仓库数据自动生成，
+行情组件来自 TradingView（免费嵌入，实时性以其为准）。个人研究笔记，不构成投资建议；
+系统不执行任何真实交易。<br>关键结论均经 3 票对抗验证，票数标注见各报告原文。</footer>
+</div></body></html>
