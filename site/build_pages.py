@@ -12,6 +12,7 @@ import datetime
 import html
 import pathlib
 import subprocess
+import json
 
 import markdown
 import yaml
@@ -48,7 +49,9 @@ REPORTS = [  # (源, 输出slug, 标题, 一句话)
      "P1 定价裁决：GEV 隐含预期反推", "好公司贵价格：市场已把久期买到 2030——估值闸门 ~$800"),
     ("theses/2026-07-07-gas-turbine-narrow-gate.md", "gev-thesis",
      "GEV 燃机论点（含 7/22 预注册判分卡）", "先写答案卡再考试——禁止事后挪门柱"),
-    ("journal/beliefs.md", "beliefs", "信念条目库（16 条）", "从尸体和事故上抄来的生存法则"),
+    ("docs/research/2026-07-12-intake-03-k2ai.md", "intake-03-k2ai",
+     "吸收 #03：k2ai.dev 批判性拆解", "同一张发票的两端：钱流镜头吸收为领先下车指标"),
+    ("journal/beliefs.md", "beliefs", "信念条目库（17 条）", "从尸体和事故上抄来的生存法则"),
 ]
 
 CSS = """
@@ -81,6 +84,8 @@ tr:last-child td{border-bottom:none}
 .t2{background:var(--warn-soft);color:var(--warn)}
 .t3{background:var(--chip);color:var(--muted)}
 .chip{display:inline-block;font:600 11.5px/1.6 ui-monospace,Menlo,monospace;padding:1px 8px;border-radius:999px;background:var(--chip)}
+.chip.kill{background:var(--bad-soft);color:var(--bad)}
+.chip.warn{background:var(--warn-soft);color:var(--warn)}
 .chk{display:flex;gap:12px;flex-wrap:wrap}
 .chk .card{flex:1 1 240px;margin:0}
 .chk .d{font:700 13px ui-monospace,Menlo,monospace;color:var(--accent)}
@@ -123,6 +128,19 @@ def tv_symbol(ticker):
     return f"{exch}:{code}" if exch else None
 
 
+def load_crowding():
+    f = ROOT / "data" / "crowding" / "latest.json"
+    if not f.exists():
+        return {}, None
+    d = json.loads(f.read_text())
+    return {r["symbol"]: r for r in d.get("results", [])}, d.get("date")
+
+
+def load_ledger():
+    f = ROOT / "data" / "ledger" / "latest.json"
+    return json.loads(f.read_text()) if f.exists() else None
+
+
 def load_watchlists():
     chains = []
     for f, label in [("compute-chain.yaml", "AI 算力链"), ("physical-ai.yaml", "Physical AI")]:
@@ -138,19 +156,28 @@ def load_watchlists():
     return chains, priv.get("companies", [])
 
 
-def watch_table(rows):
+def watch_table(rows, crowd=None):
+    crowd = crowd or {}
     tr = []
     for c in rows:
         tier = c.get("tier", "")
+        sym = str(c.get("ticker") or "").split(":")[-1]
+        cr = crowd.get(sym)
+        if cr:
+            cls = "kill" if cr["label"] == "极端" else "warn" if cr["label"] == "偏高" else ""
+            crowd_cell = f"<span class='chip {cls}'>{cr['score']:.0f} {cr['label']}</span>"
+        else:
+            crowd_cell = "<span class='sub'>—</span>"
         tr.append(
             f"<tr><td><span class='t{tier}'>T{tier}</span></td>"
             f"<td><b>{esc(c.get('name'))}</b><br><span class='chip'>{esc(c.get('ticker', '—'))}</span></td>"
             f"<td>{esc(c.get('segment'))}</td><td>{esc(c.get('role'))}</td>"
             f"<td>{esc(c.get('moat'))}</td><td>{esc(c.get('risk'))}</td>"
+            f"<td>{crowd_cell}</td>"
             f"<td>{esc(c.get('last_checked') or '未扫')}</td>"
             f"<td>{esc((c.get('notes') or '')[:160])}</td></tr>")
     head = ("<tr><th>层</th><th>标的</th><th>环节</th><th>卡位</th>"
-            "<th>护城河</th><th>证伪条件</th><th>末检</th><th>笔记(截断)</th></tr>")
+            "<th>护城河</th><th>证伪条件</th><th>拥挤度</th><th>末检</th><th>笔记(截断)</th></tr>")
     return f"<div class='tablewrap'><table>{head}{''.join(tr)}</table></div>"
 
 
@@ -190,7 +217,7 @@ def tv_scripts(chains):
 </script>"""
 
 
-def build_index(chains, priv):
+def build_index(chains, priv, crowd, crowd_date, ledger):
     chk = "".join(
         f"<div class='card'><div class='d'>{esc(d)}</div><b>{esc(t)}</b>"
         f"<p class='sub'>{esc(note)}</p></div>" for d, t, note in CHECKPOINTS)
@@ -199,14 +226,32 @@ def build_index(chains, priv):
         n1 = sum(1 for c in rows if c.get("tier") == 1)
         chain_html += (f"<h2>{esc(label)} <span class='chip'>T1×{n1} / 共{len(rows)}</span></h2>"
                        f"<p class='sub'>源文件 <a href='{REPO_URL}/blob/{MAIN_BRANCH}/watchlist/{fname}' target='_blank'>watchlist/{fname}</a>"
-                       f"——moat/risk 为入库必填，证伪条件命中即评审。</p>" + watch_table(rows))
+                       f"——moat/risk 为入库必填，证伪条件命中即评审。</p>" + watch_table(rows, crowd))
     pr = "".join(
         f"<tr><td><b>{esc(c.get('name'))}</b></td><td>{esc(c.get('position'))}</td>"
         f"<td>{esc(c.get('ipo_status'))}</td><td>{esc(', '.join(map(str, c.get('indirect_exposure', []))) if isinstance(c.get('indirect_exposure'), list) else c.get('indirect_exposure'))}</td>"
         f"<td>{esc((c.get('notes') or c.get('signal_value') or '')[:180])}</td></tr>" for c in priv)
+    ledger_html = ""
+    if ledger:
+        rows = ""
+        for b in ledger.get("baskets", []):
+            vs = " · ".join(f"vs {k[3:]} {v:+.2f}pp" for k, v in b.items() if k.startswith("vs_"))
+            rows += (f"<div class='card'><b>{esc(b['name'])}</b> "
+                     f"<span class='chip'>{b['ret']:+.2f}%</span>"
+                     f"<p class='sub'>{vs} ｜ 起算 {esc(b['inception'])} ｜ "
+                     f"成分: {esc(', '.join(f'{s2} {v2:+.1f}%' if v2 is not None else s2 for s2, v2 in b['detail'].items()))}</p></div>")
+        pos = ledger.get("positions") or []
+        ledger_html = (f"<h2>纸面账本 <span class='chip'>盯市 {esc(ledger.get('date'))}</span></h2>"
+                       f"<p class='sub'>仓位数：{len(pos)}（空 = 纪律在工作：唯一候选 GEV 被定价闸门挡住）。"
+                       f"观察篮子=排序判断的前向成绩单，非仓位建议；每日由 GitHub Actions 自动盯市。</p>"
+                       f"<div class='chk'>{rows}</div>")
+    crowd_note = (f"拥挤度评分 {esc(crowd_date)}（自身2年分位合成，≥85 一票否决/70-85 预警；美股覆盖，A股待接入）"
+                  if crowd_date else "拥挤度数据待管线首跑")
     body = f"""
 <div class='note'>看盘纪律：先看<b>检查点日历</b>再看价格——我们交易论点与证据，不交易情绪。任何操作前查对应论点的证伪条件。</div>
+<p class='sub'>{crowd_note}</p>
 <h2>检查点日历</h2><div class='chk'>{chk}</div>
+{ledger_html}
 <h2>行情速览</h2><p class='sub'>TradingView 免费组件（15 分钟延迟级别，够用：我们不做日内）。跑马灯=各链 T1 核心。</p>
 <div class='tv' id='tv-tape'></div>
 <div class='grid2' style='margin-top:12px'>
@@ -269,7 +314,9 @@ def main():
     OUT.mkdir(parents=True, exist_ok=True)
     (OUT / ".nojekyll").write_text("")
     chains, priv = load_watchlists()
-    (OUT / "index.html").write_text(build_index(chains, priv))
+    crowd, crowd_date = load_crowding()
+    ledger = load_ledger()
+    (OUT / "index.html").write_text(build_index(chains, priv, crowd, crowd_date, ledger))
     cards = build_reports()
     (OUT / "learn.html").write_text(build_learn(cards))
     print(f"built → {OUT}  (index, learn, {len(REPORTS)} reports)")
