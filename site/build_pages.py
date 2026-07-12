@@ -44,6 +44,8 @@ REPORTS = [  # (源, 输出slug, 标题, 一句话)
      "投资建议书③ 大宗商品线", "AI 电力化的分母钱 + 国家兜底的政策钱"),
     ("docs/research/2026-07-12-system-review.md", "system-review",
      "系统全面评审（独立代理）", "研究层真材实料；定价与拥挤度量化是真钱决策前的欠账"),
+    ("docs/research/2026-07-12-p1-gev-pricing.md", "p1-gev-pricing",
+     "P1 定价裁决：GEV 隐含预期反推", "好公司贵价格：市场已把久期买到 2030——估值闸门 ~$800"),
     ("theses/2026-07-07-gas-turbine-narrow-gate.md", "gev-thesis",
      "GEV 燃机论点（含 7/22 预注册判分卡）", "先写答案卡再考试——禁止事后挪门柱"),
     ("journal/beliefs.md", "beliefs", "信念条目库（16 条）", "从尸体和事故上抄来的生存法则"),
