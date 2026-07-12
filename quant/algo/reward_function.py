@@ -134,6 +134,9 @@ def drawdown_penalty(equity_curve: np.ndarray,
     eq = np.asarray(equity_curve, dtype=float)
     if eq.size == 0:
         raise ValueError("equity_curve must be non-empty (redteam L1)")
+    if not np.all(np.isfinite(eq)) or np.any(eq <= 0):
+        raise ValueError("equity values must be finite and > 0 — zero/negative "
+                         "equity yields silent NaN / zero-drawdown (redteam N4)")
     peak = np.maximum.accumulate(eq)
     hwm = peak[-1] if prior_peak is None else max(float(prior_peak), float(peak[-1]))
     dd = float(1.0 - eq[-1] / hwm)
@@ -156,8 +159,9 @@ def transaction_cost(trade_value: float, book_value: float,
         raise ValueError("book_value must be > 0 (redteam M1)")
     if adv_value <= 0:
         raise ValueError("adv_value must be > 0 (redteam M1)")
-    if sigma_daily < 0:
-        raise ValueError("sigma_daily must be >= 0 (redteam M1)")
+    if sigma_daily <= 0:
+        raise ValueError("sigma_daily must be > 0 — self-reported zero vol "
+                         "erases impact cost 668x (redteam M1/N7)")
     if trade_value <= 0:
         return 0.0
     frac = trade_value / book_value
@@ -261,10 +265,22 @@ class RewardEngine:
         self.w = w
         self.hwm = None     # episode high-water mark (J18: first point seeds it)
         self.dwell = 0      # consecutive over-cap steps in ELEVATED/SHOCK
+        self._done = False  # terminal latch (redteam N5: no resurrection)
+
+    def reset(self):
+        """Explicit episode boundary (redteam N3): clears hwm/dwell/done.
+        One engine per episode, or call reset() between episodes — reusing a
+        profitable episode's hwm silently kills the next episode's first step."""
+        self.hwm = None
+        self.dwell = 0
+        self._done = False
 
     def step(self, prices, t, equity_point: float, weights_prev, weights_new,
              event_state: str, sigma_daily: float, adv_value: float,
              book_value: float = 1.0, mode: str = "eval") -> RewardResult:
+        if self._done:
+            raise RuntimeError("episode already terminal (-20% rung) — call "
+                               "reset() to start a new episode (redteam N5)")
         ratio = adv_value / book_value if book_value > 0 else float("inf")
         lo, hi = ADV_BOOK_RATIO_BAND
         if not (lo <= ratio <= hi):
@@ -282,9 +298,12 @@ class RewardEngine:
         else:
             self.dwell = 0
 
-        return _assemble(prices, t, np.array([e]), weights_prev, weights_new,
-                         event_state, sigma_daily, adv_value, book_value,
-                         self.w, self.hwm, max(self.dwell, 1), mode)
+        res = _assemble(prices, t, np.array([e]), weights_prev, weights_new,
+                        event_state, sigma_daily, adv_value, book_value,
+                        self.w, self.hwm, max(self.dwell, 1), mode)
+        if res.terminal:
+            self._done = True
+        return res
 
 
 # ---------------------------------------------------------------- smoke test
