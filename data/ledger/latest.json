@@ -1,0 +1,54 @@
+{
+ "date": "2026-07-12",
+ "prices": {
+  "ALAB": 412.97,
+  "CEG": 251.38,
+  "COHR": 324.5,
+  "ETN": 407.28,
+  "GEV": 1091.5699,
+  "LITE": 802.01,
+  "MRVL": 235.81,
+  "MU": 979.3,
+  "QQQ": 725.51,
+  "SPY": 754.95,
+  "TSM": 434.11
+ },
+ "failed": [],
+ "benchmarks": {
+  "SPY": 0.0,
+  "QQQ": 0.0
+ },
+ "baskets": [
+  {
+   "id": "narrow-gate-t1",
+   "name": "窄门 T1 桶（算力链核心六标的，等权）",
+   "inception": "2026-07-12",
+   "ret": 0.0,
+   "detail": {
+    "GEV": 0.0,
+    "ETN": 0.0,
+    "CEG": 0.0,
+    "COHR": 0.0,
+    "LITE": 0.0,
+    "TSM": 0.0
+   },
+   "vs_SPY": 0.0,
+   "vs_QQQ": 0.0
+  },
+  {
+   "id": "crowding-veto-shadow",
+   "name": "拥挤度否决影子篮（被 R-4 一票否决的标的，等权）",
+   "inception": "2026-07-12",
+   "ret": 0.0,
+   "detail": {
+    "MU": 0.0,
+    "ALAB": 0.0,
+    "MRVL": 0.0
+   },
+   "vs_SPY": 0.0,
+   "vs_QQQ": 0.0
+  }
+ ],
+ "positions": [],
+ "note": "累计收益%自各符号基线价起算；篮子=等权观察对象，非仓位。"
+}
