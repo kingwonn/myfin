@@ -19,7 +19,7 @@ companies:
     position: 企业级/编码AI第一品牌(Claude)，agent编码生态事实标准之一
     ipo_status: 未上市
     indirect_exposure: [谷歌GOOGL(持股), 亚马逊AMZN(持股+Trainium绑定)]
-    signal_value: 其Trainium采用深度=AMZN自研芯片路线的成色指标；TeraWulf 20年190亿美元租约(2026-07-06, 8-K级)=首次直接长约锁算力；负信号跟踪: 微软开始用自研MAI替换部分Claude调用(7/7 Suleyman表态,量级尚小)
+    signal_value: "其Trainium采用深度=AMZN自研芯片路线的成色指标；TeraWulf 20年190亿美元租约(2026-07-06, 8-K级)=首次直接长约锁算力；负信号跟踪: 微软开始用自研MAI替换部分Claude调用(7/7 Suleyman表态,量级尚小)"
     tier: 1
     last_checked: null
 
