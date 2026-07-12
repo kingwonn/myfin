@@ -84,3 +84,11 @@
 **仍开放**（P1c 队列）：可比公司倍数（ETN/ENR.DE/7011.T 零存活）、管理层"+10-20% 价差"逐字出处（两个版本分别 1-2/0-3 被否——只可写"未能核实"）、FY2027 营收与 FY2028 全口径。
 
 **Q2 判分日新增锚点**：Zacks 共识 Q2 营收 $10.78B（+18.3%）——7/22 实际数对照口径。共识有效期至 7/22 财报重置。
+
+## P1c 收尾（2026-07-12 晚，104 代理）："两实一空"
+
+1. **+10-20% 提价证据升级为逐字原文（3-0 ×2）**：Strazik 两次电话会均有表述——Q4'25 会（2026-01-28）"there's another 10 to 20 points of pricing strength in the SRAs today"；Q1'26 会（2026-04-22）"We continue to be in that 10% to 20% growth in price on new bidding and winning activity today relative to where we were in the backlog in the fourth quarter of last year"，CFO Parks 同场印证。$/kW 口径与"Q2 延续"预期 2-1。→ 判分卡 A 档观察项的证据基础从"转述"升级为"transcript 级"。
+2. **可比倍数（半张矩阵）**：**ETN forward P/E ≈30.0-31.9x**（3-0，多源紧密收敛，2026-06/07 快照）——**GEV 调整后 forward ~70x = 最优质直接可比的 2.2 倍**，"贵价格"裁决进一步坐实。西门子能源 EV/EBITDA 30-39x 区间（口径分散，medium）；三菱重工 forward P/E 25-40x 分歧过大无可用点值。ETN/MHI 的 EV/EBITDA 未过验证——矩阵剩余部分改为"用 IR 披露 net debt + 共识 EBITDA 自算"路线（P1d 若需要）。
+3. **Barclays"订单见顶"警示：查无公开记录**——整个检索-验证管线连一条被否决的 Barclays 论断都没有产出。按纪律定性为**内部误记**（保留"付费研报渠道未覆盖"的不确定性）。全链引用已清理。
+
+**定价裁决终稿一句话**：GEV = 事实层 A- （订单/提价/指引全 SEC 级证实）× 定价层 D+（70x forward、2.2 倍于最优可比、久期已计价到 ~2030）→ **好公司、贵价格、等回撤或等基本面追上来**。估值闸门（~$800 或 2028 目标上修至 $14B+）维持不变。
