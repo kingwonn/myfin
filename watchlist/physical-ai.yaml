@@ -55,10 +55,10 @@ segments:
         market: CN-A
         role: 国产谐波减速器龙头
         moat: 国产替代+成本；绑定国内人形厂
-        risk: 估值透支；技术上限
-        tier: 2
-        last_checked: null
-        notes: ""
+        risk: 估值透支；技术上限；行业谐波产能利用率~25%产能先于需求过剩
+        tier: 3
+        last_checked: "2026-07-12"
+        notes: "2026-07-08 journal 已定 T2→T3(PE 574倍+定增扩产546%+供Optimus证伪0-3)，YAML 落地延迟4天——本次系统评审(R-3)发现失同步后补正。只看不碰，等定价回归。"
       - name: 三花智控 Sanhua
         ticker: "SZSE:002050"
         market: CN-A
