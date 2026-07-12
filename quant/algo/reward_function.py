@@ -140,7 +140,11 @@ def transaction_cost(trade_value: float, book_value: float,
         return 0.0
     frac = trade_value / book_value
     fee = (FIXED_FEE_BPS + SPREAD_BPS_FLOOR) * 1e-4 * frac
-    impact = IMPACT_COEF * sigma_daily * np.sqrt(trade_value / max(adv_value, 1e-8)) * frac
+    # Impact charged as the sqrt RATE sigma*sqrt(x/V) per spec ("conservative
+    # even for small size") — deliberately NOT scaled by frac, so the term is
+    # sublinear in trade size (referee invariant 6). v1.1 first cut had the
+    # frac-scaled x^1.5 form; the spec-derived suite caught the deviation.
+    impact = IMPACT_COEF * sigma_daily * np.sqrt(trade_value / max(adv_value, 1e-8))
     return float(np.clip(fee + impact, 0.0, COMPONENT_CLIP))
 
 
@@ -199,7 +203,9 @@ def step_reward(prices: np.ndarray, t: int, equity_curve: np.ndarray,
         total = DD_TERMINAL_PENALTY
     return RewardResult(total=float(total), terminal=terminal, parts={
         "r_vol": r_vol, "g_dd": g_dd, "cost": cost, "event": ev_pen,
-        "hard": hard, "turnover": turn, "turnover_pen": turn_pen,
+        # parts entries are scoring components: 'turnover' is the PENALTY
+        # (0 under the cap); the raw fraction traded is 'turnover_raw'.
+        "hard": hard, "turnover": turn_pen, "turnover_raw": turn,
     })
 
 
