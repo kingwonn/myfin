@@ -51,3 +51,36 @@ R_t = w_r·f(r_vol) − w_d·g(DD_t) − w_c·Cost_t − λ_e·EventPenalty_t + 
 6. **G-3 前向窗口去重**：RL 训练版对相邻步重叠的前向收益去重/折扣。
 
 v1.1 已当场落地（不改奖励形状）：M1 σ/adv/book 非法值抛异常、M2 价格正性断言、M3 波动率窗口不足拒绝打分、L1/L2 边界校验、H6 过渡版 prior_peak、H4 单位契约文档化。红队完整报告：`redteam-2026-07-12.md`。
+
+## v1.2 规格定稿（2026-07-12 晚，治理第①步；裁判套件更新=第②步；实现=第③步）
+
+> 本节为可测试规格：每条带公式与边界。红队 H1/H2/H3/H5/H4/H6 逐条对应。
+
+### S1（对 H1）波动率同期化
+f(r_vol) 各周期 h∈{3,7,15} 的归一化分母改为**同窗前向已实现波动率**：
+`vol_fwd_h = std(log 日收益, 窗口 [t, t+h])`，`z_h = fwd_ret_h / max(vol_fwd_h,1e-8) / sqrt(h)`。
+不变量：同一前向路径（收益与前向波动相同）在任何滞后历史（平静/喧闹）下得分**相同**；滞后 20 期波动率不再进入 f(r_vol)（仍可用于成本项 σ 的缺省估计）。负端 ×ASYMMETRY、逐资产 clip、组合加权、现金=0 均不变。
+
+### S2（对 H2）超帽停留累罚
+引擎维护 dwell 计数 k：状态∈{ELEVATED,SHOCK} 且 gross>cap 的**连续**步数（离开状态或降到帽内即清零）。
+`event_ratio = (over/cap) × min(1 + 0.5×(k−1), 4.0)`（k 从 1 计）。
+不变量：k=1 时与 v1.1 相同；同 over 下第 3 步惩罚 = 第 1 步 ×2.0；封顶 ×4；合规减仓到帽内后 k 归零。
+
+### S3（对 H3）成分集中度项
+`HHI = Σ(w_i/gross)²`（gross>0；gross=0 时定义 HHI=0）。
+非 NEUTRAL 态：`event_ratio += clip((HHI − 0.5) × 2, 0, 1) × (gross/cap)`。
+不变量：SHOCK 帽内(0.5) 单票全押（HHI=1）产生正惩罚 ≈ λ×1.0×(0.5/0.5)=λ×min(1,·)——即"崩盘中全押最热名"不再免费；两票均分（HHI=0.5）不罚；NEUTRAL 态不罚集中度（集中度纪律平时由 risk-rules 管，事件层只管危险时刻）。
+
+### S4（对 H5）终止惩罚单调化
+`DD_TERMINAL_PENALTY = −25.0`（低于任何非终止步可达最坏值 ≈ −23）。
+不变量：对任意固定的(状态,动作)，dd 从 0.19 → 0.21 的 total **单调变差或相等**；terminal 时 total==−25。
+
+### S5（对 H4/H6）RewardEngine 引擎化
+新增 `RewardEngine(book_currency_unit, adv_unit_check=True)`：持有**回合级高水位**（不可被截断曲线绕过）、event dwell 计数、book/adv 单位一致性断言（adv_value 与 book_value 必须同单位，比值超出 [1e-4, 1e6] 视为单位错报并抛异常）。
+`engine.step(prices, t, equity_point, weights_prev, weights_new, event_state, sigma_daily, adv_value) -> RewardResult`——equity 只需传当前点，高水位由引擎累积。函数式 API 保留用于单步评估，但**回合评估以引擎为准**；drawdown_penalty 的 prior_peak 参数保留兼容。
+
+### S6（对 G-3）训练模式去重
+`mode="train"` 时 f(r_vol) 只用 h=3 单周期（步进 dt≥3 则无重叠）；`mode="eval"`（默认）保留三周期加权。不变量：train 模式相邻步（间隔≥3）的奖励对同一段未来不重复计分。
+
+### 兼容性说明（裁判须知）
+- v1.1 套件中受影响的断言：inv3（λ 精确差分需乘 dwell/HHI 修正，k=1、两票均分时数值不变）、inv4（不对称测试改用前向同窗波动构造）、inv5/inv8（终止值 −10→−25）、契约常量表（DD_TERMINAL_PENALTY）。其余不变量应全部保持。
