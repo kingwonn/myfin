@@ -85,6 +85,15 @@ def asset_forward_scores(prices: np.ndarray, t: int) -> np.ndarray:
     Requires t >= VOL_WINDOW and t + max(HORIZONS) < len(prices).
     """
     p = _as_2d(prices)
+    if t < VOL_WINDOW:
+        raise ValueError(f"t={t} < VOL_WINDOW={VOL_WINDOW}: refusing to score "
+                         "with a shrunken vol window (redteam M3)")
+    if t + max(HORIZONS) >= p.shape[0]:
+        raise ValueError("not enough forward data: need t + max(HORIZONS) < len(prices)")
+    used = p[: t + max(HORIZONS) + 1]
+    if not np.all(np.isfinite(used)) or np.any(used <= 0):
+        raise ValueError("prices must be finite and strictly positive "
+                         "(zero/negative prices poison log-returns silently — redteam M2)")
     rets = np.diff(np.log(p[: t + 1]), axis=0)
     vol = rets[-VOL_WINDOW:].std(axis=0)
     vol = np.where(vol < 1e-8, 1e-8, vol)  # degenerate flat series guard
@@ -104,14 +113,15 @@ def portfolio_return_score(prices: np.ndarray, t: int,
     portfolio therefore scores exactly 0 — the agent is only paid for
     forward returns it actually holds."""
     scores = asset_forward_scores(prices, t)
-    w = np.asarray(weights, dtype=float)
+    w = np.atleast_1d(np.asarray(weights, dtype=float))
     if w.shape[0] != scores.shape[0]:
         raise ValueError(
             f"weights length {w.shape[0]} != n_assets {scores.shape[0]}")
     return float(np.clip(float(w @ scores), -COMPONENT_CLIP, COMPONENT_CLIP))
 
 
-def drawdown_penalty(equity_curve: np.ndarray) -> tuple[float, bool]:
+def drawdown_penalty(equity_curve: np.ndarray,
+                     prior_peak: float = None) -> tuple[float, bool]:
     """g(DD): convex penalty with ladder jumps. Returns (penalty, terminal).
 
     The -20% rung terminates the episode: the returned component stays
@@ -120,8 +130,15 @@ def drawdown_penalty(equity_curve: np.ndarray) -> tuple[float, bool]:
     liquidation at the bottom (Quant Quake lesson).
     """
     eq = np.asarray(equity_curve, dtype=float)
+    if eq.size == 0:
+        raise ValueError("equity_curve must be non-empty (redteam L1)")
     peak = np.maximum.accumulate(eq)
-    dd = float(1.0 - eq[-1] / peak[-1])
+    hwm = peak[-1] if prior_peak is None else max(float(prior_peak), float(peak[-1]))
+    # prior_peak (episode high-water mark) exists because callers can otherwise
+    # erase drawdown memory by feeding truncated curves (redteam H6). The
+    # windowed form stays for full-curve callers; the v1.2 engine will make
+    # the persistent peak mandatory.
+    dd = float(1.0 - eq[-1] / hwm)
     g = (dd / DD_LADDER[2]) ** 2 * DD_KAPPA
     if dd >= DD_LADDER[0]:
         g += 0.5
@@ -136,7 +153,13 @@ def transaction_cost(trade_value: float, book_value: float,
 
     All terms in fractions of book value; conservative even for small size.
     """
-    if trade_value <= 0 or book_value <= 0:
+    if book_value <= 0:
+        raise ValueError("book_value must be > 0 (silent 0-cost on bad book — redteam M1)")
+    if adv_value <= 0:
+        raise ValueError("adv_value must be > 0 (redteam M1)")
+    if sigma_daily < 0:
+        raise ValueError("sigma_daily must be >= 0 (redteam M1)")
+    if trade_value <= 0:
         return 0.0
     frac = trade_value / book_value
     fee = (FIXED_FEE_BPS + SPREAD_BPS_FLOOR) * 1e-4 * frac
@@ -182,14 +205,25 @@ class RewardResult:
 def step_reward(prices: np.ndarray, t: int, equity_curve: np.ndarray,
                 weights_prev: np.ndarray, weights_new: np.ndarray,
                 event_state: str, sigma_daily: float, adv_value: float,
-                book_value: float = 1.0, w: dict = None) -> RewardResult:
-    """One evaluation step. weights_* are projected onto the simplex first."""
+                book_value: float = 1.0, w: dict = None,
+                prior_peak: float = None) -> RewardResult:
+    """One evaluation step. weights_* are projected onto the simplex first.
+
+    UNIT CONTRACT (redteam H4): adv_value MUST be in the same currency unit
+    as book_value — the impact term compares turn*book_value against
+    adv_value directly. Passing dollar ADV with the default book_value=1.0
+    silently voids the cost term (measured cost/reward ~ 4e-5). The v1.2
+    engine will hold the book denomination internally.
+
+    prior_peak: episode high-water mark; pass it in RL loops that feed
+    truncated equity windows, or drawdown memory is erasable (redteam H6).
+    """
     w = {**DEFAULT_WEIGHTS, **(w or {})}
     weights_prev = project_to_simplex_with_cash(weights_prev)
     weights_new = project_to_simplex_with_cash(weights_new)
 
     r_vol = portfolio_return_score(prices, t, weights_new)
-    g_dd, terminal = drawdown_penalty(equity_curve)
+    g_dd, terminal = drawdown_penalty(equity_curve, prior_peak=prior_peak)
     turn = float(np.abs(weights_new - weights_prev).sum())
     cost = transaction_cost(turn * book_value, book_value, sigma_daily, adv_value)
     ev_pen, hard = event_penalty(event_state, float(weights_new.sum()),
