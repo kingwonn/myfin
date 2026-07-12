@@ -1,0 +1,56 @@
+# 预测校准账本 v1 —— "我说70%把握时到底准不准"的记账（Brier 分数制）
+#
+# 规则（追加式）：
+# 1. 每条预测必须在事件发生前登记：陈述(可无歧义判定) + 概率 + 到期日 + 判定来源
+# 2. 到期后填 resolution: true/false 与 resolved_date，禁止改动原预测
+# 3. 季度 /retro 计算 Brier 分 = mean((p - outcome)^2)，越低越好；0.25=瞎猜水平
+# 4. 概率是登记时的诚实信念[推断]，不是愿望；不敢给概率的判断=还不配叫判断
+
+predictions:
+  - id: 2026-001
+    date: "2026-07-12"
+    statement: "GEV Q2 财报（7/22）燃机设备积压+槽位合计 ≥100GW（不出现环比下降，即判分卡非 C/D 档）"
+    probability: 0.80
+    due: "2026-07-22"
+    judge: "GEV Q2 8-K 原文口径（判分卡 4b）"
+    resolution: null
+
+  - id: 2026-002
+    date: "2026-07-12"
+    statement: "GEV Q2 财报触发判分卡 A 档（合计 ≥105GW 且披露槽位转 firm 证据）"
+    probability: 0.35
+    due: "2026-07-22"
+    judge: "判分卡 4b A 档条件"
+    resolution: null
+
+  - id: 2026-003
+    date: "2026-07-12"
+    statement: "2026-10-15 前 CPO 未出现颠覆性上量证据（可插拔光模块窗口期未关闭，旭创/新易盛证伪触发器未命中）"
+    probability: 0.70
+    due: "2026-10-15"
+    judge: "Q3 出货裁决检查点（watchlist 触发器口径）"
+    resolution: null
+
+  - id: 2026-004
+    date: "2026-07-12"
+    statement: "2026-12-31 前不会出现 ≥2 家超大厂（MSFT/GOOG/AMZN/META）下修 FY capex 指引（系统级下车信号不触发）"
+    probability: 0.75
+    due: "2026-12-31"
+    judge: "各公司财报指引原文（risk-rules §6）"
+    resolution: null
+
+  - id: 2026-005
+    date: "2026-07-12"
+    statement: "6 个月后（2027-01-12 盯市），拥挤度否决影子篮（MU/ALAB/MRVL）跑输窄门 T1 篮——即否决规则创造了价值"
+    probability: 0.55
+    due: "2027-01-12"
+    judge: "data/ledger/history.csv 两篮累计收益对比"
+    resolution: null
+
+  - id: 2026-006
+    date: "2026-07-12"
+    statement: "2026 年报季 GEV 确认 2030 年前燃机槽位售罄（CEO 2025-12 预告兑现）"
+    probability: 0.65
+    due: "2027-02-15"
+    judge: "GEV Q4'26 8-K/电话会原文"
+    resolution: null
