@@ -1,0 +1,34 @@
+# 纸面账本每日盯市 — 与 crowding.yml 同型（schedule 只对默认分支生效，见其头注）
+name: paper-ledger-mark
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "portfolio/**"
+      - "pipelines/ledger/**"
+      - ".github/workflows/ledger.yml"
+  schedule:
+    - cron: "50 21 * * 1-5"   # 美股收盘后，工作日
+permissions:
+  contents: write
+jobs:
+  mark:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install --quiet yfinance pyyaml
+      - run: python pipelines/ledger/mark_to_market.py
+      - name: commit results
+        run: |
+          git config user.name "ledger-pipeline[bot]"
+          git config user.email "actions@github.com"
+          git pull --rebase
+          git add data/ledger/
+          git diff --cached --quiet && echo "no changes" && exit 0
+          git commit -m "ledger: daily mark ($(date -u +%F))"
+          git push

@@ -1,0 +1,32 @@
+# 纸面组合账本 v1 —— 系统判断的可追责成绩单（不是真实仓位，永不下单）
+#
+# 规则（追加式，不改写）：
+# 1. positions: 只有论点转 active 才可开仓位条目（当前为空——GEV 被定价闸门挡住，纪律生效的证明）
+# 2. baskets: 观察篮子——把系统的"排序判断"做成可计量对象，等权、创建日快照、前向跟踪
+# 3. 每日盯市由 GitHub Actions 执行（pipelines/ledger/mark_to_market.py），
+#    基线价 = 首次运行时最近收盘，写入 data/ledger/baseline.json 后不可变
+# 4. 篮子调整 = 新开篮子（旧篮子继续跟踪至标注 retired），禁止原地改成分——防事后美化
+# 5. 观察篮子的意义：验证"窄门排序"这个判断本身，与仓位无关；跑输基准=排序逻辑被证伪的证据
+
+meta:
+  created: "2026-07-12"
+  discipline: "append-only; positions require active thesis + pricing gate + crowding check"
+
+positions: []   # 空 = 纪律在工作：唯一候选 GEV 卡在估值闸门（见 P1 裁决）
+
+baskets:
+  - id: narrow-gate-t1
+    name: "窄门 T1 桶（算力链核心六标的，等权）"
+    purpose: "前向验证窄门排序 v0.4 的选股判断；跑输 SPY 两个季度 = 排序方法需评审"
+    inception: "2026-07-12"
+    symbols: [GEV, ETN, CEG, COHR, LITE, TSM]
+    note: "纯观察，非仓位建议；GEV 定价闸门未过、MU 等极端拥挤标的按纪律未入选"
+
+  - id: crowding-veto-shadow
+    name: "拥挤度否决影子篮（被 R-4 一票否决的标的，等权）"
+    purpose: "反向验证否决规则的价值：若此篮长期跑赢，说明否决阈值 85 过严"
+    inception: "2026-07-12"
+    symbols: [MU, ALAB, MRVL]
+    note: "2026-07-12 首次评分 91.1/90.8/89.2 触发否决；跟踪它=给否决规则记账"
+
+benchmarks: [SPY, QQQ]
