@@ -12,3 +12,4 @@ data/cache/
 # build artifacts (regenerable via site/build.mjs)
 site/dist/
 site/node_modules/
+site/pages-dist/
