@@ -1,0 +1,35 @@
+# R-4 拥挤度管线 — 跑在 GitHub Actions（开发容器出口封锁行情 API，runner 不受限）
+# 注意：schedule 触发只对仓库默认分支生效。当前默认分支若不是本分支，
+# 定时刷新需要用户在 Settings 里把默认分支改为 claude/ai-native-dev-research-2dves3，
+# 或授权把本 workflow 复制到默认分支。push/手动触发不受此限。
+name: crowding-score
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "pipelines/crowding/**"
+      - ".github/workflows/crowding.yml"
+  schedule:
+    - cron: "35 21 * * 1-5"   # 美股收盘后 (21:35 UTC)，工作日
+permissions:
+  contents: write
+jobs:
+  score:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install --quiet yfinance pandas pyyaml
+      - run: python pipelines/crowding/compute_crowding.py
+      - name: commit results
+        run: |
+          git config user.name "crowding-pipeline[bot]"
+          git config user.email "actions@github.com"
+          git add data/crowding/
+          git diff --cached --quiet && echo "no changes" && exit 0
+          git commit -m "crowding: daily score refresh ($(date -u +%F))"
+          git push
