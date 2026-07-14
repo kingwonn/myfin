@@ -12,8 +12,8 @@ companies:
     indirect_exposure: [微软MSFT(持股+分成), 软银9984(Vision Fund 2追加300亿美元, R1已验证), 甲骨文ORCL/CoreWeave CRWV(算力合同)]
     signal_value: 其数据中心合同(Stargate等)公告=链条需求脉冲；跟踪其供应商名单变化；软银拟以OpenAI股权质押贷款100亿美元(7月初)——间接敞口渠道杠杆化，风险双向
     tier: 1
-    last_checked: 2026-07-07
-    notes: "R1验证(3-0): 软银2026-02-27签最终协议追加300亿美元，已付两笔各100亿(04-01/07-01)，第三笔10-01。注意'软银是最大间接敞口/13%持股'的比较性说法0-3被否——微软权益构成竞争渠道，只能引用300亿协议本身"
+    last_checked: "2026-07-13"
+    notes: "原注记保留。7/13: ⚠7/2提议让渡5%股权(~426亿美元)给美国政府换监管空间,需国会批准,早期阶段——确认8520亿估值基准,但若落地稀释软银等现有股东,间接敞口渠道需计入此不确定性;GPT-5.6因国安审查延迟后7/9发布——政府上线前审查从行政令变实际执行案例,前沿实验室发布节奏新增非市场化摩擦 [halflife:季]"
 
   - name: Anthropic
     position: 企业级/编码AI第一品牌(Claude)，agent编码生态事实标准之一
@@ -21,7 +21,7 @@ companies:
     indirect_exposure: [谷歌GOOGL(持股), 亚马逊AMZN(持股+Trainium绑定)]
     signal_value: "其Trainium采用深度=AMZN自研芯片路线的成色指标；TeraWulf 20年190亿美元租约(2026-07-06, 8-K级)=首次直接长约锁算力；负信号跟踪: 微软开始用自研MAI替换部分Claude调用(7/7 Suleyman表态,量级尚小)"
     tier: 1
-    last_checked: null
+    last_checked: "2026-07-13"
 
   - name: xAI
     position: 算力军备最激进玩家(Colossus集群)，垂直整合X数据

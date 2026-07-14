@@ -15,8 +15,8 @@ segments:
         moat: 仿真到部署(sim-to-real)全栈无人能及
         risk: 机器人厂商为控成本转向自研/开源栈
         tier: 1
-        last_checked: 2026-07-10
-        notes: "R1验证(置信medium,数字自报): GR00T合成数据管线11小时生成等效9个月人类演示数据；合成+真实混合训练成功率45.3%→83.2%(arXiv 2503.24361)。正确表述是'倍增稀缺真实数据'而非'替代数据瓶颈'"
+        last_checked: "2026-07-13"
+        notes: "R1注记保留。7/13: 7/6 GR00T 1.7接入Hugging Face LeRobot(200万+1300万开发者社区打通,导出仍依赖TensorRT)——对『转向开源栈』风险的正面对冲,生态渗透边际强化;注意其语言底座用阿里Qwen3-VL,模型层非全自研,护城河在芯片与工具链 [halflife:季]"
 
   - segment: 本体层-人形与四足整机
     companies:
