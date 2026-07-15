@@ -15,7 +15,7 @@ segments:
         moat: 仿真到部署(sim-to-real)全栈无人能及
         risk: 机器人厂商为控成本转向自研/开源栈
         tier: 1
-        last_checked: "2026-07-13"
+        last_checked: "2026-07-15"
         notes: "R1注记保留。7/13: 7/6 GR00T 1.7接入Hugging Face LeRobot(200万+1300万开发者社区打通,导出仍依赖TensorRT)——对『转向开源栈』风险的正面对冲,生态渗透边际强化;注意其语言底座用阿里Qwen3-VL,模型层非全自研,护城河在芯片与工具链 [halflife:季]"
 
   - segment: 本体层-人形与四足整机
@@ -27,8 +27,8 @@ segments:
         moat: 制造规模+真实世界数据+自研全栈
         risk: 量产时间表一再推迟；本体业务在车企估值中被稀释
         tier: 2
-        last_checked: 2026-07-10
-        notes: "R1验证: 时间表已滑坡——2025-10称2026Q1展示V3/年底建百万台产线，2026-04电话会后移为V3年中发布、Q3规模量产。跟踪V3实际发布作为论点触发器"
+        last_checked: "2026-07-15"
+        notes: "7/15: 7/7 Giga Texas第三方航拍——Optimus专用工厂(规划年产能1000万台=现有全球人形年出货量百倍量级)中央屋顶封顶、四层钢结构可见——物理证据级建设提速;但厂房≠良率,手部执行器与量产良率风险未被触及 [halflife:季]"
       - name: 优必选 UBTECH
         ticker: "HKEX:9880"
         market: HK

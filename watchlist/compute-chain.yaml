@@ -28,8 +28,8 @@ segments:
         moat: SerDes与先进封装设计能力稀缺；ASIC客户一旦流片即多年锁定
         risk: 大客户自研设计团队内化；ASIC项目周期性砍单
         tier: 1
-        last_checked: "2026-07-13"
-        notes: "7/13: 7/13跌3.22%属板块轮动(Erste评级下调因估值),未达±5%异动阈值,无独立信号——首次纳入扫描 [halflife:日]"
+        last_checked: "2026-07-15"
+        notes: "7/15: 7/8苹果308亿美元多年芯片协议(150亿颗美国造,至2031);6/24 OpenAI首款定制推理ASIC Jalapeño(9个月研发,26年底部署);传闻100亿美元神秘客户候单[待核实]——custom ASIC从Google单一客户向多客户扩散,窄门判断强化 [halflife:年]"
       - name: 迈威尔 Marvell
         ticker: "NASDAQ:MRVL"
         market: US
@@ -49,8 +49,8 @@ segments:
         moat: 份额62%(2025Q2, Counterpoint 3-0)+MR-MUF工艺；三大厂合约"绝对定价权"(3-0)
         risk: HBM4E先发窗口已从"年"级压缩到约3周(三星5-29首发→海力士6-18跟进)——代际垄断红利消失，HBM从卡位窄门退化为寡头定价权故事；2027供需反转
         tier: 1
-        last_checked: "2026-07-13"
-        notes: "7/13: 7/13单日-15.4%上市以来最大跌幅——HBM4量产Q2→Q3推迟+长约价格上限条款锁死现货涨价兑现;同日MU -5.76%存储板块连坐。但7/12首尔经济:HBM4新约价26H2 $2/Gb→27年$4-5+/Gb翻倍,定价权未失只是短期兑现推迟。HBM降档判断维持,两周内第二次同类抛售=拥挤且叙事脆弱 [halflife:季]"
+        last_checked: "2026-07-15"
+        notes: "7/15: KIS报告细节补充——HBM4量产Q2→Q3推迟+LTA价格锁定错过现货涨价,Q2利润预测低共识8%(但同比+556%),KIS明确『非基本面恶化』维持买入;7/13 -15.4%后板块联动(MU/SanDisk/WDC -6%)。HBM降档判断维持 [halflife:季]"
       - name: 美光 Micron
         ticker: "NASDAQ:MU"
         market: US
@@ -58,8 +58,8 @@ segments:
         moat: HBM3E功耗优势；美国产能的政策价值
         risk: HBM扩产潮导致2027供过于求
         tier: 2
-        last_checked: "2026-07-13"
-        notes: ""
+        last_checked: "2026-07-15"
+        notes: "7/15: 6/22-7/13回撤23%后7/14反弹+5.12%(花旗重申买入,目标1400);宣布至2035年美国投资2500亿美元(本土DRAM占比目标40%)+福特/通用长约。拥挤度否决(7/12评分91.1)维持——扩产宣布是长期事,不改短期极端拥挤 [halflife:季/年]"
 
   - segment: 芯片-制造与先进封装
     companies:
@@ -103,8 +103,8 @@ segments:
         moat: 高速率产品良率与交付规模全球领先；绑定北美大客户
         risk: LightCounting警示2026产能将超需求(3-0)；CPO替代观察窗2028+；"2030年千亿市场"是乐观情景勿作估值锚
         tier: 1
-        last_checked: "2026-07-13"
-        notes: "7/13: 7/12晚董秘紧急辟谣Q2不及预期/压价传闻(公司自证):在手订单覆盖2026全年部分排至2027,2027年800G需求预期上修,核心物料采购正常;板块11日累计跌近20%后7/13放量反弹。CPO Q3裁决照旧 [halflife:季]"
+        last_checked: "2026-07-15"
+        notes: "7/15: 小作文风波续集——7/13澄清后收复,7/14『易中天』组合反攻(旭创+6.86%);但7/13机构净卖9.58亿+散户净卖59.64亿,资金分歧仍在。澄清均为公司自证。CPO Q3裁决照旧 [halflife:日]"
       - name: 新易盛 Eoptolink
         ticker: "SZSE:300502"
         market: CN-A
@@ -112,8 +112,8 @@ segments:
         moat: 成本控制+LPO/1.6T卡位(1.6T芯片组市场2026E>20亿美元)
         risk: 同旭创——产能超需求警示+CPO 2028+观察窗+乐观情景估值锚风险
         tier: 1
-        last_checked: "2026-07-13"
-        notes: "7/13: 板块小作文震荡同旭创;其『订单覆盖2026』表态与旭创公告有混同迹象,未能完全核实是否独立发声,下次扫描用官方原文交叉验证 [halflife:日]"
+        last_checked: "2026-07-15"
+        notes: "7/15: 7/14单日+11%(板块修复);互动平台官宣具备CPO晶圆级封装技术条件+NPO双路线[官宣时点未能核实]。7/13独立发声疑云仍未交叉验证 [halflife:季]"
       - name: Coherent
         ticker: "NYSE:COHR"
         market: US
@@ -121,8 +121,8 @@ segments:
         moat: 磷化铟激光器自产；NVDA 20亿美元入股+多十亿采购承诺+产能获取权(2026-03 8-K, 3-0)；Sherman德州6吋InP厂获5000万美元CHIPS资金(2026-07-03)——全球首条量产级6吋InP线，12个月内晶圆产出4倍
         risk: 6吋产能放量后瓶颈溢价消退；中国InP出口管制收紧(铟产量占全球~70%,AXT称审批为最大瓶颈)——政策变量或压制估值倍数；运营效率弱于中国同行
         tier: 1
-        last_checked: "2026-07-13"
-        notes: "R4终版: 2026年产能基本订满、订单排至2027-2028(3-0)——行业过剩警示下的头部分化受益方。窄门排序#3(InP上游)"
+        last_checked: "2026-07-15"
+        notes: "7/15: 7/13跌5.3%(月累计-20%,板块性回调非公司裂缝,订单能见度至2028说法未被推翻);InP扩产分化中Sherman 6英寸新厂目标5倍产能居前——相对LITE的执行优势注记 [halflife:日/年]"
       - name: Lumentum
         ticker: "NASDAQ:LITE"
         market: US
@@ -130,8 +130,8 @@ segments:
         moat: NVDA 20亿美元可转优先股入股($695.31/股)+采购承诺+先进激光器产能优先权；资金投向美国新建晶圆厂(2026-03 8-K, 3-0)
         risk: 产能扩张兑现节奏；中国InP出口管制风险(同COHR)；估值已因NVDA入股重估
         tier: 1
-        last_checked: "2026-07-13"
-        notes: "R4终版+日环: 7/9单日+12.5%——披露2027H1交付CPO订单+OCS backlog>4亿美元；中国铟管制发酵(4N铟+61.5%/InP晶圆+250%)强化自产稀缺性"
+        last_checked: "2026-07-15"
+        notes: "7/15: 分析师分歧显性化——TD Cowen目标价995→800 vs JPM渠道调查称CPO导入按计划、回调是情绪重置。⚠InP扩产三家分化:自建Greensboro新厂2028年中才爬坡,慢于AXT(提前翻倍,backlog超1亿美元)与COHR(Sherman 5倍)——执行层相对弱项注记 [halflife:季]"
       - name: Fabrinet
         ticker: "NYSE:FN"
         market: US
@@ -160,7 +160,7 @@ segments:
         moat: 与NVDA参考设计深度绑定；服务网络
         risk: 竞争加剧毛利承压；AI capex周期反转
         tier: 1
-        last_checked: "2026-07-13"
+        last_checked: "2026-07-15"
         notes: "7/13: 柔佛2.2万平米新厂投产(液冷/预制电源/顶置配电,亚太AI-DC)——物理证据级产能扩张,订单积压>150亿美元(+109% vs 25年末)交付能力增强 [halflife:季]"
       - name: 英维克 Envicool
         ticker: "SZSE:002837"
@@ -190,8 +190,8 @@ segments:
         moat: 电源效率技术+规模；NVDA下一代供电架构核心伙伴
         risk: 电源架构变化引入新竞争者
         tier: 1
-        last_checked: "2026-07-13"
-        notes: "7/13: 7/8跌5.26%系台股大盘系统性下跌联动,非公司利空;市场预期Q2营收创新高 [halflife:日]"
+        last_checked: "2026-07-15"
+        notes: "7/15: 7/6子公司决议建芜湖五厂(~4.1亿元人民币扩产)——HVDC放量方向的实体证据,但仅单一台媒转述,MOPS原始公告未交叉验证[未完全核实,下轮补证] [halflife:季]"
       - name: 麦格米特 Megmeet
         ticker: "SZSE:002851"
         market: CN-A
@@ -211,7 +211,7 @@ segments:
         moat: 积压+槽位预订2026Q1达100GW(指引年底≥110GW)，2030年前槽位即将售罄；产能弹性仅+20%(20→24GW到2028年中)；新订单定价高于存量
         risk: AI capex周期反转；扩产超预期；Barclays"订单周期见顶"警示(2026-07-07,近6个月年化订单50GW超历史峰值)——积压是真的但下单速率可能见顶=久期风险
         tier: 1
-        last_checked: "2026-07-13"
+        last_checked: "2026-07-15"
         notes: "7/13扫描: 7/7 Barclays下调西门子能源至低配(订单折年化50GW vs 中期可持续80-90GW,市占40%均值回归风险,2026三峰叠加)——见顶论点署名来源找到了:标的是西门子能源非GEV,GEV作最高估值纯正标的被拖累-6.5~9%。P1c的误记结论已再更正(错在张冠李戴不在无中生有)。7/22判分卡照旧,C档对手论点现有量化版本"
       - name: Oklo
         ticker: "NYSE:OKLO"
@@ -238,8 +238,8 @@ segments:
         moat: "⚠存疑待复核：200亿backlog为公司单方未审计披露，Hunterbrook做空报告(2026-07-08)称经审计约束性履约义务仅~4.92亿；营收+37%为已审计事实"
         risk: 做空指控双杀点——钪供应链实际依赖中国(与CEO公开声明矛盾)+扩产的钪原料硬约束(年需~220吨vs全球供给~240吨)；做空方利益相关，双方主张均待独立复核
         tier: 3
-        last_checked: "2026-07-13"
-        notes: "7/13: ⚠7/8 Hunterbrook第二份做空报告——钪供应依赖中国(5GW目标年耗~220吨 vs 全球年产240吨)+200亿美元未审计积压 vs 审计确定履约义务仅~4.92亿美元;公司反驳虚假误导。7/28 Q2财报+10-Q RPO复核为裁决点,原有存疑注记维持 [halflife:季]"
+        last_checked: "2026-07-15"
+        notes: "7/15: ⚠Hunterbrook做空争议未决(7/28裁决点)。7/6盘中+9.3%,年内+240%;上周Brookfield融资合作50亿→250亿美元扩容——情绪极热与做空指控并存,拥挤度警惕 [halflife:日/季]"
 
   - segment: 土地运营-Neocloud与数据中心
     companies:
@@ -250,8 +250,8 @@ segments:
         moat: GPU获取优先权+建设速度
         risk: 重资产高杠杆；大客户(MSFT/OpenAI)合同重定价
         tier: 2
-        last_checked: null
-        notes: ""
+        last_checked: "2026-07-15"
+        notes: "7/15: 7/14 US News独家——CoreWeave探索用金融衍生品对冲内存/存储价格下跌风险——最懂算力紧缺的买家在为涨价周期反转做准备,对『存储永久紧缺』叙事的谨慎信号,跟踪不证伪 [halflife:季]"
       - name: Nebius
         ticker: "NASDAQ:NBIS"
         market: US
