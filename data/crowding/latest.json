@@ -1,5 +1,5 @@
 {
- "date": "2026-10-13",
+ "date": "2026-10-14",
  "version": "v0.1",
  "coverage": "US-listed only",
  "thresholds": {
@@ -21,7 +21,7 @@
     "ret60": 78.0
    },
    "mcap_used": true,
-   "bars": 500
+   "bars": 501
   },
   {
    "symbol": "MRVL",
@@ -37,7 +37,7 @@
     "ret60": 80.0
    },
    "mcap_used": true,
-   "bars": 500
+   "bars": 501
   },
   {
    "symbol": "ALAB",
@@ -53,7 +53,7 @@
     "ret60": 48.0
    },
    "mcap_used": true,
-   "bars": 500
+   "bars": 501
   },
   {
    "symbol": "BE",
@@ -69,7 +69,7 @@
     "ret60": 43.0
    },
    "mcap_used": true,
-   "bars": 500
+   "bars": 501
   },
   {
    "symbol": "COHR",
@@ -85,7 +85,7 @@
     "ret60": 34.1
    },
    "mcap_used": true,
-   "bars": 500
+   "bars": 501
   },
   {
    "symbol": "ETN",
@@ -101,7 +101,7 @@
     "ret60": 56.1
    },
    "mcap_used": true,
-   "bars": 500
+   "bars": 501
   },
   {
    "symbol": "LITE",
@@ -117,7 +117,7 @@
     "ret60": 43.2
    },
    "mcap_used": true,
-   "bars": 500
+   "bars": 501
   },
   {
    "symbol": "APH",
@@ -133,7 +133,7 @@
     "ret60": 54.5
    },
    "mcap_used": true,
-   "bars": 500
+   "bars": 501
   },
   {
    "symbol": "MU",
@@ -149,7 +149,7 @@
     "ret60": 35.7
    },
    "mcap_used": true,
-   "bars": 500
+   "bars": 501
   },
   {
    "symbol": "FN",
@@ -165,7 +165,7 @@
     "ret60": 28.4
    },
    "mcap_used": true,
-   "bars": 500
+   "bars": 501
   },
   {
    "symbol": "NBIS",
@@ -181,7 +181,7 @@
     "ret60": 40.7
    },
    "mcap_used": true,
-   "bars": 495
+   "bars": 496
   },
   {
    "symbol": "CRWV",
@@ -197,7 +197,7 @@
     "ret60": 61.8
    },
    "mcap_used": true,
-   "bars": 387
+   "bars": 388
   },
   {
    "symbol": "TSM",
@@ -213,7 +213,7 @@
     "ret60": 45.7
    },
    "mcap_used": true,
-   "bars": 500
+   "bars": 501
   },
   {
    "symbol": "AVGO",
@@ -229,7 +229,7 @@
     "ret60": 29.5
    },
    "mcap_used": true,
-   "bars": 500
+   "bars": 501
   },
   {
    "symbol": "NVDA",
@@ -245,7 +245,7 @@
     "ret60": 65.9
    },
    "mcap_used": true,
-   "bars": 500
+   "bars": 501
   },
   {
    "symbol": "GEV",
@@ -261,7 +261,7 @@
     "ret60": 18.9
    },
    "mcap_used": true,
-   "bars": 500
+   "bars": 501
   },
   {
    "symbol": "TSLA",
@@ -277,7 +277,7 @@
     "ret60": 45.2
    },
    "mcap_used": true,
-   "bars": 500
+   "bars": 501
   },
   {
    "symbol": "VRT",
@@ -293,7 +293,7 @@
     "ret60": 21.6
    },
    "mcap_used": true,
-   "bars": 500
+   "bars": 501
   },
   {
    "symbol": "OKLO",
@@ -309,7 +309,7 @@
     "ret60": 37.7
    },
    "mcap_used": true,
-   "bars": 500
+   "bars": 501
   },
   {
    "symbol": "HSAI",
@@ -325,7 +325,7 @@
     "ret60": 45.5
    },
    "mcap_used": true,
-   "bars": 500
+   "bars": 501
   }
  ],
  "failed": [],
