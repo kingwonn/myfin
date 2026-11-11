@@ -1,5 +1,5 @@
 {
- "date": "2026-11-10",
+ "date": "2026-11-11",
  "version": "v0.1",
  "coverage": "US-listed only",
  "thresholds": {
@@ -21,7 +21,7 @@
     "ret60": 46.8
    },
    "mcap_used": true,
-   "bars": 500
+   "bars": 501
   },
   {
    "symbol": "APH",
@@ -37,7 +37,7 @@
     "ret60": 21.6
    },
    "mcap_used": true,
-   "bars": 500
+   "bars": 501
   },
   {
    "symbol": "ETN",
@@ -53,7 +53,7 @@
     "ret60": 5.5
    },
    "mcap_used": true,
-   "bars": 500
+   "bars": 501
   },
   {
    "symbol": "MRVL",
@@ -69,7 +69,7 @@
     "ret60": 13.9
    },
    "mcap_used": true,
-   "bars": 500
+   "bars": 501
   },
   {
    "symbol": "TSLA",
@@ -85,7 +85,7 @@
     "ret60": 68.2
    },
    "mcap_used": true,
-   "bars": 500
+   "bars": 501
   },
   {
    "symbol": "TSM",
@@ -101,7 +101,7 @@
     "ret60": 11.6
    },
    "mcap_used": true,
-   "bars": 500
+   "bars": 501
   },
   {
    "symbol": "GEV",
@@ -117,7 +117,7 @@
     "ret60": 1.4
    },
    "mcap_used": true,
-   "bars": 500
+   "bars": 501
   },
   {
    "symbol": "FN",
@@ -133,7 +133,7 @@
     "ret60": 3.2
    },
    "mcap_used": true,
-   "bars": 500
+   "bars": 501
   },
   {
    "symbol": "ALAB",
@@ -149,7 +149,7 @@
     "ret60": 12.5
    },
    "mcap_used": true,
-   "bars": 500
+   "bars": 501
   },
   {
    "symbol": "VRT",
@@ -165,7 +165,7 @@
     "ret60": 7.5
    },
    "mcap_used": true,
-   "bars": 500
+   "bars": 501
   },
   {
    "symbol": "LITE",
@@ -181,7 +181,7 @@
     "ret60": 3.6
    },
    "mcap_used": true,
-   "bars": 500
+   "bars": 501
   },
   {
    "symbol": "COHR",
@@ -197,7 +197,7 @@
     "ret60": 8.9
    },
    "mcap_used": true,
-   "bars": 500
+   "bars": 501
   },
   {
    "symbol": "BE",
@@ -213,7 +213,7 @@
     "ret60": 15.2
    },
    "mcap_used": true,
-   "bars": 500
+   "bars": 501
   },
   {
    "symbol": "CRWV",
@@ -229,7 +229,7 @@
     "ret60": 0.6
    },
    "mcap_used": true,
-   "bars": 407
+   "bars": 408
   },
   {
    "symbol": "MU",
@@ -245,7 +245,7 @@
     "ret60": 3.2
    },
    "mcap_used": true,
-   "bars": 500
+   "bars": 501
   },
   {
    "symbol": "NBIS",
@@ -255,13 +255,13 @@
    "score": 40.4,
    "label": "常态",
    "signals": {
-    "turnover": 86.7,
+    "turnover": 86.9,
     "vol": 73.5,
     "ext200": 0.7,
     "ret60": 0.5
    },
    "mcap_used": true,
-   "bars": 500
+   "bars": 501
   },
   {
    "symbol": "AVGO",
@@ -277,7 +277,7 @@
     "ret60": 7.3
    },
    "mcap_used": true,
-   "bars": 500
+   "bars": 501
   },
   {
    "symbol": "HSAI",
@@ -293,23 +293,23 @@
     "ret60": 17.3
    },
    "mcap_used": true,
-   "bars": 500
+   "bars": 501
   },
   {
    "symbol": "NVDA",
    "name": "英伟达 NVIDIA",
    "tier": 2,
    "chain": "compute-chain",
-   "score": 26.9,
+   "score": 27.0,
    "label": "常态",
    "signals": {
-    "turnover": 20.8,
+    "turnover": 21.2,
     "vol": 84.2,
     "ext200": 0.0,
     "ret60": 2.7
    },
    "mcap_used": true,
-   "bars": 500
+   "bars": 501
   },
   {
    "symbol": "OKLO",
@@ -325,7 +325,7 @@
     "ret60": 13.9
    },
    "mcap_used": true,
-   "bars": 500
+   "bars": 501
   }
  ],
  "failed": [],
