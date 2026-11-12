@@ -1,0 +1,333 @@
+{
+ "date": "2026-11-12",
+ "version": "v0.1",
+ "coverage": "US-listed only",
+ "thresholds": {
+  "veto": 85,
+  "elevated": 70
+ },
+ "results": [
+  {
+   "symbol": "CEG",
+   "name": "星座能源 Constellation Energy",
+   "tier": 1,
+   "chain": "compute-chain",
+   "score": 63.8,
+   "label": "常态",
+   "signals": {
+    "turnover": 67.4,
+    "vol": 85.4,
+    "ext200": 57.5,
+    "ret60": 44.8
+   },
+   "mcap_used": true,
+   "bars": 501
+  },
+  {
+   "symbol": "ETN",
+   "name": "伊顿 Eaton",
+   "tier": 1,
+   "chain": "compute-chain",
+   "score": 51.2,
+   "label": "常态",
+   "signals": {
+    "turnover": 99.8,
+    "vol": 99.6,
+    "ext200": 1.0,
+    "ret60": 4.3
+   },
+   "mcap_used": true,
+   "bars": 501
+  },
+  {
+   "symbol": "APH",
+   "name": "安费诺 Amphenol",
+   "tier": 2,
+   "chain": "compute-chain",
+   "score": 51.0,
+   "label": "常态",
+   "signals": {
+    "turnover": 79.2,
+    "vol": 96.7,
+    "ext200": 15.6,
+    "ret60": 12.5
+   },
+   "mcap_used": true,
+   "bars": 501
+  },
+  {
+   "symbol": "TSLA",
+   "name": "特斯拉 Tesla (Optimus)",
+   "tier": 2,
+   "chain": "physical-ai",
+   "score": 50.9,
+   "label": "常态",
+   "signals": {
+    "turnover": 15.0,
+    "vol": 75.2,
+    "ext200": 43.5,
+    "ret60": 70.0
+   },
+   "mcap_used": true,
+   "bars": 501
+  },
+  {
+   "symbol": "MRVL",
+   "name": "迈威尔 Marvell",
+   "tier": 2,
+   "chain": "compute-chain",
+   "score": 49.8,
+   "label": "常态",
+   "signals": {
+    "turnover": 90.9,
+    "vol": 91.7,
+    "ext200": 4.0,
+    "ret60": 12.7
+   },
+   "mcap_used": true,
+   "bars": 501
+  },
+  {
+   "symbol": "TSM",
+   "name": "台积电 TSMC",
+   "tier": 1,
+   "chain": "compute-chain",
+   "score": 49.8,
+   "label": "常态",
+   "signals": {
+    "turnover": 94.6,
+    "vol": 91.2,
+    "ext200": 1.0,
+    "ret60": 12.3
+   },
+   "mcap_used": true,
+   "bars": 501
+  },
+  {
+   "symbol": "GEV",
+   "name": "GE Vernova",
+   "tier": 1,
+   "chain": "compute-chain",
+   "score": 48.1,
+   "label": "常态",
+   "signals": {
+    "turnover": 99.8,
+    "vol": 91.2,
+    "ext200": 0.7,
+    "ret60": 0.7
+   },
+   "mcap_used": true,
+   "bars": 501
+  },
+  {
+   "symbol": "ALAB",
+   "name": "阿斯特拉实验室 Astera Labs",
+   "tier": 2,
+   "chain": "compute-chain",
+   "score": 47.0,
+   "label": "常态",
+   "signals": {
+    "turnover": 73.6,
+    "vol": 90.8,
+    "ext200": 11.0,
+    "ret60": 12.7
+   },
+   "mcap_used": true,
+   "bars": 501
+  },
+  {
+   "symbol": "VRT",
+   "name": "维谛技术 Vertiv",
+   "tier": 1,
+   "chain": "compute-chain",
+   "score": 46.6,
+   "label": "常态",
+   "signals": {
+    "turnover": 85.0,
+    "vol": 95.2,
+    "ext200": 0.7,
+    "ret60": 5.5
+   },
+   "mcap_used": true,
+   "bars": 501
+  },
+  {
+   "symbol": "LITE",
+   "name": "Lumentum",
+   "tier": 1,
+   "chain": "compute-chain",
+   "score": 46.4,
+   "label": "常态",
+   "signals": {
+    "turnover": 85.0,
+    "vol": 97.3,
+    "ext200": 0.7,
+    "ret60": 2.5
+   },
+   "mcap_used": true,
+   "bars": 501
+  },
+  {
+   "symbol": "FN",
+   "name": "Fabrinet",
+   "tier": 2,
+   "chain": "compute-chain",
+   "score": 46.3,
+   "label": "常态",
+   "signals": {
+    "turnover": 81.1,
+    "vol": 99.6,
+    "ext200": 3.3,
+    "ret60": 1.1
+   },
+   "mcap_used": true,
+   "bars": 501
+  },
+  {
+   "symbol": "COHR",
+   "name": "Coherent",
+   "tier": 1,
+   "chain": "compute-chain",
+   "score": 45.1,
+   "label": "常态",
+   "signals": {
+    "turnover": 79.0,
+    "vol": 94.0,
+    "ext200": 2.7,
+    "ret60": 4.8
+   },
+   "mcap_used": true,
+   "bars": 501
+  },
+  {
+   "symbol": "BE",
+   "name": "Bloom Energy",
+   "tier": 3,
+   "chain": "compute-chain",
+   "score": 44.5,
+   "label": "常态",
+   "signals": {
+    "turnover": 90.4,
+    "vol": 74.8,
+    "ext200": 0.7,
+    "ret60": 12.0
+   },
+   "mcap_used": true,
+   "bars": 501
+  },
+  {
+   "symbol": "CRWV",
+   "name": "CoreWeave",
+   "tier": 2,
+   "chain": "compute-chain",
+   "score": 43.7,
+   "label": "常态",
+   "signals": {
+    "turnover": 93.8,
+    "vol": 78.9,
+    "ext200": 1.4,
+    "ret60": 0.6
+   },
+   "mcap_used": true,
+   "bars": 409
+  },
+  {
+   "symbol": "MU",
+   "name": "美光 Micron",
+   "tier": 2,
+   "chain": "compute-chain",
+   "score": 41.0,
+   "label": "常态",
+   "signals": {
+    "turnover": 77.8,
+    "vol": 83.1,
+    "ext200": 0.7,
+    "ret60": 2.3
+   },
+   "mcap_used": true,
+   "bars": 501
+  },
+  {
+   "symbol": "NBIS",
+   "name": "Nebius",
+   "tier": 2,
+   "chain": "compute-chain",
+   "score": 40.2,
+   "label": "常态",
+   "signals": {
+    "turnover": 85.0,
+    "vol": 74.8,
+    "ext200": 0.7,
+    "ret60": 0.2
+   },
+   "mcap_used": true,
+   "bars": 501
+  },
+  {
+   "symbol": "AVGO",
+   "name": "博通 Broadcom",
+   "tier": 1,
+   "chain": "compute-chain",
+   "score": 39.9,
+   "label": "常态",
+   "signals": {
+    "turnover": 62.8,
+    "vol": 81.2,
+    "ext200": 4.0,
+    "ret60": 11.6
+   },
+   "mcap_used": true,
+   "bars": 501
+  },
+  {
+   "symbol": "NVDA",
+   "name": "英伟达 NVIDIA",
+   "tier": 2,
+   "chain": "compute-chain",
+   "score": 33.4,
+   "label": "常态",
+   "signals": {
+    "turnover": 47.4,
+    "vol": 84.6,
+    "ext200": 0.0,
+    "ret60": 1.8
+   },
+   "mcap_used": true,
+   "bars": 501
+  },
+  {
+   "symbol": "HSAI",
+   "name": "禾赛科技 Hesai",
+   "tier": 2,
+   "chain": "physical-ai",
+   "score": 29.4,
+   "label": "常态",
+   "signals": {
+    "turnover": 11.0,
+    "vol": 68.3,
+    "ext200": 17.3,
+    "ret60": 20.9
+   },
+   "mcap_used": true,
+   "bars": 501
+  },
+  {
+   "symbol": "OKLO",
+   "name": "Oklo",
+   "tier": 3,
+   "chain": "compute-chain",
+   "score": 23.7,
+   "label": "常态",
+   "signals": {
+    "turnover": 5.6,
+    "vol": 77.3,
+    "ext200": 4.0,
+    "ret60": 8.0
+   },
+   "mcap_used": true,
+   "bars": 501
+  }
+ ],
+ "failed": [],
+ "note": "score = 自身2年历史分位的等权合成；>=85 候选池一票否决。缺持仓重叠/做空比例维度（付费数据缺口）。"
+}
